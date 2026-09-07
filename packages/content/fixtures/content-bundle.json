@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "bundle_id": "likagame.demo.ru",
-  "content_version": "0.5.0",
+  "content_version": "0.7.0",
   "engine_compatibility": {
     "min": "0.1.0",
     "max_exclusive": "1.0.0"
   },
-  "bundle_hash": "sha256:e6cd0e3ce081cf2b4bbc54212dbd022b3d7004184238dfddce6cd616f8ccdbde",
+  "bundle_hash": "sha256:384838c0f76458f68057a025dd20508e708ff8d8c4c5358941e72723c9b4b7cd",
   "themes": [
     {
       "id": "theme.space.beacon_7.v1",
@@ -21,6 +21,26 @@
         "asset.station",
         "asset.pik",
         "asset.energy_pair",
+        "asset.planet"
+      ]
+    },
+    {
+      "id": "scene.relay_corridor.v1",
+      "title": "Релейный коридор",
+      "asset_ids": [
+        "asset.station_branch",
+        "asset.relay_modules",
+        "asset.pik",
+        "asset.planet"
+      ]
+    },
+    {
+      "id": "scene.light_core.v1",
+      "title": "Световая решётка ядра",
+      "asset_ids": [
+        "asset.satellite",
+        "asset.light_cells",
+        "asset.pik",
         "asset.planet"
       ]
     }
@@ -83,6 +103,118 @@
         "fallback_h5": "line.e01.h5.v1",
         "success": "line.e01.success.v1"
       }
+    },
+    {
+      "schema_version": 1,
+      "id": "encounter.restore_relay_corridor.v1",
+      "story_function": "restore_first_connection",
+      "learning": {
+        "skill_id": "mul:3:4",
+        "problem": {
+          "type": "equal_groups",
+          "group_count": 3,
+          "units_per_group": 4,
+          "unknown": "factors"
+        },
+        "representation": "representational",
+        "counting_support": "grouped_only",
+        "evidence_strength": "supported"
+      },
+      "controller": {
+        "type": "program_then_run",
+        "variant": "three_relay_jumps",
+        "initial_state": { "step_size": 2, "repeat_count": 5 },
+        "target_state": { "step_size": 4, "repeat_count": 3, "total_distance": 12 },
+        "limits": { "min_step_size": 2, "max_step_size": 6, "min_repeat_count": 2, "max_repeat_count": 5 }
+      },
+      "input": {
+        "semantic_actions": ["drag_step_boundary", "commit"],
+        "direct_response": null
+      },
+      "attempt_policy": {
+        "commit_mode": "explicit",
+        "checkback_policy_id": "none.v1",
+        "hint_policy_id": "relay_demo.v1"
+      },
+      "validation": {
+        "validator_id": "relay_program.v1",
+        "params": { "required_step_size": 4, "required_repeat_count": 3, "required_total_distance": 12 }
+      },
+      "scene_ref": "scene.relay_corridor.v1",
+      "role_bindings": {
+        "relay_path": "main_relay_path",
+        "success_target": "cargo_receiver"
+      },
+      "dialogue_refs": {
+        "entry": "line.e02.entry.v1",
+        "instruction": "line.e02.instruction.v1",
+        "undershoot": "line.e02.undershoot.v1",
+        "overshoot": "line.e02.overshoot.v1",
+        "misaligned": "line.e02.misaligned.v1",
+        "hint_h1": "line.e02.h1.v1",
+        "hint_h2": "line.e02.h2.v1",
+        "hint_h5": "line.e02.h5.v1",
+        "success": "line.e02.success.v1"
+      }
+    },
+    {
+      "schema_version": 1,
+      "id": "encounter.restore_light_array.v1",
+      "story_function": "open_path",
+      "learning": {
+        "skill_id": "mul:4:6",
+        "problem": {
+          "type": "equal_groups",
+          "group_count": 4,
+          "units_per_group": 6,
+          "unknown": "factors"
+        },
+        "representation": "representational",
+        "counting_support": "grouped_only",
+        "evidence_strength": "independent"
+      },
+      "controller": {
+        "type": "array_transform",
+        "variant": "resize_light_matrix",
+        "initial_state": { "rows": 1, "columns": 1 },
+        "target_state": { "rows": 4, "columns": 6 },
+        "limits": { "min_rows": 1, "max_rows": 6, "min_columns": 1, "max_columns": 7 }
+      },
+      "input": {
+        "semantic_actions": ["drag_selection_rectangle", "commit"],
+        "direct_response": null
+      },
+      "attempt_policy": {
+        "commit_mode": "explicit",
+        "checkback_policy_id": "none.v1",
+        "hint_policy_id": "array_demo.v1"
+      },
+      "validation": {
+        "validator_id": "array_dimensions.v1",
+        "params": {
+          "required_rows": 4,
+          "required_columns": 6,
+          "accept_commutative_total": true,
+          "require_scene_orientation_for_completion": true
+        }
+      },
+      "scene_ref": "scene.light_core.v1",
+      "role_bindings": {
+        "target_array": "main_light_array",
+        "success_target": "core_gate"
+      },
+      "dialogue_refs": {
+        "entry": "line.e03.entry.v1",
+        "instruction": "line.e03.instruction.v1",
+        "too_few": "line.e03.too_few.v1",
+        "too_many": "line.e03.too_many.v1",
+        "orientation": "line.e03.orientation.v1",
+        "position": "line.e03.position.v1",
+        "hint_h1": "line.e03.h1.v1",
+        "hint_h2": "line.e03.h2.v1",
+        "hint_h5": "line.e03.h5.v1",
+        "success": "line.e03.success.v1"
+      }
     }
   ],
   "adventure_blocks": [
@@ -105,6 +237,18 @@
       "scene_ref": "scene.beacon_control_room.v1"
     },
     {
+      "id": "block.restore_relay_corridor.v1",
+      "block_kind": "encounter",
+      "encounter_ref": "encounter.restore_relay_corridor.v1",
+      "scene_ref": "scene.relay_corridor.v1"
+    },
+    {
+      "id": "block.restore_light_array.v1",
+      "block_kind": "encounter",
+      "encounter_ref": "encounter.restore_light_array.v1",
+      "scene_ref": "scene.light_core.v1"
+    },
+    {
       "id": "block.demo_epilogue.v1",
       "block_kind": "epilogue",
       "encounter_ref": null,
@@ -118,6 +262,8 @@
         "block.signal_received.v1",
         "block.wake_companion.v1",
         "block.numeric_input_smoke.v1",
+        "block.restore_relay_corridor.v1",
+        "block.restore_light_array.v1",
         "block.demo_epilogue.v1"
       ]
     }
@@ -202,10 +348,507 @@
     },
     {
       "id": "line.epilogue.v1",
-      "speaker": "nima",
-      "text": "Сигнал замечен. Но свет маяка всё ещё спрятан дальше, среди облачных колец…",
+      "speaker": "system",
+      "text": "Все три модуля отвечают. Свет Маяка-7 снова пробивается сквозь облачные кольца.",
       "audio_file": "/assets/voice/line-epilogue.mp3",
       "intent": "future_hook"
+    },
+    {
+      "id": "line.intro.signal.v2",
+      "speaker": "system",
+      "text": "Маяк-7 не выходит на связь. На станции всё ещё мерцает слабый сигнал.",
+      "audio_file": "/assets/voice/line-intro-signal-v2.mp3",
+      "intent": "story_hook"
+    },
+    {
+      "id": "line.intro.signal.v3",
+      "speaker": "system",
+      "text": "Связь с Маяком-7 потеряна. Внутри станции замечен один слабый импульс.",
+      "audio_file": "/assets/voice/line-intro-signal-v3.mp3",
+      "intent": "story_hook"
+    },
+    {
+      "id": "line.pik.first_contact.v2",
+      "speaker": "pik",
+      "text": "П-приём… Это Пик. Моим трём узлам не хватает энергии. Поможешь меня включить?",
+      "audio_file": "/assets/voice/line-pik-first-contact-v2.mp3",
+      "intent": "companion_request"
+    },
+    {
+      "id": "line.pik.first_contact.v3",
+      "speaker": "pik",
+      "text": "Ты меня слышишь? Я Пик. Три моих загрузочных узла почти погасли. Запустим их вместе?",
+      "audio_file": "/assets/voice/line-pik-first-contact-v3.mp3",
+      "intent": "companion_request"
+    },
+    {
+      "id": "line.math_intro.groups.v1",
+      "speaker": "system",
+      "text": "На нашей станции всё собрано из одинаковых групп. В каждой группе поровну деталей — так их легко считать.",
+      "audio_file": "/assets/voice/line-math-intro-groups-v1.mp3",
+      "intent": "math_intro_groups"
+    },
+    {
+      "id": "line.math_intro.groups.v2",
+      "speaker": "pik",
+      "text": "Видишь одинаковые коробочки? В каждой одно и то же число искр. Это и есть одинаковые группы!",
+      "audio_file": "/assets/voice/line-math-intro-groups-v2.mp3",
+      "intent": "math_intro_groups"
+    },
+    {
+      "id": "line.math_intro.groups.v3",
+      "speaker": "system",
+      "text": "Станция любит порядок: несколько одинаковых групп, и в каждой — поровну. Так начинается умножение.",
+      "audio_file": "/assets/voice/line-math-intro-groups-v3.mp3",
+      "intent": "math_intro_groups"
+    },
+    {
+      "id": "line.math_intro.short.v1",
+      "speaker": "pik",
+      "text": "Можно складывать одну и ту же группу снова и снова. А знак умножения записывает это короче.",
+      "audio_file": "/assets/voice/line-math-intro-short-v1.mp3",
+      "intent": "math_intro_short_notation"
+    },
+    {
+      "id": "line.math_intro.short.v2",
+      "speaker": "system",
+      "text": "Если в сложении повторяется одно и то же число, его можно заменить короткой записью со знаком умножить.",
+      "audio_file": "/assets/voice/line-math-intro-short-v2.mp3",
+      "intent": "math_intro_short_notation"
+    },
+    {
+      "id": "line.math_intro.short.v3",
+      "speaker": "pik",
+      "text": "Два плюс два плюс два — это три группы по два. Коротко: три умножить на два!",
+      "audio_file": "/assets/voice/line-math-intro-short-v3.mp3",
+      "intent": "math_intro_short_notation"
+    },
+    {
+      "id": "line.math_intro.actions.v1",
+      "speaker": "system",
+      "text": "В каждом модуле одна идея выглядит по-разному: разложить поровну, повторить шаг или собрать прямоугольник из ламп.",
+      "audio_file": "/assets/voice/line-math-intro-actions-v1.mp3",
+      "intent": "math_intro_actions"
+    },
+    {
+      "id": "line.math_intro.actions.v2",
+      "speaker": "pik",
+      "text": "Сначала делим на одинаковые группы, потом повторяем движение, а дальше растягиваем световую решётку. Всё это — умножение!",
+      "audio_file": "/assets/voice/line-math-intro-actions-v2.mp3",
+      "intent": "math_intro_actions"
+    },
+    {
+      "id": "line.math_intro.actions.v3",
+      "speaker": "system",
+      "text": "Три комнаты покажут одно правило с разных сторон: равные группы, одинаковые прыжки и ряды светящихся ячеек.",
+      "audio_file": "/assets/voice/line-math-intro-actions-v3.mp3",
+      "intent": "math_intro_actions"
+    },
+    {
+      "id": "line.e01.instruction.v2",
+      "speaker": "pik",
+      "text": "У нас шесть капсул, в каждой по две искры. Разложи их поровну между тремя узлами.",
+      "audio_file": "/assets/voice/line-e01-instruction-v2.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e01.instruction.v3",
+      "speaker": "pik",
+      "text": "Распредели шесть пар импульсов между тремя узлами так, чтобы заряд был одинаковым.",
+      "audio_file": "/assets/voice/line-e01-instruction-v3.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e01.h0.v2",
+      "speaker": "pik",
+      "text": "Почти получилось, но узлы заряжены по-разному.",
+      "audio_file": "/assets/voice/line-e01-h0-v2.mp3",
+      "intent": "hint_h0"
+    },
+    {
+      "id": "line.e01.h0.v3",
+      "speaker": "pik",
+      "text": "Я всё ещё мигаю: где-то импульсов больше, а где-то меньше.",
+      "audio_file": "/assets/voice/line-e01-h0-v3.mp3",
+      "intent": "hint_h0"
+    },
+    {
+      "id": "line.e01.h1.v2",
+      "speaker": "pik",
+      "text": "Сравни три узла. На каждом одинаковое число искр?",
+      "audio_file": "/assets/voice/line-e01-h1-v2.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e01.h1.v3",
+      "speaker": "pik",
+      "text": "Проверь заряды: все три узла показывают одно и то же?",
+      "audio_file": "/assets/voice/line-e01-h1-v3.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e01.h2.v2",
+      "speaker": "pik",
+      "text": "Дай каждому узлу по одной капсуле, потом повтори ещё раз.",
+      "audio_file": "/assets/voice/line-e01-h2-v2.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e01.h2.v3",
+      "speaker": "pik",
+      "text": "Раздавай капсулы по кругу: первая, вторая, третья — и ещё один круг.",
+      "audio_file": "/assets/voice/line-e01-h2-v3.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e01.h3.v2",
+      "speaker": "pik",
+      "text": "В каждом узле должно быть по две капсулы, то есть по четыре искры.",
+      "audio_file": "/assets/voice/line-e01-h3-v2.mp3",
+      "intent": "hint_h3"
+    },
+    {
+      "id": "line.e01.h3.v3",
+      "speaker": "pik",
+      "text": "Положи две капсулы в каждый узел. В одной капсуле две искры.",
+      "audio_file": "/assets/voice/line-e01-h3-v3.mp3",
+      "intent": "hint_h3"
+    },
+    {
+      "id": "line.e01.h4.v2",
+      "speaker": "pik",
+      "text": "Считай для одного узла: две искры и ещё две — получится четыре.",
+      "audio_file": "/assets/voice/line-e01-h4-v2.mp3",
+      "intent": "hint_h4"
+    },
+    {
+      "id": "line.e01.h4.v3",
+      "speaker": "pik",
+      "text": "Две плюс две — четыре. Именно столько искр нужно каждому узлу.",
+      "audio_file": "/assets/voice/line-e01-h4-v3.mp3",
+      "intent": "hint_h4"
+    },
+    {
+      "id": "line.e01.h5.v2",
+      "speaker": "pik",
+      "text": "Я помогу: положи по две капсулы в каждый из трёх узлов.",
+      "audio_file": "/assets/voice/line-e01-h5-v2.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e01.h5.v3",
+      "speaker": "pik",
+      "text": "В каждый узел отправь по две капсулы — получится по четыре импульса.",
+      "audio_file": "/assets/voice/line-e01-h5-v3.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e01.success.v2",
+      "speaker": "pik",
+      "text": "Получилось! На каждом узле по четыре импульса. Я снова в строю!",
+      "audio_file": "/assets/voice/line-e01-success-v2.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.e01.success.v3",
+      "speaker": "pik",
+      "text": "Все три узла заряжены одинаково. Отличная работа — станция снова видна!",
+      "audio_file": "/assets/voice/line-e01-success-v3.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.input_smoke.v2",
+      "speaker": "pik",
+      "text": "Посчитаем общий заряд: сколько импульсов дают все три узла вместе?",
+      "audio_file": "/assets/voice/line-input-smoke-v2.mp3",
+      "intent": "input_smoke"
+    },
+    {
+      "id": "line.input_smoke.v3",
+      "speaker": "pik",
+      "text": "В каждом узле по четыре импульса. Сколько их всего в трёх узлах?",
+      "audio_file": "/assets/voice/line-input-smoke-v3.mp3",
+      "intent": "input_smoke"
+    },
+    {
+      "id": "line.epilogue.v2",
+      "speaker": "system",
+      "text": "Канал стабилен. Диспетчерская, грузовой модуль и ядро Маяка-7 снова на связи.",
+      "audio_file": "/assets/voice/line-epilogue-v2.mp3",
+      "intent": "future_hook"
+    },
+    {
+      "id": "line.epilogue.v3",
+      "speaker": "system",
+      "text": "Маршрут восстановлен. Все три комнаты отвечают, а свет маяка снова виден издалека.",
+      "audio_file": "/assets/voice/line-epilogue-v3.mp3",
+      "intent": "future_hook"
+    },
+    {
+      "id": "line.e02.entry.v1",
+      "speaker": "system",
+      "text": "Грузовой модуль молчит. Реле на сигнальной линии сбились с мест.",
+      "audio_file": "/assets/voice/line-e02-entry-v1.mp3",
+      "intent": "room_entry"
+    },
+    {
+      "id": "line.e02.entry.v2",
+      "speaker": "system",
+      "text": "Связь с грузовым модулем потеряна. На дорожке нарушился ритм реле.",
+      "audio_file": "/assets/voice/line-e02-entry-v2.mp3",
+      "intent": "room_entry"
+    },
+    {
+      "id": "line.e02.instruction.v1",
+      "speaker": "pik",
+      "text": "Тяни большую голубую ручку на дорожке. Сделай так, чтобы каждая голубая остановка попала на золотое реле.",
+      "audio_file": "/assets/voice/line-e02-instruction-v1.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e02.instruction.v2",
+      "speaker": "pik",
+      "text": "Настрой путь руками: двигай голубую ручку и следи, как остановки скачков подходят к золотым реле.",
+      "audio_file": "/assets/voice/line-e02-instruction-v2.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e02.undershoot.v1",
+      "speaker": "pik",
+      "text": "Сигнал погас раньше приёмника. Растяни путь до самого конца.",
+      "audio_file": "/assets/voice/line-e02-undershoot-v1.mp3",
+      "intent": "undershoot"
+    },
+    {
+      "id": "line.e02.undershoot.v2",
+      "speaker": "pik",
+      "text": "Не дотянули. Посмотри, какой кусочек дорожки остался тёмным.",
+      "audio_file": "/assets/voice/line-e02-undershoot-v2.mp3",
+      "intent": "undershoot"
+    },
+    {
+      "id": "line.e02.overshoot.v1",
+      "speaker": "pik",
+      "text": "Сигнал проскочил приёмник. Сделай один скачок короче.",
+      "audio_file": "/assets/voice/line-e02-overshoot-v1.mp3",
+      "intent": "overshoot"
+    },
+    {
+      "id": "line.e02.overshoot.v2",
+      "speaker": "pik",
+      "text": "Перелёт! Верни голубую границу внутрь световой дорожки.",
+      "audio_file": "/assets/voice/line-e02-overshoot-v2.mp3",
+      "intent": "overshoot"
+    },
+    {
+      "id": "line.e02.misaligned.v1",
+      "speaker": "pik",
+      "text": "Математика верна: сигнал прошёл двенадцать секторов. Но линии нужна другая форма пути.",
+      "audio_file": "/assets/voice/line-e02-misaligned-v1.mp3",
+      "intent": "equivalent_but_misaligned"
+    },
+    {
+      "id": "line.e02.misaligned.v2",
+      "speaker": "pik",
+      "text": "Расстояние посчитано правильно. Но реле ждут меньше, зато более длинных скачков.",
+      "audio_file": "/assets/voice/line-e02-misaligned-v2.mp3",
+      "intent": "equivalent_but_misaligned"
+    },
+    {
+      "id": "line.e02.h1.v1",
+      "speaker": "pik",
+      "text": "Сравни промежутки между реле. Все они должны быть одинаковыми.",
+      "audio_file": "/assets/voice/line-e02-h1-v1.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e02.h1.v2",
+      "speaker": "pik",
+      "text": "Посмотри на дорожку: где промежуток короче или длиннее остальных?",
+      "audio_file": "/assets/voice/line-e02-h1-v2.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e02.h2.v1",
+      "speaker": "pik",
+      "text": "Начни от передатчика и повторяй один промежуток до самого приёмника.",
+      "audio_file": "/assets/voice/line-e02-h2-v1.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e02.h2.v2",
+      "speaker": "pik",
+      "text": "Следи, чтобы конец каждого скачка попадал прямо на следующее реле.",
+      "audio_file": "/assets/voice/line-e02-h2-v2.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e02.h5.v1",
+      "speaker": "pik",
+      "text": "Я подсветил нужные остановки. Подведи голубую границу к первой из них.",
+      "audio_file": "/assets/voice/line-e02-h5-v1.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e02.h5.v2",
+      "speaker": "pik",
+      "text": "Следуй за золотыми отметками: каждый скачок должен закончиться на реле.",
+      "audio_file": "/assets/voice/line-e02-h5-v2.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e02.success.v1",
+      "speaker": "pik",
+      "text": "Есть контакт! Импульс прошёл весь путь ровными скачками.",
+      "audio_file": "/assets/voice/line-e02-success-v1.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.e02.success.v2",
+      "speaker": "pik",
+      "text": "Линия ожила. Все реле поймали один ритм.",
+      "audio_file": "/assets/voice/line-e02-success-v2.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.e03.entry.v1",
+      "speaker": "system",
+      "text": "Замок ядра ждёт световую фигуру, совпадающую с его контуром.",
+      "audio_file": "/assets/voice/line-e03-entry-v1.mp3",
+      "intent": "room_entry"
+    },
+    {
+      "id": "line.e03.entry.v2",
+      "speaker": "system",
+      "text": "Доступ закрыт. Свет на решётке должен принять форму окна в воротах.",
+      "audio_file": "/assets/voice/line-e03-entry-v2.mp3",
+      "intent": "room_entry"
+    },
+    {
+      "id": "line.e03.instruction.v1",
+      "speaker": "pik",
+      "text": "Зажми первую лампу и растяни голубую рамку так, чтобы она накрыла золотой контур замка.",
+      "audio_file": "/assets/voice/line-e03-instruction-v1.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e03.instruction.v2",
+      "speaker": "pik",
+      "text": "На решётке всегда видна золотая форма замка. Нажми, держи и растяни по ней голубое выделение.",
+      "audio_file": "/assets/voice/line-e03-instruction-v2.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e03.too_few.v1",
+      "speaker": "pik",
+      "text": "Рамка меньше контура. Растяни её к незакрытому краю.",
+      "audio_file": "/assets/voice/line-e03-too-few-v1.mp3",
+      "intent": "too_few_cells"
+    },
+    {
+      "id": "line.e03.too_few.v2",
+      "speaker": "pik",
+      "text": "Света не хватает. Посмотри, где контур ещё остался пустым.",
+      "audio_file": "/assets/voice/line-e03-too-few-v2.mp3",
+      "intent": "too_few_cells"
+    },
+    {
+      "id": "line.e03.too_many.v1",
+      "speaker": "pik",
+      "text": "Свет вышел за контур. Подтяни дальний угол обратно.",
+      "audio_file": "/assets/voice/line-e03-too-many-v1.mp3",
+      "intent": "too_many_cells"
+    },
+    {
+      "id": "line.e03.too_many.v2",
+      "speaker": "pik",
+      "text": "Рамка слишком большая. Убери лампочки за границей замка.",
+      "audio_file": "/assets/voice/line-e03-too-many-v2.mp3",
+      "intent": "too_many_cells"
+    },
+    {
+      "id": "line.e03.orientation.v1",
+      "speaker": "pik",
+      "text": "Огней ровно двадцать четыре — математика верна. Но замку нужен широкий прямоугольник, а не высокий.",
+      "audio_file": "/assets/voice/line-e03-orientation-v1.mp3",
+      "intent": "equivalent_but_misaligned"
+    },
+    {
+      "id": "line.e03.orientation.v2",
+      "speaker": "pik",
+      "text": "Шесть рядов по четыре — тоже двадцать четыре. Счёт правильный, но замку нужна другая форма.",
+      "audio_file": "/assets/voice/line-e03-orientation-v2.mp3",
+      "intent": "equivalent_but_misaligned"
+    },
+    {
+      "id": "line.e03.position.v1",
+      "speaker": "pik",
+      "text": "Размер и количество верны. Теперь передвинь начало выделения к углу золотого контура.",
+      "audio_file": "/assets/voice/line-e03-position-v1.mp3",
+      "intent": "correct_array_wrong_position"
+    },
+    {
+      "id": "line.e03.position.v2",
+      "speaker": "pik",
+      "text": "Рамка получилась нужной формы, но лежит мимо замка. Растяни её прямо поверх золотой области.",
+      "audio_file": "/assets/voice/line-e03-position-v2.mp3",
+      "intent": "correct_array_wrong_position"
+    },
+    {
+      "id": "line.e03.h1.v1",
+      "speaker": "pik",
+      "text": "Сравни высоту рамки с метками слева. Нижний край должен совпасть с контуром.",
+      "audio_file": "/assets/voice/line-e03-h1-v1.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e03.h1.v2",
+      "speaker": "pik",
+      "text": "Сначала найди высоту: тяни рамку вниз до световой засечки.",
+      "audio_file": "/assets/voice/line-e03-h1-v2.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e03.h2.v1",
+      "speaker": "pik",
+      "text": "Теперь растяни правый край, пока он не коснётся светящейся границы.",
+      "audio_file": "/assets/voice/line-e03-h2-v1.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e03.h2.v2",
+      "speaker": "pik",
+      "text": "Когда высота совпадёт, тяни рамку вправо до второй границы.",
+      "audio_file": "/assets/voice/line-e03-h2-v2.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e03.h5.v1",
+      "speaker": "pik",
+      "text": "Я подсветил нужный прямоугольник. Проведи рамку из одного угла в противоположный.",
+      "audio_file": "/assets/voice/line-e03-h5-v1.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e03.h5.v2",
+      "speaker": "pik",
+      "text": "Видишь мерцающий контур? Зажми его угол и растяни выделение по всей форме.",
+      "audio_file": "/assets/voice/line-e03-h5-v2.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e03.success.v1",
+      "speaker": "pik",
+      "text": "Контуры совпали. Световой замок открывается!",
+      "audio_file": "/assets/voice/line-e03-success-v1.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.e03.success.v2",
+      "speaker": "pik",
+      "text": "Отлично! Рамка легла точно в форму ворот.",
+      "audio_file": "/assets/voice/line-e03-success-v2.mp3",
+      "intent": "success"
     }
   ],
   "asset_manifests": [
@@ -220,6 +863,14 @@
         "/assets/characters/pik-mouth-open.png",
         "/assets/tokens/energy-blue.png",
         "/assets/backgrounds/planet-cloud-blue.png"
+      ]
+    },
+    {
+      "id": "asset_manifest.elevenlabs_voice.ru.v2",
+      "license": "project-internal; generated under ElevenLabs account terms",
+      "source_url": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+      "files": [
+        "/assets/voice/*.mp3"
       ]
     }
   ]

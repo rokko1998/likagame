@@ -372,7 +372,13 @@ class BeaconScene extends Phaser.Scene {
 
   private renderPikFrame(): void {
     const success = this.snapshot.validation?.completion === "success" || this.snapshot.phase === "resolving" || this.snapshot.phase === "complete";
-    const closedTexture = success ? "pik-powered" : this.snapshot.phase === "feedback" ? "pik-idle" : "pik-off";
+    const closedTexture = this.snapshot.speaking
+      ? "pik-idle"
+      : success
+        ? "pik-powered"
+        : this.snapshot.phase === "feedback"
+          ? "pik-idle"
+          : "pik-off";
     this.pik.setTexture(this.snapshot.speaking && this.mouthOpen ? "pik-talking" : closedTexture);
     this.voiceWave.setAlpha(this.snapshot.speaking ? (this.mouthOpen ? 1 : 0.45) : 0);
     const faceSize = this.snapshot.speaking && this.mouthOpen ? 73 : 70;

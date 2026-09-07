@@ -11,6 +11,9 @@ playwright-report/
 test-results/
 .vite/
 
+# Generated convenience archives (source files stay versioned)
+assets/game/voice.zip
+
 # Logs
 *.log
 npm-debug.log*

@@ -110,7 +110,7 @@
         "required": ["id", "license", "source_url", "files"],
         "properties": {
           "id": { "type": "string" },
-          "license": { "const": "CC0-1.0" },
+          "license": { "type": "string", "minLength": 1 },
           "source_url": { "type": "string", "pattern": "^https://" },
           "files": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
         }

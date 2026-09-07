@@ -35,7 +35,7 @@
             "type": { "const": "equal_groups" },
             "group_count": { "type": "integer", "minimum": 2 },
             "units_per_group": { "type": "integer", "minimum": 1 },
-            "unknown": { "enum": ["group_size", "total"] }
+            "unknown": { "enum": ["group_size", "total", "factors"] }
           }
         },
         "representation": { "enum": ["concrete", "representational", "recall"] },
@@ -44,17 +44,98 @@
       }
     },
     "controller": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["type", "variant", "token_count", "units_per_token", "zone_count", "target_units_per_zone"],
-      "properties": {
-        "type": { "const": "allocate_equal" },
-        "variant": { "type": "string" },
-        "token_count": { "type": "integer", "minimum": 1 },
-        "units_per_token": { "type": "integer", "minimum": 1 },
-        "zone_count": { "type": "integer", "minimum": 2 },
-        "target_units_per_zone": { "type": "integer", "minimum": 1 }
-      }
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "variant", "token_count", "units_per_token", "zone_count", "target_units_per_zone"],
+          "properties": {
+            "type": { "const": "allocate_equal" },
+            "variant": { "type": "string" },
+            "token_count": { "type": "integer", "minimum": 1 },
+            "units_per_token": { "type": "integer", "minimum": 1 },
+            "zone_count": { "type": "integer", "minimum": 2 },
+            "target_units_per_zone": { "type": "integer", "minimum": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "variant", "initial_state", "target_state", "limits"],
+          "properties": {
+            "type": { "const": "program_then_run" },
+            "variant": { "type": "string" },
+            "initial_state": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["step_size", "repeat_count"],
+              "properties": {
+                "step_size": { "type": "integer", "minimum": 1 },
+                "repeat_count": { "type": "integer", "minimum": 1 }
+              }
+            },
+            "target_state": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["step_size", "repeat_count", "total_distance"],
+              "properties": {
+                "step_size": { "type": "integer", "minimum": 1 },
+                "repeat_count": { "type": "integer", "minimum": 1 },
+                "total_distance": { "type": "integer", "minimum": 1 }
+              }
+            },
+            "limits": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["min_step_size", "max_step_size", "min_repeat_count", "max_repeat_count"],
+              "properties": {
+                "min_step_size": { "type": "integer", "minimum": 1 },
+                "max_step_size": { "type": "integer", "minimum": 1 },
+                "min_repeat_count": { "type": "integer", "minimum": 1 },
+                "max_repeat_count": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "variant", "initial_state", "target_state", "limits"],
+          "properties": {
+            "type": { "const": "array_transform" },
+            "variant": { "type": "string" },
+            "initial_state": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["rows", "columns"],
+              "properties": {
+                "rows": { "type": "integer", "minimum": 1 },
+                "columns": { "type": "integer", "minimum": 1 }
+              }
+            },
+            "target_state": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["rows", "columns"],
+              "properties": {
+                "rows": { "type": "integer", "minimum": 1 },
+                "columns": { "type": "integer", "minimum": 1 }
+              }
+            },
+            "limits": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["min_rows", "max_rows", "min_columns", "max_columns"],
+              "properties": {
+                "min_rows": { "type": "integer", "minimum": 1 },
+                "max_rows": { "type": "integer", "minimum": 1 },
+                "min_columns": { "type": "integer", "minimum": 1 },
+                "max_columns": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        }
+      ]
     },
     "input": {
       "type": "object",
@@ -76,22 +157,63 @@
       }
     },
     "validation": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["validator_id", "params"],
-      "properties": {
-        "validator_id": { "const": "equal_distribution.v1" },
-        "params": {
+      "oneOf": [
+        {
           "type": "object",
           "additionalProperties": false,
-          "required": ["zone_count", "required_units_per_zone", "require_all_tokens"],
+          "required": ["validator_id", "params"],
           "properties": {
-            "zone_count": { "type": "integer", "minimum": 2 },
-            "required_units_per_zone": { "type": "integer", "minimum": 1 },
-            "require_all_tokens": { "type": "boolean" }
+            "validator_id": { "const": "equal_distribution.v1" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["zone_count", "required_units_per_zone", "require_all_tokens"],
+              "properties": {
+                "zone_count": { "type": "integer", "minimum": 2 },
+                "required_units_per_zone": { "type": "integer", "minimum": 1 },
+                "require_all_tokens": { "type": "boolean" }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["validator_id", "params"],
+          "properties": {
+            "validator_id": { "const": "relay_program.v1" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["required_step_size", "required_repeat_count", "required_total_distance"],
+              "properties": {
+                "required_step_size": { "type": "integer", "minimum": 1 },
+                "required_repeat_count": { "type": "integer", "minimum": 1 },
+                "required_total_distance": { "type": "integer", "minimum": 1 }
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["validator_id", "params"],
+          "properties": {
+            "validator_id": { "const": "array_dimensions.v1" },
+            "params": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["required_rows", "required_columns", "accept_commutative_total", "require_scene_orientation_for_completion"],
+              "properties": {
+                "required_rows": { "type": "integer", "minimum": 1 },
+                "required_columns": { "type": "integer", "minimum": 1 },
+                "accept_commutative_total": { "type": "boolean" },
+                "require_scene_orientation_for_completion": { "type": "boolean" }
+              }
+            }
           }
         }
-      }
+      ]
     },
     "scene_ref": { "type": "string" },
     "role_bindings": { "type": "object", "additionalProperties": { "type": "string" } },

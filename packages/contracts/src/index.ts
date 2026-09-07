@@ -20,9 +20,21 @@ export type ClearKind =
 
 export type ValidationResult = {
   math_status: "not_evaluable" | "correct" | "incorrect";
-  scene_status: "satisfied" | "unsatisfied";
+  scene_status: "satisfied" | "unsatisfied" | "equivalent_but_misaligned";
   completion: "continue" | "success" | "guided_success";
-  error_class: "unplaced_tokens" | "uneven_distribution" | "too_few_units" | "too_many_units" | null;
+  error_class:
+    | "unplaced_tokens"
+    | "uneven_distribution"
+    | "too_few_units"
+    | "too_many_units"
+    | "undershoot"
+    | "overshoot"
+    | "misaligned_relays"
+    | "too_few_cells"
+    | "too_many_cells"
+    | "misplaced_array"
+    | "wrong_orientation"
+    | null;
   mastery_evidence: "none" | "positive" | "negative" | "assisted";
   feedback_intent: string;
   revealed_values: number[];
@@ -37,6 +49,22 @@ export type AllocateEqualCandidate = {
   type: "allocate_equal";
   placements: TokenPlacement[];
 };
+
+export type ProgramThenRunCandidate = {
+  type: "program_then_run";
+  step_size: number;
+  repeat_count: number;
+};
+
+export type ArrayTransformCandidate = {
+  type: "array_transform";
+  rows: number;
+  columns: number;
+  origin_row?: number;
+  origin_column?: number;
+};
+
+export type EncounterCandidate = AllocateEqualCandidate | ProgramThenRunCandidate | ArrayTransformCandidate;
 
 export type EncounterState = {
   instance_id: string;
@@ -111,7 +139,7 @@ export type ReduceResult = {
   effects: EffectRequest[];
 };
 
-export type EncounterDefinition = {
+type EncounterDefinitionBase = {
   schema_version: 1;
   id: string;
   story_function: string;
@@ -121,19 +149,11 @@ export type EncounterDefinition = {
       type: "equal_groups";
       group_count: number;
       units_per_group: number;
-      unknown: "group_size" | "total";
+      unknown: "group_size" | "total" | "factors";
     };
     representation: "concrete" | "representational" | "recall";
     counting_support: "full" | "partial" | "grouped_only" | "none";
     evidence_strength: "none" | "supported" | "independent" | "recall";
-  };
-  controller: {
-    type: "allocate_equal";
-    variant: string;
-    token_count: number;
-    units_per_token: number;
-    zone_count: number;
-    target_units_per_zone: number;
   };
   input: {
     semantic_actions: string[];
@@ -144,6 +164,20 @@ export type EncounterDefinition = {
     checkback_policy_id: string;
     hint_policy_id: string;
   };
+  scene_ref: string;
+  role_bindings: Record<string, string>;
+  dialogue_refs: Record<string, string>;
+};
+
+export type AllocateEqualEncounterDefinition = EncounterDefinitionBase & {
+  controller: {
+    type: "allocate_equal";
+    variant: string;
+    token_count: number;
+    units_per_token: number;
+    zone_count: number;
+    target_units_per_zone: number;
+  };
   validation: {
     validator_id: "equal_distribution.v1";
     params: {
@@ -152,10 +186,45 @@ export type EncounterDefinition = {
       require_all_tokens: boolean;
     };
   };
-  scene_ref: string;
-  role_bindings: Record<string, string>;
-  dialogue_refs: Record<string, string>;
 };
+
+export type ProgramThenRunEncounterDefinition = EncounterDefinitionBase & {
+  controller: {
+    type: "program_then_run";
+    variant: string;
+    initial_state: { step_size: number; repeat_count: number };
+    target_state: { step_size: number; repeat_count: number; total_distance: number };
+    limits: { min_step_size: number; max_step_size: number; min_repeat_count: number; max_repeat_count: number };
+  };
+  validation: {
+    validator_id: "relay_program.v1";
+    params: { required_step_size: number; required_repeat_count: number; required_total_distance: number };
+  };
+};
+
+export type ArrayTransformEncounterDefinition = EncounterDefinitionBase & {
+  controller: {
+    type: "array_transform";
+    variant: string;
+    initial_state: { rows: number; columns: number };
+    target_state: { rows: number; columns: number };
+    limits: { min_rows: number; max_rows: number; min_columns: number; max_columns: number };
+  };
+  validation: {
+    validator_id: "array_dimensions.v1";
+    params: {
+      required_rows: number;
+      required_columns: number;
+      accept_commutative_total: boolean;
+      require_scene_orientation_for_completion: boolean;
+    };
+  };
+};
+
+export type EncounterDefinition =
+  | AllocateEqualEncounterDefinition
+  | ProgramThenRunEncounterDefinition
+  | ArrayTransformEncounterDefinition;
 
 export type DialogueLine = {
   id: string;

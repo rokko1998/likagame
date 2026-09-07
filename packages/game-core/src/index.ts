@@ -1,11 +1,13 @@
 import type {
   AllocateEqualCandidate,
+  ArrayTransformCandidate,
   ClearKind,
   DomainEventDraft,
   EffectRequest,
   GameCommand,
   GameState,
   HintLevel,
+  ProgramThenRunCandidate,
   ReduceResult,
   ValidationResult
 } from "@likagame/contracts";
@@ -22,7 +24,7 @@ export function createInitialGameState(runId = "run_local_demo"): GameState {
     schema_version: 1,
     revision: 0,
     run_id: runId,
-    content_version: "0.4.1",
+    content_version: "0.7.0",
     pause_reasons: [],
     encounter: {
       instance_id: "encounter_instance_e01",
@@ -95,6 +97,100 @@ export function validateAllocateEqual(candidate: AllocateEqualCandidate): Valida
     mastery_evidence: "negative",
     feedback_intent: "charge_is_uneven",
     revealed_values: []
+  };
+}
+
+export function validateProgramThenRun(
+  candidate: ProgramThenRunCandidate,
+  requiredStepSize = 4,
+  requiredRepeatCount = 3
+): ValidationResult {
+  const requiredTotal = requiredStepSize * requiredRepeatCount;
+  const actualTotal = candidate.step_size * candidate.repeat_count;
+  if (candidate.step_size === requiredStepSize && candidate.repeat_count === requiredRepeatCount) {
+    return {
+      math_status: "correct",
+      scene_status: "satisfied",
+      completion: "success",
+      error_class: null,
+      mastery_evidence: "positive",
+      feedback_intent: "relay_program_complete",
+      revealed_values: [actualTotal]
+    };
+  }
+  if (actualTotal === requiredTotal) {
+    return {
+      math_status: "correct",
+      scene_status: "equivalent_but_misaligned",
+      completion: "continue",
+      error_class: "misaligned_relays",
+      mastery_evidence: "positive",
+      feedback_intent: "correct_total_wrong_relay_rhythm",
+      revealed_values: [actualTotal]
+    };
+  }
+  const undershoot = actualTotal < requiredTotal;
+  return {
+    math_status: "incorrect",
+    scene_status: "unsatisfied",
+    completion: "continue",
+    error_class: undershoot ? "undershoot" : "overshoot",
+    mastery_evidence: "negative",
+    feedback_intent: undershoot ? "relay_signal_undershoot" : "relay_signal_overshoot",
+    revealed_values: [actualTotal]
+  };
+}
+
+export function validateArrayTransform(
+  candidate: ArrayTransformCandidate,
+  requiredRows = 4,
+  requiredColumns = 6
+): ValidationResult {
+  const requiredTotal = requiredRows * requiredColumns;
+  const actualTotal = candidate.rows * candidate.columns;
+  if (candidate.rows === requiredRows && candidate.columns === requiredColumns) {
+    const aligned = (candidate.origin_row ?? 0) === 0 && (candidate.origin_column ?? 0) === 0;
+    if (!aligned) {
+      return {
+        math_status: "correct",
+        scene_status: "equivalent_but_misaligned",
+        completion: "continue",
+        error_class: "misplaced_array",
+        mastery_evidence: "positive",
+        feedback_intent: "correct_array_wrong_position",
+        revealed_values: [actualTotal]
+      };
+    }
+    return {
+      math_status: "correct",
+      scene_status: "satisfied",
+      completion: "success",
+      error_class: null,
+      mastery_evidence: "positive",
+      feedback_intent: "light_array_complete",
+      revealed_values: [actualTotal]
+    };
+  }
+  if (actualTotal === requiredTotal) {
+    return {
+      math_status: "correct",
+      scene_status: "equivalent_but_misaligned",
+      completion: "continue",
+      error_class: "wrong_orientation",
+      mastery_evidence: "positive",
+      feedback_intent: "correct_total_wrong_orientation",
+      revealed_values: [actualTotal]
+    };
+  }
+  const tooFew = actualTotal < requiredTotal;
+  return {
+    math_status: "incorrect",
+    scene_status: "unsatisfied",
+    completion: "continue",
+    error_class: tooFew ? "too_few_cells" : "too_many_cells",
+    mastery_evidence: "negative",
+    feedback_intent: tooFew ? "light_array_too_small" : "light_array_too_large",
+    revealed_values: [actualTotal]
   };
 }
 

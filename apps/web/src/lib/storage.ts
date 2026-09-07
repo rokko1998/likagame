@@ -1,16 +1,39 @@
 import type { GameState } from "@likagame/contracts";
 
-export type DemoStage = "intro" | "map" | "story" | "encounter" | "input_smoke" | "epilogue";
+export type DemoStage = "intro" | "map" | "story" | "math_intro" | "encounter" | "input_smoke" | "relay_room" | "grid_room" | "epilogue";
+export type AdventureRoom = 1 | 2 | 3;
+
+export type RelayRoomProgress = {
+  step_size: number;
+  repeat_count: number;
+  attempts: number;
+  hint_level: 0 | 1 | 2 | 3;
+  complete: boolean;
+};
+
+export type GridRoomProgress = {
+  rows: number;
+  columns: number;
+  origin_row: number;
+  origin_column: number;
+  attempts: number;
+  hint_level: 0 | 1 | 2 | 3;
+  complete: boolean;
+};
 
 export type DemoSnapshot = {
   schema_version: 1;
   content_version: string;
   saved_at: string;
   stage: DemoStage;
+  adventure_room: AdventureRoom;
   game_state: GameState;
   story_line_index: number;
+  math_intro_beat: number;
   numeric_draft: string;
   numeric_complete: boolean;
+  relay_room: RelayRoomProgress;
+  grid_room: GridRoomProgress;
 };
 
 export type TelemetryRecord = {
@@ -58,7 +81,10 @@ function looksLikeSnapshot(value: unknown): value is DemoSnapshot {
     snapshot.schema_version === 1 &&
     typeof snapshot.content_version === "string" &&
     typeof snapshot.stage === "string" &&
-    Boolean(snapshot.game_state?.encounter?.candidate?.placements)
+    Boolean(snapshot.game_state?.encounter?.candidate?.placements) &&
+    [1, 2, 3].includes(snapshot.adventure_room ?? 0) &&
+    Boolean(snapshot.relay_room) &&
+    Boolean(snapshot.grid_room)
   );
 }
 

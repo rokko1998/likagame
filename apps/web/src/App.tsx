@@ -15,9 +15,10 @@ import {
   X
 } from "lucide-react";
 import type { DialogueLine, DomainEventDraft, EffectRequest, GameCommand, GameState, TokenPlacement } from "@likagame/contracts";
-import { contentBundle, dialogue, hintDialogueIds } from "@likagame/content";
+import { contentBundle, dialogueVariant, hintDialogueIds } from "@likagame/content";
 import { createInitialGameState, reduceGame, unitsByZone, ZONE_IDS } from "@likagame/game-core";
 import { AudioDirector } from "./lib/audio";
+import { TalkingCharacter } from "./components/TalkingCharacter";
 import { createHostAdapter, type HostAdapter, type HostKind } from "./lib/host";
 import {
   appendTelemetry,
@@ -26,13 +27,26 @@ import {
   readTelemetry,
   saveSnapshot,
   type DemoSnapshot,
-  type DemoStage
+  type DemoStage,
+  type AdventureRoom,
+  type GridRoomProgress,
+  type RelayRoomProgress
 } from "./lib/storage";
 import type { PhaserGameProps } from "./game/PhaserGame";
+import { GridRoom, RelayRoom } from "./rooms/ExtraRooms";
+import {
+  MAYAK_COLLECTIBLE_ID,
+  claimDailyReward,
+  createEmptyMetaProfile,
+  grantAdventureFirstClear,
+  hasDailyReward,
+  loadMetaProfile,
+  saveMetaProfile,
+  type MetaProfile
+} from "./lib/meta";
 
 const PhaserGame = lazy(() => import("./game/PhaserGame"));
 
-const storyLines = [dialogue("line.intro.signal.v1"), dialogue("line.pik.first_contact.v1")];
 const zoneNames: Record<Exclude<TokenPlacement["zone_id"], null>, string> = {
   node_alpha: "узел Альфа",
   node_beta: "узел Бета",
@@ -41,79 +55,39 @@ const zoneNames: Record<Exclude<TokenPlacement["zone_id"], null>, string> = {
 
 let fallbackCommandCounter = 0;
 
+const initialRelayProgress: RelayRoomProgress = {
+  step_size: 2,
+  repeat_count: 5,
+  attempts: 0,
+  hint_level: 0,
+  complete: false
+};
+
+const initialGridProgress: GridRoomProgress = {
+  rows: 1,
+  columns: 1,
+  origin_row: 0,
+  origin_column: 0,
+  attempts: 0,
+  hint_level: 0,
+  complete: false
+};
+
 function commandId(prefix: string): string {
   fallbackCommandCounter += 1;
   return `${prefix}_${globalThis.crypto?.randomUUID?.() ?? fallbackCommandCounter}`;
 }
 
-function speakerName(speaker: DialogueLine["speaker"]): string {
-  if (speaker === "pik") return "Пик";
-  if (speaker === "nima") return "Неизвестный сигнал";
-  return "Система маяка";
-}
-
-function TalkingCharacter({
-  speaker,
-  speaking,
-  powered = false,
-  onRepeat,
-  className = ""
-}: {
-  speaker: DialogueLine["speaker"];
-  speaking: boolean;
-  powered?: boolean;
-  onRepeat: () => void;
-  className?: string;
-}) {
-  const label = `${speakerName(speaker)}: повторить последнюю реплику`;
-  if (speaker === "system") {
-    return (
-      <button className={`talking-character talking-character--system ${speaking ? "is-speaking" : ""} ${className}`} type="button" onClick={onRepeat} aria-label={label}>
-        <img src="/assets/map/node-station-core.png" alt="" />
-        <span className="voice-waves" aria-hidden="true"><i /><i /><i /></span>
-      </button>
-    );
-  }
-  if (speaker === "nima") {
-    return (
-      <button className={`talking-character talking-character--nima ${speaking ? "is-speaking" : ""} ${className}`} type="button" onClick={onRepeat} aria-label={label}>
-        <span className="nima-layers" aria-hidden="true">
-          <img src="/assets/characters/nima-trail-placeholder.png" alt="" />
-          <img src="/assets/characters/nima-aura-placeholder.png" alt="" />
-          <img src="/assets/characters/nima-core-placeholder.png" alt="" />
-        </span>
-        <span className="voice-waves" aria-hidden="true"><i /><i /><i /></span>
-      </button>
-    );
-  }
-  return (
-    <button
-      className={`talking-character talking-character--pik ${speaking ? "is-speaking" : ""} ${className}`}
-      type="button"
-      onClick={onRepeat}
-      aria-label={label}
-      data-speaking={speaking ? "true" : "false"}
-    >
-      <span className="pik-character-shell" aria-hidden="true">
-        <img className="pik-pod" src="/assets/characters/pik-pod-placeholder.png" alt="" />
-        <span className="pik-frames">
-          <img className="pik-frame pik-frame--closed" src={powered ? "/assets/characters/pik-powered-placeholder.png" : "/assets/characters/pik-idle-placeholder.png"} alt="" />
-          <img className="pik-frame pik-frame--open" src="/assets/characters/pik-mouth-open.png" alt="" />
-        </span>
-      </span>
-      <span className="voice-waves" aria-hidden="true"><i /><i /><i /></span>
-    </button>
-  );
-}
-
 function AppHeader({
   hostKind,
   muted,
+  signalSparks,
   onToggleMuted,
   onOpenSettings
 }: {
   hostKind: HostKind;
   muted: boolean;
+  signalSparks: number;
   onToggleMuted: () => void;
   onOpenSettings: () => void;
 }) {
@@ -127,6 +101,9 @@ function AppHeader({
         </div>
       </div>
       <div className="header-actions">
+        <button className="meta-balance-pill" type="button" onClick={onOpenSettings} aria-label={`Открыть Хранилище. Искр сигнала: ${signalSparks}`}>
+          <Sparkles size={17} /> {signalSparks}
+        </button>
         <span className="host-pill">{hostKind === "telegram" ? "Telegram" : hostKind === "test" ? "Test host" : "Браузер"}</span>
         <button className="icon-button" type="button" onClick={onToggleMuted} aria-label={muted ? "Включить звук" : "Выключить звук"}>
           {muted ? <VolumeX size={21} /> : <Volume2 size={21} />}
@@ -143,12 +120,13 @@ type SettingsPanelProps = {
   open: boolean;
   hostKind: HostKind;
   saveStatus: string;
+  metaProfile: MetaProfile;
   onClose: () => void;
   onExport: () => void;
   onReset: () => void;
 };
 
-function SettingsPanel({ open, hostKind, saveStatus, onClose, onExport, onReset }: SettingsPanelProps) {
+function SettingsPanel({ open, hostKind, saveStatus, metaProfile, onClose, onExport, onReset }: SettingsPanelProps) {
   if (!open) return null;
   return (
     <div className="modal-backdrop" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
@@ -175,8 +153,16 @@ function SettingsPanel({ open, hostKind, saveStatus, onClose, onExport, onReset 
             <dt>Контент</dt>
             <dd>v{contentBundle.content_version}</dd>
           </div>
+          <div>
+            <dt>Искры сигнала</dt>
+            <dd>✦ {metaProfile.balances.signal_sparks}</dd>
+          </div>
+          <div>
+            <dt>Хранилище</dt>
+            <dd>{metaProfile.collectibles[MAYAK_COLLECTIBLE_ID] ? "Знак Маяка найден" : "Пока пусто"}</dd>
+          </div>
         </dl>
-        <p className="settings-note">Демо сохраняет только локальный прогресс и обезличенный журнал действий. Имена, текст и координаты касаний не записываются.</p>
+        <p className="settings-note">Прогресс забега и Хранилище сохраняются локально. Новый забег не удаляет искры, добрую серию и найденные предметы.</p>
         <button className="secondary-button full-width" type="button" onClick={onExport}>
           <Download size={20} /> Скачать журнал прохождения
         </button>
@@ -191,7 +177,17 @@ function SettingsPanel({ open, hostKind, saveStatus, onClose, onExport, onReset 
   );
 }
 
-function IntroScreen({ onBegin }: { onBegin: () => void }) {
+function IntroScreen({
+  metaProfile,
+  dailyClaimed,
+  onClaimDaily,
+  onBegin
+}: {
+  metaProfile: MetaProfile;
+  dailyClaimed: boolean;
+  onClaimDaily: () => void;
+  onBegin: () => void;
+}) {
   return (
     <main className="screen cartoon-intro-screen">
       <section className="intro-cartoon-scene">
@@ -204,6 +200,16 @@ function IntroScreen({ onBegin }: { onBegin: () => void }) {
         <div className="intro-action">
           <span className="chapter-tag"><Radio size={16} /> Слабый сигнал с Маяка-7</span>
           <h1>Кто-то зовёт</h1>
+          <section className={`daily-reward-card ${dailyClaimed ? "is-claimed" : ""}`} aria-label="Ежедневный подарок">
+            <span className="daily-reward-icon"><Sparkles size={22} /></span>
+            <div>
+              <strong>{dailyClaimed ? "Подарок уже в Хранилище" : "Подарок за возвращение"}</strong>
+              <small>Добрая серия: {metaProfile.gentle_streak.count} · пропуск ничего не сбросит</small>
+            </div>
+            <button type="button" disabled={dailyClaimed} onClick={onClaimDaily}>
+              {dailyClaimed ? <><Check size={17} /> Получено</> : "+1 искра"}
+            </button>
+          </section>
           <button className="primary-button" type="button" onClick={onBegin}>
             Принять сигнал <ArrowRight size={22} />
           </button>
@@ -213,7 +219,113 @@ function IntroScreen({ onBegin }: { onBegin: () => void }) {
   );
 }
 
-function MapScreen({ onEnter }: { onEnter: () => void }) {
+function MathIntroScreen({
+  lines,
+  beat,
+  speakingSpeaker,
+  onSpeak,
+  onNext
+}: {
+  lines: DialogueLine[];
+  beat: number;
+  speakingSpeaker: DialogueLine["speaker"] | null;
+  onSpeak: (line: DialogueLine) => void;
+  onNext: () => void;
+}) {
+  const line = lines[Math.min(beat, lines.length - 1)]!;
+  const announcedLine = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (announcedLine.current === line.id) return;
+    announcedLine.current = line.id;
+    const timeout = window.setTimeout(() => onSpeak(line), 220);
+    return () => window.clearTimeout(timeout);
+  }, [line, onSpeak]);
+
+  return (
+    <main className="screen math-intro-screen">
+      <div className="screen-heading math-intro-heading">
+        <div>
+          <span className="eyebrow">Как устроена станция</span>
+          <h1>{beat === 0 ? "Одинаковые группы" : beat === 1 ? "Короткая запись" : "Умножение руками"}</h1>
+        </div>
+        <span className="route-counter">Шаг {beat + 1} из 3</span>
+      </div>
+      <section className={`math-cartoon math-cartoon--beat-${beat + 1}`}>
+        <img className="math-cartoon-planet" src="/assets/backgrounds/planet-cloud-blue.png" alt="" />
+        {beat === 0 && (
+          <div className="math-groups" aria-label="Три одинаковые группы по две искры">
+            {[0, 1, 2].map((group) => (
+              <span key={group}><i /><i /><b>по 2</b></span>
+            ))}
+          </div>
+        )}
+        {beat === 1 && (
+          <div className="math-short-form" aria-label="Два плюс два плюс два равно три умножить на два равно шесть">
+            <span>2 + 2 + 2</span><i>короче</i><strong>3 × 2 = 6</strong>
+          </div>
+        )}
+        {beat === 2 && (
+          <div className="math-action-cards" aria-label="Три способа увидеть умножение">
+            <span><i className="mini-groups" /><b>Разложить<br />поровну</b></span>
+            <span><i className="mini-steps" /><b>Повторить<br />шаг</b></span>
+            <span><i className="mini-grid" /><b>Растянуть<br />решётку</b></span>
+          </div>
+        )}
+        <div className="math-grammar" aria-hidden="true"><span>Группы</span><b>×</b><span>В каждой</span><b>=</b><span>Всего</span></div>
+        <TalkingCharacter
+          speaker={line.speaker}
+          powered={line.speaker === "pik"}
+          speaking={speakingSpeaker === line.speaker}
+          onRepeat={() => onSpeak(line)}
+          className="math-guide-character"
+        />
+        <div className="tap-character-hint math-repeat"><Volume2 size={18} /><span>Нажми на героя, чтобы повторить</span></div>
+      </section>
+      <div className="story-controls math-intro-controls">
+        <div className="story-beat-dots" aria-label={`Шаг ${beat + 1} из ${lines.length}`}>
+          {lines.map((item, index) => <span key={item.id} className={index === beat ? "active" : ""} />)}
+        </div>
+        <button className="primary-button" type="button" disabled={speakingSpeaker !== null} onClick={onNext}>
+          {speakingSpeaker !== null ? "Слушаем…" : beat < lines.length - 1 ? "Дальше" : "К первой задаче"} <ArrowRight size={22} />
+        </button>
+      </div>
+    </main>
+  );
+}
+
+type DialoguePicker = (baseId: string, occurrence?: string | number) => DialogueLine;
+
+const roomNodes = [
+  { room: 1 as const, title: "Диспетчерская", subtitle: "Разбудить Пика", asset: "/assets/map/node-station-core.png" },
+  { room: 2 as const, title: "Грузовой модуль", subtitle: "Восстановить канал", asset: "/assets/map/node-station-branch.png" },
+  { room: 3 as const, title: "Ядро маяка", subtitle: "Открыть створку", asset: "/assets/map/node-satellite.png" }
+];
+
+function MapScreen({
+  room,
+  speaking,
+  getLine,
+  onSpeak,
+  onEnter
+}: {
+  room: AdventureRoom;
+  speaking: boolean;
+  getLine: DialoguePicker;
+  onSpeak: (line: DialogueLine) => void;
+  onEnter: () => void;
+}) {
+  const briefingLine = room === 1 ? null : getLine(room === 2 ? "line.e02.entry" : "line.e03.entry", room);
+  const announcedLine = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!briefingLine || announcedLine.current === briefingLine.id) return;
+    announcedLine.current = briefingLine.id;
+    const timeout = window.setTimeout(() => onSpeak(briefingLine), 260);
+    return () => window.clearTimeout(timeout);
+  }, [briefingLine, onSpeak]);
+
+  const actionLabel = room === 1 ? "Войти в диспетчерскую" : room === 2 ? "Открыть грузовой модуль" : "Войти в ядро маяка";
   return (
     <main className="screen map-screen">
       <div className="screen-heading">
@@ -221,7 +333,7 @@ function MapScreen({ onEnter }: { onEnter: () => void }) {
           <span className="eyebrow">Маршрут этого забега</span>
           <h1>Облачное кольцо</h1>
         </div>
-        <span className="route-counter">Комната 1 из 3</span>
+        <span className="route-counter">Комната {room} из 3</span>
       </div>
       <section className="adventure-map" aria-label="Карта приключения">
         <div className="map-route" aria-hidden="true" />
@@ -229,42 +341,45 @@ function MapScreen({ onEnter }: { onEnter: () => void }) {
           <img src="/assets/map/node-player-ship.png" alt="" />
           <span>Сигнал пойман</span>
         </article>
-        <article className="map-node map-node--current">
-          <span className="current-marker">Сейчас</span>
-          <img src="/assets/map/node-station-core.png" alt="" />
-          <strong>Диспетчерская</strong>
-          <span>Разбудить Пика</span>
-        </article>
-        <article className="map-node map-node--locked">
-          <img src="/assets/map/node-station-branch.png" alt="" />
-          <strong>Грузовой модуль</strong>
-          <span>Маршрут скрыт</span>
-        </article>
-        <article className="map-node map-node--locked">
-          <img src="/assets/map/node-satellite.png" alt="" />
-          <strong>Ядро маяка</strong>
-          <span>Нет связи</span>
-        </article>
+        {roomNodes.map((node) => {
+          const state = node.room < room ? "done" : node.room === room ? "current" : "locked";
+          return (
+            <article className={`map-node map-node--${state}`} key={node.room}>
+              {state === "current" && <span className="current-marker">Сейчас</span>}
+              <img src={node.asset} alt="" />
+              <strong>{node.title}</strong>
+              <span>{state === "done" ? "Готово" : state === "current" ? node.subtitle : "Маршрут скрыт"}</span>
+            </article>
+          );
+        })}
       </section>
-      <button className="primary-button map-action" type="button" onClick={onEnter}>
-        Войти в диспетчерскую <ArrowRight size={22} />
+      {briefingLine && (
+        <div className="map-announcer">
+          <TalkingCharacter speaker="system" speaking={speaking} onRepeat={() => onSpeak(briefingLine)} className="map-announcer-character" />
+          <span><Volume2 size={18} /> Диспетчерская передала новое сообщение</span>
+        </div>
+      )}
+      <button className="primary-button map-action" type="button" disabled={speaking} onClick={onEnter}>
+        {speaking ? "Слушаем диспетчерскую…" : actionLabel} <ArrowRight size={22} />
       </button>
     </main>
   );
 }
 
 function StoryScreen({
+  lines,
   lineIndex,
   speakingSpeaker,
   onNext,
   onSpeak
 }: {
+  lines: DialogueLine[];
   lineIndex: number;
   speakingSpeaker: DialogueLine["speaker"] | null;
   onNext: () => void;
   onSpeak: (line: DialogueLine) => void;
 }) {
-  const line = storyLines[Math.min(lineIndex, storyLines.length - 1)];
+  const line = lines[Math.min(lineIndex, lines.length - 1)]!;
 
   useEffect(() => {
     const timeout = window.setTimeout(() => onSpeak(line), 220);
@@ -290,23 +405,24 @@ function StoryScreen({
         <div className="tap-character-hint"><Volume2 size={18} /><span>Нажми на героя, чтобы он повторил</span></div>
       </section>
       <div className="story-controls">
-        <div className="story-beat-dots" aria-label={`Реплика ${lineIndex + 1} из ${storyLines.length}`}>
-          {storyLines.map((item, index) => <span key={item.id} className={index === lineIndex ? "active" : ""} />)}
+        <div className="story-beat-dots" aria-label={`Реплика ${lineIndex + 1} из ${lines.length}`}>
+          {lines.map((item, index) => <span key={item.id} className={index === lineIndex ? "active" : ""} />)}
         </div>
-        <button className="primary-button cartoon-next" type="button" onClick={onNext}>
-          {lineIndex < storyLines.length - 1 ? "Дальше" : "К задаче"} <ArrowRight size={22} />
+        <button className="primary-button cartoon-next" type="button" disabled={speakingSpeaker !== null} onClick={onNext}>
+          {speakingSpeaker !== null ? "Слушаем…" : lineIndex < lines.length - 1 ? "Дальше" : "Как устроена станция"} <ArrowRight size={22} />
         </button>
       </div>
     </main>
   );
 }
 
-function feedbackLine(state: GameState): DialogueLine {
-  if (state.encounter.phase === "resolving" || state.encounter.phase === "complete") return dialogue("line.e01.success.v1");
-  if (state.encounter.feedback_intent === "charge_is_uneven") return dialogue("line.e01.h0.v1");
+function feedbackLine(state: GameState, getLine: DialoguePicker): DialogueLine {
+  const occurrence = state.encounter.evaluated_commit_count;
+  if (state.encounter.phase === "resolving" || state.encounter.phase === "complete") return getLine("line.e01.success", occurrence);
+  if (state.encounter.feedback_intent === "charge_is_uneven") return getLine("line.e01.h0", occurrence);
   const hint = state.encounter.hint_level;
-  if (hint !== "none") return dialogue(hintDialogueIds[hint]);
-  return dialogue("line.e01.instruction.v1");
+  if (hint !== "none") return getLine(hintDialogueIds[hint], hint);
+  return getLine("line.e01.instruction", "initial");
 }
 
 type EncounterScreenProps = {
@@ -316,30 +432,39 @@ type EncounterScreenProps = {
   speaking: boolean;
   onCommand: (command: GameCommand) => void;
   onSpeak: (line: DialogueLine) => void;
+  getLine: DialoguePicker;
   onComplete: () => void;
 };
 
-function EncounterScreen({ state, host, audio, speaking, onCommand, onSpeak, onComplete }: EncounterScreenProps) {
+function EncounterScreen({ state, host, audio, speaking, onCommand, onSpeak, getLine, onComplete }: EncounterScreenProps) {
   const [keyboardToken, setKeyboardToken] = useState<string | null>(null);
   const units = useMemo(() => unitsByZone(state.encounter.candidate), [state.encounter.candidate]);
   const allPlaced = state.encounter.candidate.placements.every((placement) => placement.zone_id !== null);
   const locked = ["precommit_check", "resolving", "complete"].includes(state.encounter.phase);
-  const spokenLine = feedbackLine(state);
+  const spokenLine = feedbackLine(state, getLine);
   const previousSpeechKey = useRef<string | null>(null);
+  const [resolutionSpeechStarted, setResolutionSpeechStarted] = useState(false);
 
   useEffect(() => {
     const speechKey = `${spokenLine.id}:${state.encounter.phase}:${state.encounter.hint_level}`;
     if (previousSpeechKey.current === speechKey) return;
     previousSpeechKey.current = speechKey;
-    const timeout = window.setTimeout(() => onSpeak(spokenLine), 180);
+    const timeout = window.setTimeout(() => {
+      if (state.encounter.phase === "resolving") setResolutionSpeechStarted(true);
+      onSpeak(spokenLine);
+    }, 180);
     return () => window.clearTimeout(timeout);
   }, [onSpeak, spokenLine, state.encounter.hint_level, state.encounter.phase]);
 
   useEffect(() => {
-    if (state.encounter.phase !== "resolving") return;
-    const timeout = window.setTimeout(onComplete, 3100);
+    if (state.encounter.phase !== "resolving" || !resolutionSpeechStarted || speaking) return;
+    const timeout = window.setTimeout(onComplete, 700);
     return () => window.clearTimeout(timeout);
-  }, [state.encounter.phase, onComplete]);
+  }, [onComplete, resolutionSpeechStarted, speaking, state.encounter.phase]);
+
+  useEffect(() => {
+    if (state.encounter.phase !== "resolving") setResolutionSpeechStarted(false);
+  }, [state.encounter.phase]);
 
   const onMove: PhaserGameProps["onMove"] = useCallback(
     (tokenId, zoneId, inputSource) => {
@@ -480,6 +605,7 @@ function EncounterScreen({ state, host, audio, speaking, onCommand, onSpeak, onC
 }
 
 function NumericSmokeScreen({
+  line,
   draft,
   complete,
   onChange,
@@ -488,6 +614,7 @@ function NumericSmokeScreen({
   onSpeak,
   speaking
 }: {
+  line: DialogueLine;
   draft: string;
   complete: boolean;
   onChange: (value: string) => void;
@@ -497,7 +624,6 @@ function NumericSmokeScreen({
   speaking: boolean;
 }) {
   const [wasWrong, setWasWrong] = useState(false);
-  const line = dialogue("line.input_smoke.v1");
   const spokeOnMount = useRef(false);
 
   useEffect(() => {
@@ -514,7 +640,7 @@ function NumericSmokeScreen({
   return (
     <main className="screen numeric-screen">
       <section className="numeric-visual">
-        <TalkingCharacter speaker="pik" powered speaking={speaking} onRepeat={() => onSpeak(line)} className="numeric-pik" />
+        <img className="numeric-station" src="/assets/map/node-station-core.png" alt="" />
         <div className="powered-nodes">
           {[1, 2, 3].map((number) => (
             <span key={number}><img src="/assets/tokens/energy-correct.png" alt="" /><b>4</b></span>
@@ -522,7 +648,10 @@ function NumericSmokeScreen({
         </div>
       </section>
       <section className="numeric-card">
-        <div className="voice-only-prompt"><Volume2 size={19} /><span>Пик задал вопрос. Нажми на него, чтобы услышать ещё раз.</span></div>
+        <div className="numeric-prompt-row">
+          <TalkingCharacter speaker="pik" powered speaking={speaking} onRepeat={() => onSpeak(line)} className="numeric-pik" />
+          <div className="voice-only-prompt"><Volume2 size={19} /><span>Пик задал вопрос. Нажми на него, чтобы услышать ещё раз.</span></div>
+        </div>
         {!complete ? (
           <form
             onSubmit={(event) => {
@@ -543,7 +672,7 @@ function NumericSmokeScreen({
                 autoFocus
                 aria-describedby={wasWrong ? "numeric-feedback" : undefined}
               />
-              <button className="primary-button" type="submit" disabled={!draft}>Проверить</button>
+              <button className="primary-button" type="submit" disabled={!draft || speaking}>{speaking ? "Слушаем Пика…" : "Проверить"}</button>
             </div>
             {wasWrong && <p id="numeric-feedback" className="input-feedback input-feedback--wrong">Панель не приняла число. Посчитай три группы по четыре.</p>}
           </form>
@@ -554,8 +683,8 @@ function NumericSmokeScreen({
           </div>
         )}
         {complete && (
-          <button className="primary-button full-width" type="button" onClick={onContinue}>
-            Открыть канал связи <ArrowRight size={22} />
+          <button className="primary-button full-width" type="button" disabled={speaking} onClick={onContinue}>
+            {speaking ? "Пик ещё говорит…" : "Открыть канал связи"} <ArrowRight size={22} />
           </button>
         )}
       </section>
@@ -564,21 +693,28 @@ function NumericSmokeScreen({
 }
 
 function EpilogueScreen({
+  line,
   speaking,
+  rewardNew,
   onReplay,
   onSpeak
 }: {
+  line: DialogueLine;
   speaking: boolean;
+  rewardNew: boolean;
   onReplay: () => void;
   onSpeak: (line: DialogueLine) => void;
 }) {
-  const line = dialogue("line.epilogue.v1");
   const spokeOnMount = useRef(false);
+  const [speechStarted, setSpeechStarted] = useState(false);
 
   useEffect(() => {
     if (spokeOnMount.current) return;
     spokeOnMount.current = true;
-    const timeout = window.setTimeout(() => onSpeak(line), 300);
+    const timeout = window.setTimeout(() => {
+      setSpeechStarted(true);
+      onSpeak(line);
+    }, 300);
     return () => window.clearTimeout(timeout);
   }, [line, onSpeak]);
 
@@ -586,19 +722,31 @@ function EpilogueScreen({
     <main className="screen epilogue-screen">
       <section className="epilogue-art">
         <img className="epilogue-planet" src="/assets/backgrounds/planet-verdant.png" alt="" />
-        <TalkingCharacter speaker="nima" speaking={speaking} onRepeat={() => onSpeak(line)} className="epilogue-nima" />
+        <TalkingCharacter speaker="system" speaking={speaking} onRepeat={() => onSpeak(line)} className="epilogue-nima" />
         <img className="epilogue-pik" src="/assets/characters/pik-powered-placeholder.png" alt="" />
-        <div className="tap-character-hint epilogue-repeat"><Volume2 size={18} /><span>Нажми на искру, чтобы повторить</span></div>
+        <div className="tap-character-hint epilogue-repeat"><Volume2 size={18} /><span>Нажми на станцию, чтобы повторить</span></div>
       </section>
       <section className="epilogue-copy">
         <span className="chapter-tag"><Sparkles size={16} /> Сигнал восстановлен</span>
-        <h1>Первая комната пройдена</h1>
+        <h1>Все три комнаты пройдены</h1>
         <div className="demo-result">
           <span><Check size={18} /> Перетаскивание</span>
           <span><Check size={18} /> Проверка решения</span>
+          <span><Check size={18} /> Программа сигнала</span>
+          <span><Check size={18} /> Световая решётка</span>
           <span><Check size={18} /> Сохранение</span>
         </div>
-        <button className="secondary-button" type="button" onClick={onReplay}>
+        {speechStarted && !speaking && (
+          <div className={`vault-reward ${rewardNew ? "is-new" : ""}`} role="status" data-testid="vault-reward">
+            <span className="vault-reward-art"><Sparkles size={28} /></span>
+            <div>
+              <small>{rewardNew ? "Новая награда вне забега" : "Уже в постоянном Хранилище"}</small>
+              <strong>Знак хранителя Маяка-7</strong>
+              <p>{rewardNew ? "Предмет сохранён и останется после нового забега." : "Повторное прохождение не создаёт дубликат."}</p>
+            </div>
+          </div>
+        )}
+        <button className="secondary-button" type="button" disabled={speaking} onClick={onReplay}>
           <RotateCcw size={20} /> Пройти ещё раз
         </button>
       </section>
@@ -614,15 +762,29 @@ export default function App() {
   const [booted, setBooted] = useState(false);
   const [hostKind, setHostKind] = useState<HostKind>("browser");
   const [stage, setStage] = useState<DemoStage>("intro");
+  const [adventureRoom, setAdventureRoom] = useState<AdventureRoom>(1);
   const [gameState, setGameState] = useState<GameState>(gameStateRef.current);
   const [storyLineIndex, setStoryLineIndex] = useState(0);
+  const [mathIntroBeat, setMathIntroBeat] = useState(0);
   const [numericDraft, setNumericDraft] = useState("");
   const [numericComplete, setNumericComplete] = useState(false);
+  const [relayProgress, setRelayProgress] = useState<RelayRoomProgress>(initialRelayProgress);
+  const [gridProgress, setGridProgress] = useState<GridRoomProgress>(initialGridProgress);
   const [muted, setMuted] = useState(false);
   const [speakingSpeaker, setSpeakingSpeaker] = useState<DialogueLine["speaker"] | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [saveStatus, setSaveStatus] = useState("Подготовка…");
   const [restored, setRestored] = useState(false);
+  const [metaProfile, setMetaProfile] = useState<MetaProfile>(createEmptyMetaProfile);
+  const [epilogueRewardNew, setEpilogueRewardNew] = useState(false);
+
+  const setHostDragActive = useCallback((active: boolean) => {
+    hostRef.current?.setDragActive(active);
+  }, []);
+
+  useEffect(() => {
+    audioRef.current.preloadVoices(contentBundle.dialogue_catalog.map((line) => line.audio_file));
+  }, []);
 
   const recordTelemetry = useCallback((eventName: string, payload: Record<string, unknown> = {}) => {
     telemetrySequenceRef.current += 1;
@@ -672,14 +834,19 @@ export default function App() {
       ]);
       if (cancelled) return;
       setHostKind(context.kind);
+      setMetaProfile(loadMetaProfile());
       telemetrySequenceRef.current = telemetry.reduce((max, item) => Math.max(max, item.sequence), 0);
       if (snapshot) {
         gameStateRef.current = snapshot.game_state;
         setGameState(snapshot.game_state);
         setStage(snapshot.stage);
+        setAdventureRoom(snapshot.adventure_room);
         setStoryLineIndex(snapshot.story_line_index);
+        setMathIntroBeat(snapshot.math_intro_beat ?? 0);
         setNumericDraft(snapshot.numeric_draft);
         setNumericComplete(snapshot.numeric_complete);
+        setRelayProgress(snapshot.relay_room);
+        setGridProgress(snapshot.grid_room);
         setRestored(snapshot.stage !== "intro");
       }
       unsubscribe = host.subscribeActivity((active) => {
@@ -708,15 +875,19 @@ export default function App() {
         content_version: contentBundle.content_version,
         saved_at: new Date().toISOString(),
         stage,
+        adventure_room: adventureRoom,
         game_state: gameState,
         story_line_index: storyLineIndex,
+        math_intro_beat: mathIntroBeat,
         numeric_draft: numericDraft,
-        numeric_complete: numericComplete
+        numeric_complete: numericComplete,
+        relay_room: relayProgress,
+        grid_room: gridProgress
       };
       void saveSnapshot(snapshot).then((kind) => setSaveStatus(kind === "indexed_db" ? "Сохранено на устройстве" : "Сохранено локально"));
     }, 250);
     return () => window.clearTimeout(timeout);
-  }, [booted, gameState, numericComplete, numericDraft, stage, storyLineIndex]);
+  }, [adventureRoom, booted, gameState, gridProgress, mathIntroBeat, numericComplete, numericDraft, relayProgress, stage, storyLineIndex]);
 
   useEffect(() => {
     if (stage === "encounter" && gameState.encounter.phase === "entering") {
@@ -744,9 +915,14 @@ export default function App() {
     const fresh = createInitialGameState(`run_local_${Date.now().toString(36)}`);
     gameStateRef.current = fresh;
     setGameState(fresh);
+    setAdventureRoom(1);
     setStoryLineIndex(0);
+    setMathIntroBeat(0);
     setNumericDraft("");
     setNumericComplete(false);
+    setRelayProgress(initialRelayProgress);
+    setGridProgress(initialGridProgress);
+    setEpilogueRewardNew(false);
     setRestored(false);
     setSettingsOpen(false);
     setStage("intro");
@@ -774,6 +950,48 @@ export default function App() {
     );
   }, []);
 
+  const getLine = useCallback<DialoguePicker>((baseId, occurrence = "default") => {
+    return dialogueVariant(baseId, `${gameStateRef.current.run_id}:${occurrence}`);
+  }, []);
+
+  const storyLines = useMemo(
+    () => [
+      getLine("line.intro.signal", "story"),
+      getLine("line.pik.first_contact", "story")
+    ],
+    [gameState.run_id, getLine]
+  );
+  const mathIntroLines = useMemo(
+    () => [
+      getLine("line.math_intro.groups", "math_intro_groups"),
+      getLine("line.math_intro.short", "math_intro_short"),
+      getLine("line.math_intro.actions", "math_intro_actions")
+    ],
+    [gameState.run_id, getLine]
+  );
+  const numericLine = useMemo(() => getLine("line.input_smoke", "numeric"), [gameState.run_id, getLine]);
+  const epilogueLine = useMemo(() => getLine("line.epilogue", "epilogue"), [gameState.run_id, getLine]);
+  const dailyClaimed = hasDailyReward(metaProfile, new Date());
+
+  const claimDaily = useCallback(() => {
+    const result = claimDailyReward(metaProfile);
+    if (!result.granted) return;
+    setMetaProfile(result.profile);
+    saveMetaProfile(result.profile);
+    recordTelemetry("meta_reward_claimed", { reward_id: result.profile.gentle_streak.last_claim_day, reward_kind: "daily_signal_spark" });
+    void audioRef.current.play("success");
+    hostRef.current?.haptic("success");
+  }, [metaProfile, recordTelemetry]);
+
+  const completeAdventure = useCallback(() => {
+    const result = grantAdventureFirstClear(metaProfile);
+    setMetaProfile(result.profile);
+    saveMetaProfile(result.profile);
+    setEpilogueRewardNew(result.granted);
+    recordTelemetry("meta_reward_committed", { reward_id: MAYAK_COLLECTIBLE_ID, newly_granted: result.granted });
+    moveStage("epilogue");
+  }, [metaProfile, moveStage, recordTelemetry]);
+
   if (!booted) {
     return (
       <div className="boot-screen" role="status">
@@ -789,6 +1007,9 @@ export default function App() {
       case "intro":
         return (
           <IntroScreen
+            metaProfile={metaProfile}
+            dailyClaimed={dailyClaimed}
+            onClaimDaily={claimDaily}
             onBegin={() => {
               audioRef.current.unlock();
               void audioRef.current.play("open");
@@ -797,16 +1018,42 @@ export default function App() {
           />
         );
       case "map":
-        return <MapScreen onEnter={() => { void audioRef.current.play("open"); moveStage("story"); }} />;
+        return (
+          <MapScreen
+            room={adventureRoom}
+            speaking={speakingSpeaker === "system"}
+            getLine={getLine}
+            onSpeak={onSpeak}
+            onEnter={() => {
+              void audioRef.current.play("open");
+              moveStage(adventureRoom === 1 ? "story" : adventureRoom === 2 ? "relay_room" : "grid_room");
+            }}
+          />
+        );
       case "story":
         return (
           <StoryScreen
+            lines={storyLines}
             lineIndex={storyLineIndex}
             speakingSpeaker={speakingSpeaker}
             onSpeak={onSpeak}
             onNext={() => {
               void audioRef.current.play("tap");
               if (storyLineIndex < storyLines.length - 1) setStoryLineIndex((index) => index + 1);
+              else moveStage("math_intro");
+            }}
+          />
+        );
+      case "math_intro":
+        return (
+          <MathIntroScreen
+            lines={mathIntroLines}
+            beat={mathIntroBeat}
+            speakingSpeaker={speakingSpeaker}
+            onSpeak={onSpeak}
+            onNext={() => {
+              void audioRef.current.play("tap");
+              if (mathIntroBeat < mathIntroLines.length - 1) setMathIntroBeat((index) => index + 1);
               else moveStage("encounter");
             }}
           />
@@ -820,12 +1067,14 @@ export default function App() {
             speaking={speakingSpeaker === "pik"}
             onCommand={dispatchGame}
             onSpeak={onSpeak}
+            getLine={getLine}
             onComplete={completeEncounter}
           />
         );
       case "input_smoke":
         return (
           <NumericSmokeScreen
+            line={numericLine}
             draft={numericDraft}
             complete={numericComplete}
             onChange={(value) => {
@@ -841,13 +1090,51 @@ export default function App() {
                 hostRef.current?.haptic("success");
               } else void audioRef.current.play("error");
             }}
-            onContinue={() => moveStage("epilogue")}
+            onContinue={() => {
+              setAdventureRoom(2);
+              moveStage("map");
+            }}
             onSpeak={onSpeak}
             speaking={speakingSpeaker === "pik"}
           />
         );
+      case "relay_room":
+        return (
+          <RelayRoom
+            progress={relayProgress}
+            speaking={speakingSpeaker === "pik"}
+            getLine={getLine}
+            onProgress={(progress) => {
+              setRelayProgress(progress);
+              recordTelemetry("room_candidate_changed", { room_id: "e02", step_size: progress.step_size, repeat_count: progress.repeat_count, attempts: progress.attempts, complete: progress.complete });
+            }}
+            onSpeak={onSpeak}
+            onSound={(name) => void audioRef.current.play(name)}
+            onDragActive={setHostDragActive}
+            onFinished={() => {
+              setAdventureRoom(3);
+              moveStage("map");
+            }}
+          />
+        );
+      case "grid_room":
+        return (
+          <GridRoom
+            progress={gridProgress}
+            speaking={speakingSpeaker === "pik"}
+            getLine={getLine}
+            onProgress={(progress) => {
+              setGridProgress(progress);
+              recordTelemetry("room_candidate_changed", { room_id: "e03", rows: progress.rows, columns: progress.columns, origin_row: progress.origin_row, origin_column: progress.origin_column, attempts: progress.attempts, complete: progress.complete });
+            }}
+            onSpeak={onSpeak}
+            onSound={(name) => void audioRef.current.play(name)}
+            onDragActive={setHostDragActive}
+            onFinished={completeAdventure}
+          />
+        );
       case "epilogue":
-        return <EpilogueScreen speaking={speakingSpeaker === "nima"} onReplay={() => void resetDemo()} onSpeak={onSpeak} />;
+        return <EpilogueScreen line={epilogueLine} speaking={speakingSpeaker === "system"} rewardNew={epilogueRewardNew} onReplay={() => void resetDemo()} onSpeak={onSpeak} />;
     }
   })();
 
@@ -856,6 +1143,7 @@ export default function App() {
       <AppHeader
         hostKind={hostKind}
         muted={muted}
+        signalSparks={metaProfile.balances.signal_sparks}
         onToggleMuted={() => {
           const next = !muted;
           setMuted(next);
@@ -876,6 +1164,7 @@ export default function App() {
         open={settingsOpen}
         hostKind={hostKind}
         saveStatus={saveStatus}
+        metaProfile={metaProfile}
         onClose={() => setSettingsOpen(false)}
         onExport={() => void exportTelemetry()}
         onReset={() => void resetDemo()}

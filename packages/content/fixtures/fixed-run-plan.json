@@ -7,6 +7,8 @@
     "block.signal_received.v1",
     "block.wake_companion.v1",
     "block.numeric_input_smoke.v1",
+    "block.restore_relay_corridor.v1",
+    "block.restore_light_array.v1",
     "block.demo_epilogue.v1"
   ]
 }

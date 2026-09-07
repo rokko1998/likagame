@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { createInitialGameState, reduceGame, validateAllocateEqual, ZONE_IDS } from "../src/index";
+import {
+  createInitialGameState,
+  reduceGame,
+  validateAllocateEqual,
+  validateArrayTransform,
+  validateProgramThenRun,
+  ZONE_IDS
+} from "../src/index";
 import type { GameCommand, GameState } from "@likagame/contracts";
 
 function command<T extends GameCommand>(value: T): T {
@@ -87,5 +94,37 @@ describe("deterministic game reducer", () => {
 
     const result = reduceGame(state, command({ command_type: "commit_requested", client_command_id: "guided_commit" }));
     expect(result.state.encounter.clear_kind).toBe("guided");
+  });
+});
+
+describe("additional room validators", () => {
+  it("separates relay distance from the required relay rhythm", () => {
+    expect(validateProgramThenRun({ type: "program_then_run", step_size: 4, repeat_count: 3 })).toMatchObject({
+      completion: "success",
+      scene_status: "satisfied"
+    });
+    expect(validateProgramThenRun({ type: "program_then_run", step_size: 3, repeat_count: 4 })).toMatchObject({
+      math_status: "correct",
+      scene_status: "equivalent_but_misaligned",
+      error_class: "misaligned_relays"
+    });
+    expect(validateProgramThenRun({ type: "program_then_run", step_size: 2, repeat_count: 3 }).error_class).toBe("undershoot");
+    expect(validateProgramThenRun({ type: "program_then_run", step_size: 5, repeat_count: 3 }).error_class).toBe("overshoot");
+  });
+
+  it("requires the light array total and orientation", () => {
+    expect(validateArrayTransform({ type: "array_transform", rows: 4, columns: 6 }).completion).toBe("success");
+    expect(validateArrayTransform({ type: "array_transform", rows: 6, columns: 4 })).toMatchObject({
+      math_status: "correct",
+      scene_status: "equivalent_but_misaligned",
+      error_class: "wrong_orientation"
+    });
+    expect(validateArrayTransform({ type: "array_transform", rows: 4, columns: 6, origin_row: 1, origin_column: 1 })).toMatchObject({
+      math_status: "correct",
+      scene_status: "equivalent_but_misaligned",
+      error_class: "misplaced_array"
+    });
+    expect(validateArrayTransform({ type: "array_transform", rows: 3, columns: 5 }).error_class).toBe("too_few_cells");
+    expect(validateArrayTransform({ type: "array_transform", rows: 5, columns: 6 }).error_class).toBe("too_many_cells");
   });
 });

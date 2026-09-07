@@ -15,7 +15,9 @@
     "test": "vitest",
     "test:run": "vitest run",
     "test:contracts": "vitest run packages/contracts/test",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "voices:check": "python3 scripts/generate-elevenlabs-voices.py",
+    "voices:generate": "python3 scripts/generate-elevenlabs-voices.py --generate"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",

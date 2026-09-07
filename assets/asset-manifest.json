@@ -163,30 +163,24 @@
       "used_by": ["story_voice", "encounter.e01", "numeric_input_smoke"]
     },
     {
-      "asset_id": "likagame.demo_voice.ru.v1",
-      "source_url": "scripts/generate-demo-voices.sh",
-      "author": "LikaGame prototype",
-      "license": "project-internal",
+      "asset_id": "likagame.elevenlabs_voice.ru.v2",
+      "source_url": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert",
+      "author": "LikaGame prototype via ElevenLabs",
+      "license": "project-internal; generated under ElevenLabs account terms",
       "attribution_required": false,
-      "retrieved_at": "2026-09-06",
-      "source_version": "1.0",
-      "archive_sha256": "sha256:878ce34aafc15bdf3144fe8370c2bc82d9985a1208a7e3e94929978b775f7c96",
+      "retrieved_at": "2026-09-07",
+      "source_version": "2.0",
+      "archive_sha256": "sha256:b75b63d5b9c330438deff26c88f0a2d3b10a12fbacdf5776e3a1f40460109833",
       "files": [
-        "voice/line-intro-signal.mp3",
-        "voice/line-pik-first-contact.mp3",
-        "voice/line-e01-instruction.mp3",
-        "voice/line-e01-h0.mp3",
-        "voice/line-e01-h1.mp3",
-        "voice/line-e01-h2.mp3",
-        "voice/line-e01-h3.mp3",
-        "voice/line-e01-h4.mp3",
-        "voice/line-e01-h5.mp3",
-        "voice/line-e01-success.mp3",
-        "voice/line-input-smoke.mp3",
-        "voice/line-epilogue.mp3"
+        "_sources/elevenlabs-generation.json",
+        "voice/*.mp3"
       ],
-      "transforms": ["generated with the macOS Milena ru-RU voice and encoded as MP3 with ffmpeg"],
-      "used_by": ["audio_director", "story_voice", "encounter.e01", "numeric_input_smoke", "epilogue"]
+      "transforms": [
+        "generated from the content bundle with Eleven v3 in Russian",
+        "Pik and dispatcher use fixed voice IDs; output is MP3 44.1 kHz at 128 kbps",
+        "the generation manifest records the exact 83 files, settings, seeds and output hashes"
+      ],
+      "used_by": ["audio_director", "story_voice", "encounter.e01", "numeric_input_smoke", "encounter.e02", "encounter.e03", "epilogue"]
     }
   ]
 }
