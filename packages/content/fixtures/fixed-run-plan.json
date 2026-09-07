@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "run_plan_id": "run_plan.playable_checkpoint.v1",
+  "recipe_ref": "recipe.playable_checkpoint.v1",
+  "seed": "beacon-seven-fixed",
+  "blocks": [
+    "block.signal_received.v1",
+    "block.wake_companion.v1",
+    "block.numeric_input_smoke.v1",
+    "block.demo_epilogue.v1"
+  ]
+}

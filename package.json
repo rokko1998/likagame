@@ -1,0 +1,26 @@
+{
+  "name": "likagame",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @likagame/web",
+    "build": "npm run typecheck && npm run build --workspace @likagame/web",
+    "preview": "npm run preview --workspace @likagame/web",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:contracts": "vitest run packages/contracts/test",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.3.0",
+    "typescript": "5.9.2",
+    "vitest": "5.0.0"
+  }
+}

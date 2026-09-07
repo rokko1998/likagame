@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://likagame.local/schemas/encounter-definition.schema.json",
+  "title": "EncounterDefinition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "story_function",
+    "learning",
+    "controller",
+    "input",
+    "attempt_policy",
+    "validation",
+    "scene_ref",
+    "role_bindings",
+    "dialogue_refs"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "story_function": { "type": "string", "minLength": 1 },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["skill_id", "problem", "representation", "counting_support", "evidence_strength"],
+      "properties": {
+        "skill_id": { "type": "string" },
+        "problem": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "group_count", "units_per_group", "unknown"],
+          "properties": {
+            "type": { "const": "equal_groups" },
+            "group_count": { "type": "integer", "minimum": 2 },
+            "units_per_group": { "type": "integer", "minimum": 1 },
+            "unknown": { "enum": ["group_size", "total"] }
+          }
+        },
+        "representation": { "enum": ["concrete", "representational", "recall"] },
+        "counting_support": { "enum": ["full", "partial", "grouped_only", "none"] },
+        "evidence_strength": { "enum": ["none", "supported", "independent", "recall"] }
+      }
+    },
+    "controller": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "variant", "token_count", "units_per_token", "zone_count", "target_units_per_zone"],
+      "properties": {
+        "type": { "const": "allocate_equal" },
+        "variant": { "type": "string" },
+        "token_count": { "type": "integer", "minimum": 1 },
+        "units_per_token": { "type": "integer", "minimum": 1 },
+        "zone_count": { "type": "integer", "minimum": 2 },
+        "target_units_per_zone": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_actions", "direct_response"],
+      "properties": {
+        "semantic_actions": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+        "direct_response": { "type": "null" }
+      }
+    },
+    "attempt_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit_mode", "checkback_policy_id", "hint_policy_id"],
+      "properties": {
+        "commit_mode": { "const": "explicit" },
+        "checkback_policy_id": { "type": "string" },
+        "hint_policy_id": { "type": "string" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validator_id", "params"],
+      "properties": {
+        "validator_id": { "const": "equal_distribution.v1" },
+        "params": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["zone_count", "required_units_per_zone", "require_all_tokens"],
+          "properties": {
+            "zone_count": { "type": "integer", "minimum": 2 },
+            "required_units_per_zone": { "type": "integer", "minimum": 1 },
+            "require_all_tokens": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "scene_ref": { "type": "string" },
+    "role_bindings": { "type": "object", "additionalProperties": { "type": "string" } },
+    "dialogue_refs": { "type": "object", "additionalProperties": { "type": "string" } }
+  }
+}

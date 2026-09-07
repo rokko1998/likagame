@@ -1,0 +1,192 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "asset_id": "kenney.space_shooter_remastered",
+      "source_url": "https://kenney.nl/assets/space-shooter-remastered",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:0edbe0ab5cda6c44901d8c42f150268fdfa0c8d48492098669f37e9c296929b5",
+      "files": [
+        "map/marker-alert.png",
+        "map/marker-bonus.png",
+        "map/marker-locked.png",
+        "tokens/reward-crystal.png",
+        "tokens/reward-star.png",
+        "fx/shield.png",
+        "fx/sparkle-1.png",
+        "fx/sparkle-2.png",
+        "fx/sparkle-3.png"
+      ],
+      "transforms": ["semantic rename only"],
+      "used_by": ["intro", "encounter.e01", "epilogue"]
+    },
+    {
+      "asset_id": "kenney.simple_space",
+      "source_url": "https://kenney.nl/assets/simple-space",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:a599dc29e9f9718844cc93eb02db34b19553903edb2e79a59d8fc067e6775bac",
+      "files": [
+        "map/marker-current.svg",
+        "map/node-player-ship.png",
+        "map/node-satellite.png",
+        "map/node-station-branch.png",
+        "map/node-station-core.png",
+        "characters/nima-core-placeholder.png",
+        "characters/nima-aura-placeholder.png",
+        "characters/nima-trail-placeholder.png"
+      ],
+      "transforms": ["semantic rename", "Nima composed from three source sprites"],
+      "used_by": ["intro", "adventure_map", "header", "nima_placeholder"]
+    },
+    {
+      "asset_id": "kenney.planets",
+      "source_url": "https://kenney.nl/assets/planets",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:289386e1cbc4a9a727654795b857c1f3f3447b170c7ba1ceeb9b007d1b84f683",
+      "files": [
+        "backgrounds/planet-cloud-blue.png",
+        "backgrounds/planet-purple.png",
+        "backgrounds/planet-verdant.png",
+        "backgrounds/space-dark-purple-tile.png"
+      ],
+      "transforms": ["semantic rename only"],
+      "used_by": ["all_screens"]
+    },
+    {
+      "asset_id": "kenney.ui_pack_sci_fi",
+      "source_url": "https://kenney.nl/assets/ui-pack-sci-fi",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "2.0",
+      "archive_sha256": "sha256:4ae5a4949b71ba6c08bfb4d4708b3880915782f7deae7bc5872e1d56f0a668af",
+      "files": [
+        "ui/panel-glass.svg",
+        "ui/panel-solid.svg",
+        "ui/button-neutral.svg",
+        "ui/button-primary.svg",
+        "ui/button-success.svg",
+        "ui/button-danger.svg",
+        "ui/progress-track.svg",
+        "ui/progress-fill.svg"
+      ],
+      "transforms": ["semantic rename only"],
+      "used_by": ["dom_ui_reference"]
+    },
+    {
+      "asset_id": "kenney.sci_fi_sounds",
+      "source_url": "https://kenney.nl/assets/sci-fi-sounds",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:119340f351a5098ad814f78719438c0da355a9ce8a4c8a3af6a8d48aa3d49e04",
+      "files": [
+        "audio/action-error.wav",
+        "audio/action-success.wav",
+        "audio/engine-loop.wav",
+        "audio/scene-close.wav",
+        "audio/scene-open.wav",
+        "audio/token-drop.wav",
+        "audio/ui-tap.wav"
+      ],
+      "transforms": ["converted from OGG to mono PCM WAV 44.1 kHz"],
+      "used_by": ["audio_director"]
+    },
+    {
+      "asset_id": "kenney.alien_ufo_pack",
+      "source_url": "https://kenney.nl/assets/alien-ufo-pack",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:4d4df7fbf768487d2cd9772b64a1059a94c9b54e0b3095869560f187bc1acaaa",
+      "files": [
+        "characters/pik-pod-placeholder.png"
+      ],
+      "transforms": ["semantic rename only"],
+      "used_by": ["pik_pod_placeholder"]
+    },
+    {
+      "asset_id": "kenney.physics_assets",
+      "source_url": "https://kenney.nl/assets/physics-assets",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:95949d1d9a733bf4b3f6312dc412013cd59184341c03ac284866499febcb67e8",
+      "files": [
+        "characters/pik-off-placeholder.png",
+        "characters/pik-idle-placeholder.png",
+        "characters/pik-powered-placeholder.png",
+        "tokens/energy-blue.png",
+        "tokens/energy-active.png",
+        "tokens/energy-correct.png",
+        "tokens/energy-error.png",
+        "tokens/module-1.png",
+        "tokens/module-2.png",
+        "tokens/module-3.png"
+      ],
+      "transforms": ["semantic rename only"],
+      "used_by": ["encounter.e01", "future.exact_budget_plan"]
+    },
+    {
+      "asset_id": "likagame.pik_mouth_open.v1",
+      "source_url": "assets/game/characters/pik-idle-placeholder.png",
+      "author": "LikaGame prototype via OpenAI image generation",
+      "license": "project-internal derivative of Kenney CC0-1.0",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:c7da04331b280d63a001f27f11d83ce73bc8c695b1ff93a1fa675b637b33b7ca",
+      "output_sha256": "sha256:ceb2bcd6339c0f6765d7687fc251a07301811a5201940a45edc2e8873aac6691",
+      "files": [
+        "characters/pik-mouth-open.png"
+      ],
+      "transforms": ["single image-generation edit; changed only the mouth to an open neutral speaking pose"],
+      "used_by": ["story_voice", "encounter.e01", "numeric_input_smoke"]
+    },
+    {
+      "asset_id": "likagame.demo_voice.ru.v1",
+      "source_url": "scripts/generate-demo-voices.sh",
+      "author": "LikaGame prototype",
+      "license": "project-internal",
+      "attribution_required": false,
+      "retrieved_at": "2026-09-06",
+      "source_version": "1.0",
+      "archive_sha256": "sha256:878ce34aafc15bdf3144fe8370c2bc82d9985a1208a7e3e94929978b775f7c96",
+      "files": [
+        "voice/line-intro-signal.mp3",
+        "voice/line-pik-first-contact.mp3",
+        "voice/line-e01-instruction.mp3",
+        "voice/line-e01-h0.mp3",
+        "voice/line-e01-h1.mp3",
+        "voice/line-e01-h2.mp3",
+        "voice/line-e01-h3.mp3",
+        "voice/line-e01-h4.mp3",
+        "voice/line-e01-h5.mp3",
+        "voice/line-e01-success.mp3",
+        "voice/line-input-smoke.mp3",
+        "voice/line-epilogue.mp3"
+      ],
+      "transforms": ["generated with the macOS Milena ru-RU voice and encoded as MP3 with ffmpeg"],
+      "used_by": ["audio_director", "story_voice", "encounter.e01", "numeric_input_smoke", "epilogue"]
+    }
+  ]
+}

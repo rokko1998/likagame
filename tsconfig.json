@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "node"],
+    "baseUrl": ".",
+    "paths": {
+      "@likagame/contracts": ["packages/contracts/src/index.ts"],
+      "@likagame/game-core": ["packages/game-core/src/index.ts"],
+      "@likagame/content": ["packages/content/src/index.ts"]
+    }
+  },
+  "include": [
+    "apps/web/src",
+    "apps/web/vite.config.ts",
+    "packages/*/src",
+    "packages/*/test",
+    "tests"
+  ]
+}

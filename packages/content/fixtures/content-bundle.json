@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "bundle_id": "likagame.demo.ru",
+  "content_version": "0.5.0",
+  "engine_compatibility": {
+    "min": "0.1.0",
+    "max_exclusive": "1.0.0"
+  },
+  "bundle_hash": "sha256:e6cd0e3ce081cf2b4bbc54212dbd022b3d7004184238dfddce6cd616f8ccdbde",
+  "themes": [
+    {
+      "id": "theme.space.beacon_7.v1",
+      "title": "Маяк-7"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene.beacon_control_room.v1",
+      "title": "Тёмная диспетчерская",
+      "asset_ids": [
+        "asset.station",
+        "asset.pik",
+        "asset.energy_pair",
+        "asset.planet"
+      ]
+    }
+  ],
+  "encounters": [
+    {
+      "schema_version": 1,
+      "id": "encounter.wake_pik_equal_charge.v1",
+      "story_function": "wake_companion",
+      "learning": {
+        "skill_id": "mul:3:4",
+        "problem": {
+          "type": "equal_groups",
+          "group_count": 3,
+          "units_per_group": 4,
+          "unknown": "total"
+        },
+        "representation": "concrete",
+        "counting_support": "full",
+        "evidence_strength": "supported"
+      },
+      "controller": {
+        "type": "allocate_equal",
+        "variant": "pair_bundles",
+        "token_count": 6,
+        "units_per_token": 2,
+        "zone_count": 3,
+        "target_units_per_zone": 4
+      },
+      "input": {
+        "semantic_actions": ["move_token", "commit"],
+        "direct_response": null
+      },
+      "attempt_policy": {
+        "commit_mode": "explicit",
+        "checkback_policy_id": "forced_demo_c0.v1",
+        "hint_policy_id": "multiplication_default.v1"
+      },
+      "validation": {
+        "validator_id": "equal_distribution.v1",
+        "params": {
+          "zone_count": 3,
+          "required_units_per_zone": 4,
+          "require_all_tokens": true
+        }
+      },
+      "scene_ref": "scene.beacon_control_room.v1",
+      "role_bindings": {
+        "source_tray": "energy_pair_tray",
+        "target_nodes": "boot_nodes",
+        "success_target": "pik_eye"
+      },
+      "dialogue_refs": {
+        "instruction": "line.e01.instruction.v1",
+        "fallback_h0": "line.e01.h0.v1",
+        "fallback_h1": "line.e01.h1.v1",
+        "fallback_h2": "line.e01.h2.v1",
+        "fallback_h3": "line.e01.h3.v1",
+        "fallback_h4": "line.e01.h4.v1",
+        "fallback_h5": "line.e01.h5.v1",
+        "success": "line.e01.success.v1"
+      }
+    }
+  ],
+  "adventure_blocks": [
+    {
+      "id": "block.signal_received.v1",
+      "block_kind": "story",
+      "encounter_ref": null,
+      "scene_ref": "scene.beacon_control_room.v1"
+    },
+    {
+      "id": "block.wake_companion.v1",
+      "block_kind": "encounter",
+      "encounter_ref": "encounter.wake_pik_equal_charge.v1",
+      "scene_ref": "scene.beacon_control_room.v1"
+    },
+    {
+      "id": "block.numeric_input_smoke.v1",
+      "block_kind": "input_smoke",
+      "encounter_ref": null,
+      "scene_ref": "scene.beacon_control_room.v1"
+    },
+    {
+      "id": "block.demo_epilogue.v1",
+      "block_kind": "epilogue",
+      "encounter_ref": null,
+      "scene_ref": "scene.beacon_control_room.v1"
+    }
+  ],
+  "adventure_recipes": [
+    {
+      "id": "recipe.playable_checkpoint.v1",
+      "required_block_refs": [
+        "block.signal_received.v1",
+        "block.wake_companion.v1",
+        "block.numeric_input_smoke.v1",
+        "block.demo_epilogue.v1"
+      ]
+    }
+  ],
+  "dialogue_catalog": [
+    {
+      "id": "line.intro.signal.v1",
+      "speaker": "system",
+      "text": "Станция Маяк-7 не отвечает. Внутри остался один слабый сигнал.",
+      "audio_file": "/assets/voice/line-intro-signal.mp3",
+      "intent": "story_hook"
+    },
+    {
+      "id": "line.pik.first_contact.v1",
+      "speaker": "pik",
+      "text": "П-приём… Я Пик. Три загрузочных узла почти разряжены. Поможешь запустить меня?",
+      "audio_file": "/assets/voice/line-pik-first-contact.mp3",
+      "intent": "companion_request"
+    },
+    {
+      "id": "line.e01.instruction.v1",
+      "speaker": "pik",
+      "text": "Разложи шесть пар импульсов поровну между тремя узлами. Перетаскивай капсулы или нажимай сначала на капсулу, потом на узел.",
+      "audio_file": "/assets/voice/line-e01-instruction.mp3",
+      "intent": "instruction"
+    },
+    {
+      "id": "line.e01.h0.v1",
+      "speaker": "pik",
+      "text": "Хм, я всё ещё мигаю. Заряд пока неравный.",
+      "audio_file": "/assets/voice/line-e01-h0.mp3",
+      "intent": "hint_h0"
+    },
+    {
+      "id": "line.e01.h1.v1",
+      "speaker": "pik",
+      "text": "Посмотри: одинаково ли заряжены все три узла?",
+      "audio_file": "/assets/voice/line-e01-h1.mp3",
+      "intent": "hint_h1"
+    },
+    {
+      "id": "line.e01.h2.v1",
+      "speaker": "pik",
+      "text": "Раздавай пары по кругу: по одной каждому узлу, потом ещё круг.",
+      "audio_file": "/assets/voice/line-e01-h2.mp3",
+      "intent": "hint_h2"
+    },
+    {
+      "id": "line.e01.h3.v1",
+      "speaker": "pik",
+      "text": "Каждому узлу нужны две капсулы. В каждой капсуле по две искры.",
+      "audio_file": "/assets/voice/line-e01-h3.mp3",
+      "intent": "hint_h3"
+    },
+    {
+      "id": "line.e01.h4.v1",
+      "speaker": "pik",
+      "text": "Одна капсула даёт два. Ещё одна — ещё два. Вместе получается четыре.",
+      "audio_file": "/assets/voice/line-e01-h4.mp3",
+      "intent": "hint_h4"
+    },
+    {
+      "id": "line.e01.h5.v1",
+      "speaker": "pik",
+      "text": "Сделаем вместе: по две капсулы в каждый узел — это по четыре импульса.",
+      "audio_file": "/assets/voice/line-e01-h5.mp3",
+      "intent": "hint_h5"
+    },
+    {
+      "id": "line.e01.success.v1",
+      "speaker": "pik",
+      "text": "Есть контакт! Все три узла держат одинаковый заряд. Я снова вижу станцию.",
+      "audio_file": "/assets/voice/line-e01-success.mp3",
+      "intent": "success"
+    },
+    {
+      "id": "line.input_smoke.v1",
+      "speaker": "pik",
+      "text": "Проверим панель связи: сколько импульсов сейчас работают во всех трёх узлах?",
+      "audio_file": "/assets/voice/line-input-smoke.mp3",
+      "intent": "input_smoke"
+    },
+    {
+      "id": "line.epilogue.v1",
+      "speaker": "nima",
+      "text": "Сигнал замечен. Но свет маяка всё ещё спрятан дальше, среди облачных колец…",
+      "audio_file": "/assets/voice/line-epilogue.mp3",
+      "intent": "future_hook"
+    }
+  ],
+  "asset_manifests": [
+    {
+      "id": "asset_manifest.kenney_demo.v1",
+      "license": "CC0-1.0",
+      "source_url": "https://kenney.nl/support",
+      "files": [
+        "/assets/map/node-station-core.png",
+        "/assets/characters/pik-pod-placeholder.png",
+        "/assets/characters/pik-idle-placeholder.png",
+        "/assets/characters/pik-mouth-open.png",
+        "/assets/tokens/energy-blue.png",
+        "/assets/backgrounds/planet-cloud-blue.png"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Dependencies and local environment
+node_modules/
+.env
+.env.*
+!.env.example
+
+# Web build and test artifacts
+dist/
+coverage/
+playwright-report/
+test-results/
+.vite/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
