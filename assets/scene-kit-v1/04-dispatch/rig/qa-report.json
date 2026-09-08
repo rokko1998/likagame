@@ -1,0 +1,36 @@
+{
+  "arms": [
+    {
+      "side": "near",
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "neutralAlphaMaxError": 0,
+      "neutralVisibleRgbMaxError": 0,
+      "neutralVisiblePixelsChanged": 0,
+      "transparentPixelRgbIgnored": true,
+      "transparentPixelsByPart": {
+        "pik-arm-near-shoulder": 268590,
+        "pik-arm-near-forearm": 481974,
+        "pik-arm-near-hand": 184952
+      }
+    },
+    {
+      "side": "far",
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "neutralAlphaMaxError": 0,
+      "neutralVisibleRgbMaxError": 0,
+      "neutralVisiblePixelsChanged": 0,
+      "transparentPixelRgbIgnored": true,
+      "transparentPixelsByPart": {
+        "pik-arm-far-shoulder": 249026,
+        "pik-arm-far-forearm": 592583,
+        "pik-arm-far-hand": 152926
+      }
+    }
+  ]
+}

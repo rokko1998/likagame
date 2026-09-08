@@ -1,0 +1,211 @@
+{
+  "result": "passed",
+  "checks": [
+    "PNG signatures and image modes",
+    "alpha=0 outside each sprite",
+    "nonempty silhouettes",
+    "light/dark visual review",
+    "assembled screen visual review",
+    "assembled character neck/tail joints at idle angle extremes"
+  ],
+  "assets": [
+    {
+      "id": "background",
+      "file": "background.png",
+      "mode": "RGB",
+      "size": [
+        1672,
+        941
+      ]
+    },
+    {
+      "id": "dish",
+      "file": "dish.png",
+      "mode": "RGBA",
+      "size": [
+        1356,
+        1160
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 947230,
+      "partialPixels": 625191,
+      "visibleBBox": [
+        49,
+        19,
+        1332,
+        1144
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "banner-right",
+      "file": "banner-right.png",
+      "mode": "RGBA",
+      "size": [
+        941,
+        1672
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 880838,
+      "partialPixels": 691351,
+      "visibleBBox": [
+        48,
+        1,
+        929,
+        1672
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "flag-left",
+      "file": "flag-left.png",
+      "mode": "RGBA",
+      "size": [
+        1419,
+        1108
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 862489,
+      "partialPixels": 21940,
+      "visibleBBox": [
+        205,
+        36,
+        1237,
+        1023
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "child-body",
+      "file": "child-body.png",
+      "mode": "RGBA",
+      "size": [
+        1374,
+        1145
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 806841,
+      "partialPixels": 765896,
+      "visibleBBox": [
+        0,
+        17,
+        1358,
+        1135
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "child-head",
+      "file": "child-head.png",
+      "mode": "RGBA",
+      "size": [
+        1334,
+        1179
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 873192,
+      "partialPixels": 699322,
+      "visibleBBox": [
+        0,
+        53,
+        1264,
+        1141
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cat-tail",
+      "file": "cat-tail.png",
+      "mode": "RGBA",
+      "size": [
+        1536,
+        1024
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1237691,
+      "partialPixels": 31258,
+      "visibleBBox": [
+        166,
+        272,
+        1364,
+        781
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "cat-body",
+      "file": "cat-body.png",
+      "mode": "RGBA",
+      "size": [
+        1209,
+        1300
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 977264,
+      "partialPixels": 594427,
+      "visibleBBox": [
+        0,
+        21,
+        1157,
+        1300
+      ],
+      "alphaCorners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

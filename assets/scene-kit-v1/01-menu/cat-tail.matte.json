@@ -1,0 +1,25 @@
+{
+  "method": "outer-connected neutral backdrop + seeded holes + edge color extension",
+  "floor": 210,
+  "chroma": 32,
+  "feather": 0.5,
+  "seeds": [],
+  "protectedRects": [],
+  "removedPercent": 79.71,
+  "visibleBBox": [
+    166,
+    272,
+    1364,
+    781
+  ],
+  "source": "/Users/sheva/Documents/Projects/likagame/assets/scene-kit-v1/01-menu/_source/cat-tail.png",
+  "output": "/Users/sheva/Documents/Projects/likagame/assets/scene-kit-v1/01-menu/cat-tail.png",
+  "size": [
+    1536,
+    1024
+  ],
+  "alphaRange": [
+    0,
+    255
+  ]
+}

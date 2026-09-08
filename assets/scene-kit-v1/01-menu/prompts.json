@@ -1,0 +1,126 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+  "generationAttempts": [
+    {
+      "id": "background",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: precise-object-edit. Asset type: full background plate 16:9, 1672 by 941 composition. Remove the entire enormous foreground station, dish, all foreground cliffs and sign, crates, boy, cat, flag and pole, all writing, logo, buttons and sound icon. Reconstruct the night sky and voluminous luminous clouds naturally behind the removed subjects, retaining the original moon at upper-left, scattered tiny stars, distant floating island silhouettes. Retain exact cloud palette, horizon and camera. No new objects. Full opaque background plate extending edge to edge. Absolutely no text or UI.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-bbd4e12e-3ddd-4806-b42c-253768af6b8d.png",
+      "selected": false
+    },
+    {
+      "id": "station",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: transparent station body cutout. Extract ONLY the enormous circular station body occupying the center and stretching connecting gantries toward both sides. Preserve domed roof, antenna towers, tiny red beacon at top, ring structure, pipes, hanging mechanical struts, worn navy plating, little warm windows, and M-7 marking. Remove logo and all UI fully, reconstructing plausible hidden station surfaces. REMOVE the large satellite dish and its pedestal (it will be a separate asset), REMOVE hanging cloth banner on right (it will be separate). Remove all sky clouds distant islands cliffs characters and text except structural M-7 stencil. Render the complete station silhouette on genuine transparent alpha PNG, no checkerboard, no ground shadow. Keep same wide 16:9 view and exact station design; the isolated station should fill width with small transparent margins, complete vertical extent. Do not flatten dark station detail to black.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-fd7e7760-0bb5-4aab-91df-9928012ea3f7.png",
+      "selected": false
+    },
+    {
+      "id": "foreground-left",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: transparent foreground left cliff cutout. Extract ONLY the dark rocky foreground ledge in the lower left, all stacked battered travel crates with planet emblems, tufts of grass, and tall leaning flag POLE. Remove flag CLOTH completely. Remove the sitting boy and cat and reconstruct the small ledge/grass hidden behind them. Preserve the original left-to-right sloping ledge silhouette from bottom left rising toward the child seating area then descending to the lower middle, exact painted rocky navy materials, amber rim light. No sky, clouds, writing, station, characters or other islands. Genuine transparent alpha PNG, no checkerboard; leave bottom and left composition edges cropped as original, retain whole pole. Isolated asset landscape approximately 740 wide by 530 tall with modest transparent top/right padding.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-a8993dd4-3c57-432d-95bf-86fdd7385ee1.png",
+      "selected": false
+    },
+    {
+      "id": "background-complete",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: precise-object-edit. Production asset ONE clean consolidated background. Start with the supplied exact scene and KEEP the full station, all station structure/antenna towers/wires, both rocky foreground cliffs, all crates, pole on left, signboard on lower-right, entire clouds sky moon distant floating islands, original composition and lighting EXACTLY. Remove ONLY the sitting child and cat, ONLY the cloth on the left flag pole, ONLY the hanging cloth banner at right on the station, ONLY the large satellite dish including its moving mount (these become separate animation objects), and ALL text, logo, button graphics and sound icon. Reconstruct plausible concealed background in every removed object's hole. KEEP all structural objects and scenery fixed at original coordinates. The left flag pole MUST remain. The lower right signboard must remain as an unlettered sign. Keep station M-7 environmental stencil if possible. The enormous round station must stay exactly as the source; don't replace station by empty sky. Full opaque landscape 1672x941 scene, no transparency, no UI.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-a5daaf18-d0dd-4261-857f-ed5612dc09ee.png",
+      "selected": true
+    },
+    {
+      "id": "child-body",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: game animation character layer, child BODY without head. Isolate the seated child from lower-left original, seen from behind facing the enormous station toward right. Preserve teal/dark green hoodie and hood, deep navy trousers seated folded, dark backpack with faded planet emblem and buckles, amber rim lighting, illustrated cloth textures. EXCLUDE the whole head and hair, EXCLUDE the child's right arm/sleeve at image-right; those become separate moving sprites. Reconstruct the hidden shoulder/backpack attachment areas for overlap. Keep seated torso, backpack, left arm and legs as one isolated cohesive body asset. Do not generate any additional person. Do not include ground, cat, cliffs, shadow backdrop or other objects. Genuine transparent PNG alpha, no checkerboard. Small transparent margins around complete body. Same original rear three-quarter camera and original clothing identity.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-376333e5-a46a-48e4-9481-3bf852289f54.png",
+      "selected": false
+    },
+    {
+      "id": "child-head",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: game animation child HEAD layer. Isolate ONLY the tousled dark brown-black hair, visible right ear and tiny neck of the seated child at lower-left, EXACT original rear three-quarter view looking toward upper right. Back of head dominates; do not show frontal face. Preserve original tufted messy hair silhouette with amber-peach edge lighting against navy shadows, youth proportions and painted anime style. Extend lower neck slightly for overlapping with separate green-hoodie body. No clothing except minimal collar if needed, no torso, no backpack, no body, no cats or scenery. Genuine transparent PNG alpha, no checkerboard, complete head silhouette with small transparent margins.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-5b9b2f46-9c96-4245-8f6c-affef4f5ecc7.png",
+      "selected": false
+    },
+    {
+      "id": "cat-body",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: articulated black kitten body cutout. Isolate the seated black kitten immediately right of the child, ORIGINAL rear view facing up and slightly right to station. Render its whole kitten BODY AND HEAD with pointy ears and two forepaws as one sprite, preserve fluffy charcoal-black fur with warm golden outline on the right, shoulder hunch and seated haunches. REMOVE the tail; tail will be a separate moving layer. Complete silhouette, no legs cut off, no person, ground, rocks, plants, cast shadow or scene. Genuine transparent alpha PNG, no checkerboard. Do not change to cute cartoon or photorealistic style; use exact soft painted anime look from source. Framed snugly with clear transparent margins.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-0ddf03c7-f4d4-4a34-bdeb-b21b080bb05b.png",
+      "selected": false
+    },
+    {
+      "id": "cat-tail",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: articulated black kitten tail ONLY. Reconstruct a separate fluffy charcoal-black kitten tail consistent with the seated rear-view black kitten lower-left of this scene. Gently curl the tail to image-right, low horizontal relaxed arc, base thick at left with rounded tapered lifted tip on right. Preserve fluffy fur silhouette and amber-peach rim light from right matching source kitten. No cat head, no cat torso, no legs, no other object or ground, absolutely only a single disconnected animation tail on genuine transparent alpha PNG, no checkerboard. Same painted anime brushwork and detail. Slight transparent padding around complete tail.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-4c828bf3-e8d2-4c0c-96dc-98816a7243bf.png",
+      "selected": true
+    },
+    {
+      "id": "flag-left",
+      "prompt": "Reference edit target: supplied main-menu preview. Match its exact hand-painted cinematic anime environment, midnight navy and dusty periwinkle with peach-amber cloud light, detailed softly textured edges. Preserve original perspective and identity. This is separation into production game layers, not a redesign. Use case: background-extraction. Asset type: left flag cloth animation sprite. Extract ONLY the tattered dark plum-black rectangular fabric flag on the pole at lower-left, from x about 49 to 225 and y440 to677 in original. Preserve EXACT tilted quadrilateral shape, left edge attached to leaning pole, top edge angling down to right, tattered right/bottom edge and cloth folds. Keep chalk lettering «МАЛЕНЬКИЕ ЗАДАЧИ БОЛЬШИЕ ПЕРЕМЕНЫ» and small outline heart on cloth, faithful original arrangement. Reconstruct any occluded cloth gently. Do NOT include pole, rope extending beyond cloth, sky, rocks, child, cat, UI or any background. Genuine transparent alpha PNG, no checkerboard, complete cloth silhouette with small padding. Preserve original camera and twilight dark fabric palette.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-a6ded7b9-dc81-4ac7-aed1-16f0dbff351d.png",
+      "selected": true
+    },
+    {
+      "id": "child-head-alpha",
+      "prompt": "Use case: background-extraction. Edit the supplied HEAD asset to remove its fake light-grey checkerboard background. Preserve the exact child head pixels and every fine hair silhouette. The result must be an ACTUAL transparent PNG with RGBA channel where ALL pixels around the head have alpha=0. Do not draw a checkerboard, do not draw white or black or any color background, do not simulate transparency. Deliver true transparent alpha channel. Only the rear-view brown tousled head and neck remain opaque, antialiased hair edge retains partial alpha. This is a production game sprite, needs to composite correctly over any dark scene. Do not change style, crop, pose or subject.",
+      "reference": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-5b9b2f46-9c96-4245-8f6c-affef4f5ecc7.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-e6ef8012-1750-4d89-af0b-8fd3197c4a99.png",
+      "selected": false
+    },
+    {
+      "id": "dish",
+      "prompt": "Extract only the big radar satellite dish from the upper-right of this picture, including its pivot base. Keep exactly the same painted design, color, perspective and complete shape. Remove everything else. Transparent background, PNG.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-b6b3f88d-4bd8-4194-a3f1-1f37452cbd37.png",
+      "selected": true
+    },
+    {
+      "id": "banner-right",
+      "prompt": "Extract only the dark vertical hanging cloth banner on the right side of the station, with its planet symbol and Russian words. Keep exactly the same painted shape, color and perspective. Remove everything else. Transparent background, PNG.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-967cd0de-6fb8-4ca0-97b7-ad003dead8e8.png",
+      "selected": true
+    },
+    {
+      "id": "child-body-final",
+      "prompt": "Extract only the seated child's torso, clothes, backpack and legs from the lower-left of this picture. Remove his head and hair; these are a separate animation part. Keep the same rear view, exact painted style, color, original seated pose and complete body shape. Remove everything else. Transparent background, PNG.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-7c3a3ab1-e59f-49a7-b40b-b6650a8263a3.png",
+      "selected": true
+    },
+    {
+      "id": "child-head-final",
+      "prompt": "Extract only the child's head with his messy brown hair, ear and a short neck from the lower-left of this picture. Keep the exact same rear view, original painted style, color and silhouette. No body or clothing. Remove everything else. Transparent background, PNG.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-baa390c4-ed79-4501-8485-aec317ae8f6d.png",
+      "selected": true
+    },
+    {
+      "id": "cat-body-final",
+      "prompt": "Extract only the seated black kitten from the lower-left of this picture, without its tail. Keep its head and body together, same rear view, original painted style, color, pose and silhouette. Remove everything else. Transparent background, PNG.",
+      "reference": "/Users/sheva/Documents/Projects/likagame/шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+      "output": "/Users/sheva/.codex/generated_images/01a07db2-67fe-79f2-97bf-5ef8b8ad70ab/exec-f739cef3-0aee-49c5-b76b-ea28431ffd25.png",
+      "selected": true
+    }
+  ],
+  "postprocessing": {
+    "tool": "../tools/matte_checker.py",
+    "appliedTo": [
+      "cat-tail.png",
+      "flag-left.png"
+    ],
+    "preservedNativeAlpha": [
+      "dish.png",
+      "banner-right.png",
+      "child-body.png",
+      "child-head.png",
+      "cat-body.png"
+    ],
+    "parameters": "cat-tail.matte.json and flag-left.matte.json"
+  }
+}

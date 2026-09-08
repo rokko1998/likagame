@@ -1,0 +1,261 @@
+{
+  "id": "pik",
+  "position": [
+    1120,
+    405
+  ],
+  "z": 60,
+  "canvas": [
+    500,
+    300
+  ],
+  "brightness": 0.67,
+  "notes": "2D puppet in the original view. Positions are relative to parent pivots, in scene pixels. Angles are local clockwise degrees. Every part has real PNG alpha.",
+  "nodes": [
+    {
+      "id": "torso",
+      "file": "rig/torso.png",
+      "position": [
+        257,
+        145
+      ],
+      "width": 157,
+      "height": 158,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "z": 20,
+      "angle": 0,
+      "limits": [
+        -3,
+        3
+      ],
+      "children": [
+        {
+          "id": "rear-support",
+          "file": "rig/rear-support.png",
+          "position": [
+            73,
+            31
+          ],
+          "width": 145,
+          "height": 84,
+          "pivot": [
+            0.2,
+            0.45
+          ],
+          "z": -15,
+          "angle": 0,
+          "limits": [
+            -3,
+            3
+          ],
+          "parent": "torso"
+        },
+        {
+          "id": "head",
+          "file": "pik-head.png",
+          "position": [
+            -46,
+            73
+          ],
+          "width": 178,
+          "height": 178,
+          "pivot": [
+            0.6778,
+            0.9011
+          ],
+          "z": 10,
+          "angle": 0,
+          "limits": [
+            -12,
+            15
+          ],
+          "children": [
+            {
+              "id": "antenna",
+              "file": "pik-antenna.png",
+              "position": [
+                -64,
+                -143
+              ],
+              "width": 54,
+              "height": 64,
+              "pivot": [
+                0.53,
+                0.91
+              ],
+              "z": -1,
+              "angle": 0,
+              "limits": [
+                -10,
+                10
+              ]
+            },
+            {
+              "id": "eye",
+              "file": "../shared/eye-awake.png",
+              "position": [
+                -57,
+                -58
+              ],
+              "width": 52,
+              "height": 52,
+              "pivot": [
+                0.5,
+                0.5
+              ],
+              "z": 1,
+              "angle": 0,
+              "motion": "flicker"
+            }
+          ],
+          "parent": "torso"
+        },
+        {
+          "id": "pik-arm-near-shoulder",
+          "label": "Ближняя рука: плечевая часть",
+          "file": "rig/pik-arm-near-shoulder.png",
+          "position": [
+            -18,
+            46
+          ],
+          "width": 79.92,
+          "height": 92.39999999999999,
+          "pivot": [
+            0.6141141141141141,
+            0.37662337662337664
+          ],
+          "angle": 20,
+          "z": 20,
+          "limits": [
+            -30,
+            30
+          ],
+          "parent": "torso",
+          "children": [
+            {
+              "id": "pik-arm-near-forearm",
+              "label": "Ближняя рука: предплечье",
+              "file": "rig/pik-arm-near-forearm.png",
+              "position": [
+                -24.599999999999998,
+                19.2
+              ],
+              "width": 99.96,
+              "height": 102.47999999999999,
+              "pivot": [
+                0.6398559423769508,
+                0.34660421545667447
+              ],
+              "angle": 0,
+              "z": 1,
+              "limits": [
+                -20,
+                20
+              ],
+              "parent": "pik-arm-near-shoulder",
+              "children": [
+                {
+                  "id": "pik-arm-near-hand",
+                  "label": "Ближняя рука: кисть",
+                  "file": "rig/pik-arm-near-hand.png",
+                  "position": [
+                    -51.6,
+                    32.4
+                  ],
+                  "width": 84.24,
+                  "height": 53.4,
+                  "pivot": [
+                    0.7849002849002849,
+                    0.3393258426966292
+                  ],
+                  "angle": 0,
+                  "z": 2,
+                  "limits": [
+                    -20,
+                    20
+                  ],
+                  "parent": "pik-arm-near-forearm",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pik-arm-far-shoulder",
+          "label": "Дальняя рука: плечевая часть",
+          "file": "rig/pik-arm-far-shoulder.png",
+          "position": [
+            -111,
+            41
+          ],
+          "width": 73.26,
+          "height": 78.65,
+          "pivot": [
+            0.4864864864864865,
+            0.3594405594405594
+          ],
+          "angle": 20,
+          "z": -10,
+          "limits": [
+            -30,
+            30
+          ],
+          "parent": "torso",
+          "children": [
+            {
+              "id": "pik-arm-far-forearm",
+              "label": "Дальняя рука: предплечье",
+              "file": "rig/pik-arm-far-forearm.png",
+              "position": [
+                -15.62,
+                16.5
+              ],
+              "width": 114.07000000000001,
+              "height": 89.98,
+              "pivot": [
+                0.6740597878495661,
+                0.28117359413202936
+              ],
+              "angle": 0,
+              "z": 1,
+              "limits": [
+                -20,
+                20
+              ],
+              "parent": "pik-arm-far-shoulder",
+              "children": [
+                {
+                  "id": "pik-arm-far-hand",
+                  "label": "Дальняя рука: кисть",
+                  "file": "rig/pik-arm-far-hand.png",
+                  "position": [
+                    -63.58,
+                    39.6
+                  ],
+                  "width": 61.05,
+                  "height": 47.85,
+                  "pivot": [
+                    0.7405405405405405,
+                    0.4942528735632184
+                  ],
+                  "angle": 0,
+                  "z": 2,
+                  "limits": [
+                    -20,
+                    20
+                  ],
+                  "parent": "pik-arm-far-forearm",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

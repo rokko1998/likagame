@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="244" height="28" viewBox="0 0 244 28"><defs>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b6"/><stop offset=".4" stop-color="#ffd57b"/><stop offset="1" stop-color="#e9ad50"/></linearGradient>
+ <linearGradient id="ice" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#effaff"/><stop offset="1" stop-color="#91b7de"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#283e5ddd"/><stop offset="1" stop-color="#14233be6"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fffbd5"/><stop offset=".12" stop-color="#ffd16b" stop-opacity=".85"/><stop offset=".4" stop-color="#ff9b43" stop-opacity=".35"/><stop offset="1" stop-color="#ff761f" stop-opacity="0"/></radialGradient>
+ <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+ </defs><text x="122" y="20.439999999999998" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="400" letter-spacing="0" fill="#6684b1">Зажги новые миры</text></svg>

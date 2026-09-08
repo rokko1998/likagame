@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="258" viewBox="0 0 620 258"><defs>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b6"/><stop offset=".4" stop-color="#ffd57b"/><stop offset="1" stop-color="#e9ad50"/></linearGradient>
+ <linearGradient id="ice" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#effaff"/><stop offset="1" stop-color="#91b7de"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#283e5ddd"/><stop offset="1" stop-color="#14233be6"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fffbd5"/><stop offset=".12" stop-color="#ffd16b" stop-opacity=".85"/><stop offset=".4" stop-color="#ff9b43" stop-opacity=".35"/><stop offset="1" stop-color="#ff761f" stop-opacity="0"/></radialGradient>
+ <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+ </defs><g fill="none" stroke="url(#ice)"><path d="M176 84Q307 -49 443 87" stroke-width="2.4"/><path d="M206 91Q313 11 423 107" stroke="#729fcd" stroke-width="1.3"/><path d="M56 216Q318 210 579 216" stroke-width="1.1"/></g><path d="M310 2 L315.8 24.62 L339 31 L315.8 37.38 L310 60 L304.2 37.38 L281 31 L304.2 24.62Z" fill="#e5f6ff"/><circle cx="418" cy="67" r="6" fill="#d6edff"/><text x="310" y="199" text-anchor="middle" font-family="Arial,sans-serif" font-size="142" font-style="italic" font-weight="1000" letter-spacing="-5" fill="url(#ice)">Маяк-7</text></svg>

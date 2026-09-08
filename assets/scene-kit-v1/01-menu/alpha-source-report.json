@@ -1,0 +1,161 @@
+[
+  {
+    "file": "background.png",
+    "size": [
+      1672,
+      941
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "banner-right.png",
+    "size": [
+      941,
+      1672
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_pixels": 880838,
+    "partial_pixels": 691351,
+    "opaque_pixels": 1163,
+    "bbox": [
+      48,
+      1,
+      929,
+      1672
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "cat-body.png",
+    "size": [
+      1209,
+      1300
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_pixels": 977264,
+    "partial_pixels": 594427,
+    "opaque_pixels": 9,
+    "bbox": [
+      0,
+      21,
+      1157,
+      1300
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "cat-tail.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "mode": "RGB"
+  },
+  {
+    "file": "child-body.png",
+    "size": [
+      1374,
+      1145
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_pixels": 806841,
+    "partial_pixels": 765896,
+    "opaque_pixels": 493,
+    "bbox": [
+      0,
+      17,
+      1358,
+      1135
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "child-head.png",
+    "size": [
+      1334,
+      1179
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_pixels": 873192,
+    "partial_pixels": 699322,
+    "opaque_pixels": 272,
+    "bbox": [
+      0,
+      53,
+      1264,
+      1141
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "dish.png",
+    "size": [
+      1356,
+      1160
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "zero_pixels": 947230,
+    "partial_pixels": 625191,
+    "opaque_pixels": 539,
+    "bbox": [
+      49,
+      19,
+      1332,
+      1144
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "flag-left.png",
+    "size": [
+      1419,
+      1108
+    ],
+    "mode": "RGB"
+  }
+]

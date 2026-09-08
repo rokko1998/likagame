@@ -1,0 +1,557 @@
+{
+  "id": "02-map",
+  "title": "Карта станции",
+  "reference": "../../../шаблоны сцен/Codex Image Sep 7, 2026, 07_50_18 PM.png",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "backgroundPolicy": "Один цельный непрозрачный фон. Кабина, чашка, консоли, небо, станция и антенна включены в него.",
+  "layers": [
+    {
+      "id": "background",
+      "file": "background.png",
+      "label": "Цельная сцена станции и кабины",
+      "kind": "background",
+      "x": 0,
+      "y": 0,
+      "width": 1672,
+      "height": 941,
+      "z": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "notes": "Без UI, комнат-узлов и флага. Под ними дорисован непрерывный корпус станции. Физическая маркировка M-7 сохранена."
+    },
+    {
+      "id": "station-flag",
+      "file": "station-flag.png",
+      "label": "Подвесной флаг",
+      "kind": "sprite",
+      "x": 1510,
+      "y": 396,
+      "width": 179,
+      "height": 271,
+      "z": 10,
+      "pivot": [
+        0.5,
+        0.02
+      ],
+      "motion": "sway",
+      "notes": "Самостоятельная ткань с перекладиной, alpha. Качание ±0.7° вокруг верхнего центра; движение только декоративное. Буквенные надписи удалены, эмблема сохранена. Родной alpha не изменялся; слабый мягкий край вокруг подсветки."
+    },
+    {
+      "id": "room-dispatch",
+      "file": "room-dispatch.png",
+      "label": "Узел диспетчерской",
+      "kind": "sprite",
+      "x": 319,
+      "y": 315,
+      "width": 355,
+      "height": 202,
+      "z": 20,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true,
+      "hitArea": {
+        "x": 337,
+        "y": 322,
+        "width": 313,
+        "height": 187
+      },
+      "notes": "Кликабельный узел с физической рамкой и комнатой; карта выделяет его отдельной обводкой/меткой. При нажатии допустим scale 0.98→1; комнату не качать и не двигать постоянно. Текст и кнопка — отдельный UI."
+    },
+    {
+      "id": "room-technical",
+      "file": "room-technical.png",
+      "label": "Узел технического отсека",
+      "kind": "sprite",
+      "x": 717,
+      "y": 317,
+      "width": 320,
+      "height": 211,
+      "z": 20,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true,
+      "hitArea": {
+        "x": 741,
+        "y": 319,
+        "width": 271,
+        "height": 192
+      },
+      "notes": "Кликабельная миниатюра ангара; на карте корабль и кран являются частью иллюстрации узла. Блокировка/подсветка/доступ — отдельный UI и состояние. Нативный alpha, без шахматки."
+    },
+    {
+      "id": "room-beacon",
+      "file": "room-beacon.png",
+      "label": "Узел ядра маяка",
+      "kind": "sprite",
+      "x": 1069,
+      "y": 263,
+      "width": 351,
+      "height": 258,
+      "z": 20,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true,
+      "hitArea": {
+        "x": 1103,
+        "y": 267,
+        "width": 284,
+        "height": 249
+      },
+      "notes": "Кликабельная миниатюра камеры с лучом. Луч нарисован внутри комнаты; для анимации нужен отдельный световой оверлей в UI, не движение всей комнаты. Нативный alpha."
+    },
+    {
+      "id": "ui-decor-discovery",
+      "file": "../shared/decor-discovery.png",
+      "label": "decor-discovery",
+      "kind": "ui",
+      "x": 28,
+      "y": 266,
+      "width": 178,
+      "height": 137,
+      "z": 90,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -7
+    },
+    {
+      "id": "ui-decor-knowledge",
+      "file": "../shared/decor-knowledge.png",
+      "label": "decor-knowledge",
+      "kind": "ui",
+      "x": 70,
+      "y": 654,
+      "width": 100,
+      "height": 139,
+      "z": 90,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -7
+    },
+    {
+      "id": "ui-decor-more",
+      "file": "../shared/decor-more.png",
+      "label": "decor-more",
+      "kind": "ui",
+      "x": 1557,
+      "y": 497,
+      "width": 91,
+      "height": 99,
+      "z": 42,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -3
+    },
+    {
+      "id": "ui-decor-together",
+      "file": "../shared/decor-together.png",
+      "label": "decor-together",
+      "kind": "ui",
+      "x": 1532,
+      "y": 787,
+      "width": 84,
+      "height": 76,
+      "z": 51,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": 8
+    },
+    {
+      "id": "ui-logo",
+      "file": "../shared/logo.png",
+      "label": "logo",
+      "kind": "ui",
+      "x": 37,
+      "y": 29,
+      "width": 390,
+      "height": 162,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-map",
+      "file": "../shared/label-map.png",
+      "label": "label-map",
+      "kind": "ui",
+      "x": 55,
+      "y": 190,
+      "width": 350,
+      "height": 30,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-sound",
+      "file": "../shared/icon-sound.png",
+      "label": "icon-sound",
+      "kind": "ui",
+      "x": 1579,
+      "y": 19,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-route-left",
+      "file": "../shared/route-left.png",
+      "label": "route-left",
+      "kind": "ui",
+      "x": 611,
+      "y": 405,
+      "width": 140,
+      "height": 70,
+      "z": 24,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-route-right",
+      "file": "../shared/route-right.png",
+      "label": "route-right",
+      "kind": "ui",
+      "x": 999,
+      "y": 426,
+      "width": 111,
+      "height": 53,
+      "z": 24,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-map-marker",
+      "file": "../shared/map-marker.png",
+      "label": "map-marker",
+      "kind": "ui",
+      "x": 467,
+      "y": 269,
+      "width": 80,
+      "height": 100,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "float",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-map-card-active-0",
+      "file": "../shared/map-card-active.png",
+      "label": "map-card-active",
+      "kind": "ui",
+      "x": 366,
+      "y": 505,
+      "width": 260,
+      "height": 86,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-dispatch",
+      "file": "../shared/label-dispatch.png",
+      "label": "label-dispatch",
+      "kind": "ui",
+      "x": 374,
+      "y": 520,
+      "width": 244,
+      "height": 30,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-dispatch-sub",
+      "file": "../shared/label-dispatch-sub.png",
+      "label": "label-dispatch-sub",
+      "kind": "ui",
+      "x": 374,
+      "y": 549,
+      "width": 244,
+      "height": 28,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-map-card-locked-1",
+      "file": "../shared/map-card-locked.png",
+      "label": "map-card-locked",
+      "kind": "ui",
+      "x": 742,
+      "y": 505,
+      "width": 260,
+      "height": 86,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-technical",
+      "file": "../shared/label-technical.png",
+      "label": "label-technical",
+      "kind": "ui",
+      "x": 750,
+      "y": 520,
+      "width": 244,
+      "height": 30,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-technical-sub",
+      "file": "../shared/label-technical-sub.png",
+      "label": "label-technical-sub",
+      "kind": "ui",
+      "x": 750,
+      "y": 549,
+      "width": 244,
+      "height": 28,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-lock-1",
+      "file": "../shared/icon-lock.png",
+      "label": "icon-lock",
+      "kind": "ui",
+      "x": 854,
+      "y": 572,
+      "width": 32,
+      "height": 37,
+      "z": 42,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-map-card-locked-2",
+      "file": "../shared/map-card-locked.png",
+      "label": "map-card-locked",
+      "kind": "ui",
+      "x": 1120,
+      "y": 505,
+      "width": 260,
+      "height": 86,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-beacon",
+      "file": "../shared/label-beacon.png",
+      "label": "label-beacon",
+      "kind": "ui",
+      "x": 1128,
+      "y": 520,
+      "width": 244,
+      "height": 30,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-beacon-sub",
+      "file": "../shared/label-beacon-sub.png",
+      "label": "label-beacon-sub",
+      "kind": "ui",
+      "x": 1128,
+      "y": 549,
+      "width": 244,
+      "height": 28,
+      "z": 41,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-lock-2",
+      "file": "../shared/icon-lock.png",
+      "label": "icon-lock",
+      "kind": "ui",
+      "x": 1232,
+      "y": 572,
+      "width": 32,
+      "height": 37,
+      "z": 42,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-button-primary-normal",
+      "file": "../shared/button-primary-normal.png",
+      "label": "button-primary-normal",
+      "kind": "ui",
+      "x": 586,
+      "y": 704,
+      "width": 500,
+      "height": 112,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-radio",
+      "file": "../shared/icon-radio.png",
+      "label": "icon-radio",
+      "kind": "ui",
+      "x": 644,
+      "y": 739,
+      "width": 56,
+      "height": 56,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-signal",
+      "file": "../shared/label-signal.png",
+      "label": "label-signal",
+      "kind": "ui",
+      "x": 722,
+      "y": 742,
+      "width": 340,
+      "height": 48,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-monitor-orbits",
+      "file": "../shared/monitor-orbits.png",
+      "label": "monitor-orbits",
+      "kind": "ui",
+      "x": 1388,
+      "y": 705,
+      "width": 166,
+      "height": 156,
+      "z": 50,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": 8
+    }
+  ],
+  "ui": "Логотип, заголовки комнат, подписи, блокировки, метка игрока, путь, основная кнопка и звук добавляются поверх отдельными элементами.",
+  "limitations": [
+    "Это восстановленные генератором ассеты из единого raster-превью, а не исходные авторские слои. Перспектива и небольшие детали комнат немного отличаются от превью.",
+    "Размеры размещения подобраны под canvas 1672×941; экспортированные PNG содержат прозрачные поля. x/y/width/height относятся ко всему PNG.",
+    "Нативный генератор выдал почти непрозрачный предмет с alpha≈253; альфа сохранена без постобработки, exterior содержит настоящие alpha=0 пиксели.",
+    "Отдельная анимация крана и шаттла внутри миниатюры ангара в этом наборе не подготовлена: это декоративное наполнение узла карты."
+  ],
+  "status": "ready",
+  "renderNotes": "x/y/width/height describe the full PNG rectangle in 1672×941 scene coordinates. pivot is normalized to the PNG. rotation is clockwise degrees. All renderable images are PNG. UI files are separately reusable."
+}

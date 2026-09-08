@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="210" viewBox="0 0 240 210"><defs>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b6"/><stop offset=".4" stop-color="#ffd57b"/><stop offset="1" stop-color="#e9ad50"/></linearGradient>
+ <linearGradient id="ice" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#effaff"/><stop offset="1" stop-color="#91b7de"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#283e5ddd"/><stop offset="1" stop-color="#14233be6"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fffbd5"/><stop offset=".12" stop-color="#ffd16b" stop-opacity=".85"/><stop offset=".4" stop-color="#ff9b43" stop-opacity=".35"/><stop offset="1" stop-color="#ff761f" stop-opacity="0"/></radialGradient>
+ <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+ </defs><g fill="none" stroke="#4b91ce" opacity=".8"><ellipse cx="116" cy="86" rx="86" ry="54" transform="rotate(-22 116 86)"/><ellipse cx="116" cy="86" rx="67" ry="35" transform="rotate(-30 116 86)"/><ellipse cx="116" cy="86" rx="28" ry="94" transform="rotate(58 116 86)"/><path d="M33 72L195 103M99 36L123 147" opacity=".3"/></g><path d="M141 14 L143.4 23.36 L153 26 L143.4 28.64 L141 38 L138.6 28.64 L129 26 L138.6 23.36Z" fill="#74b5eb"/><text x="116" y="186" text-anchor="middle" fill="#76a9e0" font-family="Arial" font-style="italic" font-weight="900" font-size="35">Маяк-7</text></svg>

@@ -1,0 +1,60 @@
+{
+  "note": "Проверенные координаты сборки. Источник истины — manifest.json. Размеры PNG сохраняют исходные пропорции.",
+  "rigs": {
+    "ship-rig": {
+      "parent": null,
+      "members": [
+        "ship",
+        "thruster-upper",
+        "thruster-lower"
+      ],
+      "pivot": [
+        342.5,
+        636.38
+      ],
+      "coordinateSpace": "canvas",
+      "translationAmplitude": [
+        4,
+        5
+      ],
+      "rotationDegrees": 1
+    }
+  },
+  "ui": {
+    "signalCenter": [
+      1190,
+      448
+    ],
+    "pauseCenter": [
+      55,
+      55
+    ],
+    "backpackCenter": [
+      1615,
+      55
+    ],
+    "signalLabelAnchor": [
+      1295,
+      541
+    ]
+  },
+  "attachmentPoints": {
+    "radarMount": [
+      1255.04,
+      264.52
+    ],
+    "upperNozzle": [
+      148.39,
+      611.4
+    ],
+    "lowerNozzle": [
+      264.33,
+      655.28
+    ]
+  },
+  "motion": {
+    "ship": "±4 px X / ±5 px Y, небольшой общий наклон ±1° для корпуса и огня",
+    "radar": "±3° вокруг нижней опоры",
+    "thruster": "scaleX 0.92..1.08 от источника; opacity 0.80..1"
+  }
+}

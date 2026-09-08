@@ -1,0 +1,1603 @@
+{
+  "canvas": [
+    1672,
+    941
+  ],
+  "format": "PNG",
+  "backgrounds": 4,
+  "transparentAssets": 78,
+  "files": [
+    {
+      "file": "01-menu/background.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "01-menu/dish.png",
+      "size": [
+        1356,
+        1160
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 947230,
+      "transparentPercent": 60.22,
+      "visibleBBox": [
+        49,
+        19,
+        1332,
+        1144
+      ]
+    },
+    {
+      "file": "01-menu/banner-right.png",
+      "size": [
+        941,
+        1672
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 880838,
+      "transparentPercent": 55.98,
+      "visibleBBox": [
+        48,
+        1,
+        929,
+        1672
+      ]
+    },
+    {
+      "file": "01-menu/flag-left.png",
+      "size": [
+        1419,
+        1108
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 862489,
+      "transparentPercent": 54.86,
+      "visibleBBox": [
+        205,
+        36,
+        1237,
+        1023
+      ]
+    },
+    {
+      "file": "01-menu/child-body.png",
+      "size": [
+        1374,
+        1145
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 806841,
+      "transparentPercent": 51.29,
+      "visibleBBox": [
+        0,
+        17,
+        1358,
+        1135
+      ]
+    },
+    {
+      "file": "01-menu/child-head.png",
+      "size": [
+        1334,
+        1179
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 873192,
+      "transparentPercent": 55.52,
+      "visibleBBox": [
+        0,
+        53,
+        1264,
+        1141
+      ]
+    },
+    {
+      "file": "01-menu/cat-tail.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1237691,
+      "transparentPercent": 78.69,
+      "visibleBBox": [
+        166,
+        272,
+        1364,
+        781
+      ]
+    },
+    {
+      "file": "01-menu/cat-body.png",
+      "size": [
+        1209,
+        1300
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 977264,
+      "transparentPercent": 62.18,
+      "visibleBBox": [
+        0,
+        21,
+        1157,
+        1300
+      ]
+    },
+    {
+      "file": "shared/decor-discovery.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 117680,
+      "transparentPercent": 87.56,
+      "visibleBBox": [
+        42,
+        19,
+        379,
+        287
+      ]
+    },
+    {
+      "file": "shared/decor-math.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 117383,
+      "transparentPercent": 87.34,
+      "visibleBBox": [
+        43,
+        19,
+        376,
+        287
+      ]
+    },
+    {
+      "file": "shared/decor-stories.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 120056,
+      "transparentPercent": 89.33,
+      "visibleBBox": [
+        42,
+        19,
+        379,
+        287
+      ]
+    },
+    {
+      "file": "shared/logo.png",
+      "size": [
+        1240,
+        516
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 545820,
+      "transparentPercent": 85.31,
+      "visibleBBox": [
+        112,
+        4,
+        1158,
+        433
+      ]
+    },
+    {
+      "file": "shared/label-tagline.png",
+      "size": [
+        1080,
+        48
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 47361,
+      "transparentPercent": 91.36,
+      "visibleBBox": [
+        179,
+        15,
+        890,
+        41
+      ]
+    },
+    {
+      "file": "shared/button-primary-normal.png",
+      "size": [
+        1000,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 25108,
+      "transparentPercent": 11.21,
+      "visibleBBox": [
+        7,
+        11,
+        993,
+        217
+      ]
+    },
+    {
+      "file": "shared/icon-star.png",
+      "size": [
+        112,
+        112
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 10658,
+      "transparentPercent": 84.96,
+      "visibleBBox": [
+        10,
+        10,
+        102,
+        102
+      ]
+    },
+    {
+      "file": "shared/label-start.png",
+      "size": [
+        680,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 53305,
+      "transparentPercent": 81.66,
+      "visibleBBox": [
+        40,
+        27,
+        642,
+        82
+      ]
+    },
+    {
+      "file": "shared/button-secondary-normal.png",
+      "size": [
+        700,
+        160
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 37644,
+      "transparentPercent": 33.61,
+      "visibleBBox": [
+        22,
+        22,
+        678,
+        138
+      ]
+    },
+    {
+      "file": "shared/icon-play.png",
+      "size": [
+        72,
+        72
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 4058,
+      "transparentPercent": 78.28,
+      "visibleBBox": [
+        18,
+        10,
+        60,
+        62
+      ]
+    },
+    {
+      "file": "shared/label-continue.png",
+      "size": [
+        430,
+        92
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 34534,
+      "transparentPercent": 87.3,
+      "visibleBBox": [
+        64,
+        27,
+        369,
+        78
+      ]
+    },
+    {
+      "file": "shared/label-restart.png",
+      "size": [
+        380,
+        80
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 26175,
+      "transparentPercent": 86.1,
+      "visibleBBox": [
+        42,
+        27,
+        338,
+        77
+      ]
+    },
+    {
+      "file": "shared/icon-sound.png",
+      "size": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 7900,
+      "transparentPercent": 38.1,
+      "visibleBBox": [
+        8,
+        8,
+        136,
+        136
+      ]
+    },
+    {
+      "file": "02-map/background.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "02-map/station-flag.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 922448,
+      "transparentPercent": 58.65,
+      "visibleBBox": [
+        0,
+        0,
+        984,
+        1527
+      ]
+    },
+    {
+      "file": "02-map/room-dispatch.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 561357,
+      "transparentPercent": 35.69,
+      "visibleBBox": [
+        0,
+        19,
+        1464,
+        1000
+      ]
+    },
+    {
+      "file": "02-map/room-technical.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 531411,
+      "transparentPercent": 33.79,
+      "visibleBBox": [
+        0,
+        0,
+        1496,
+        1024
+      ]
+    },
+    {
+      "file": "02-map/room-beacon.png",
+      "size": [
+        1492,
+        1054
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 615197,
+      "transparentPercent": 39.12,
+      "visibleBBox": [
+        0,
+        0,
+        1478,
+        1040
+      ]
+    },
+    {
+      "file": "shared/decor-knowledge.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 121987,
+      "transparentPercent": 90.76,
+      "visibleBBox": [
+        61,
+        20,
+        363,
+        287
+      ]
+    },
+    {
+      "file": "shared/decor-more.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 124100,
+      "transparentPercent": 92.34,
+      "visibleBBox": [
+        111,
+        19,
+        310,
+        287
+      ]
+    },
+    {
+      "file": "shared/decor-together.png",
+      "size": [
+        420,
+        320
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 123625,
+      "transparentPercent": 91.98,
+      "visibleBBox": [
+        94,
+        19,
+        328,
+        287
+      ]
+    },
+    {
+      "file": "shared/label-map.png",
+      "size": [
+        700,
+        60
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 38798,
+      "transparentPercent": 92.38,
+      "visibleBBox": [
+        121,
+        18,
+        565,
+        51
+      ]
+    },
+    {
+      "file": "shared/route-left.png",
+      "size": [
+        332,
+        168
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 30560,
+      "transparentPercent": 54.79,
+      "visibleBBox": [
+        0,
+        0,
+        332,
+        152
+      ]
+    },
+    {
+      "file": "shared/route-right.png",
+      "size": [
+        240,
+        116
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 18188,
+      "transparentPercent": 65.33,
+      "visibleBBox": [
+        0,
+        32,
+        240,
+        76
+      ]
+    },
+    {
+      "file": "shared/map-marker.png",
+      "size": [
+        160,
+        200
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 5156,
+      "transparentPercent": 16.11,
+      "visibleBBox": [
+        0,
+        0,
+        160,
+        190
+      ]
+    },
+    {
+      "file": "shared/map-card-active.png",
+      "size": [
+        560,
+        184
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 20496,
+      "transparentPercent": 19.89,
+      "visibleBBox": [
+        14,
+        12,
+        546,
+        170
+      ]
+    },
+    {
+      "file": "shared/label-dispatch.png",
+      "size": [
+        488,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 25977,
+      "transparentPercent": 83.17,
+      "visibleBBox": [
+        59,
+        15,
+        426,
+        55
+      ]
+    },
+    {
+      "file": "shared/label-dispatch-sub.png",
+      "size": [
+        488,
+        56
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 24536,
+      "transparentPercent": 89.78,
+      "visibleBBox": [
+        108,
+        15,
+        379,
+        42
+      ]
+    },
+    {
+      "file": "shared/map-card-locked.png",
+      "size": [
+        560,
+        184
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 20496,
+      "transparentPercent": 19.89,
+      "visibleBBox": [
+        14,
+        12,
+        546,
+        170
+      ]
+    },
+    {
+      "file": "shared/label-technical.png",
+      "size": [
+        528,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 27780,
+      "transparentPercent": 82.21,
+      "visibleBBox": [
+        42,
+        11,
+        487,
+        48
+      ]
+    },
+    {
+      "file": "shared/label-technical-sub.png",
+      "size": [
+        488,
+        56
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 24495,
+      "transparentPercent": 89.63,
+      "visibleBBox": [
+        119,
+        15,
+        371,
+        48
+      ]
+    },
+    {
+      "file": "shared/icon-lock.png",
+      "size": [
+        72,
+        84
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 3810,
+      "transparentPercent": 63.0,
+      "visibleBBox": [
+        14,
+        9,
+        58,
+        78
+      ]
+    },
+    {
+      "file": "shared/label-beacon.png",
+      "size": [
+        488,
+        64
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 27055,
+      "transparentPercent": 86.63,
+      "visibleBBox": [
+        106,
+        15,
+        383,
+        55
+      ]
+    },
+    {
+      "file": "shared/label-beacon-sub.png",
+      "size": [
+        488,
+        56
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 24130,
+      "transparentPercent": 88.3,
+      "visibleBBox": [
+        96,
+        15,
+        391,
+        48
+      ]
+    },
+    {
+      "file": "shared/icon-radio.png",
+      "size": [
+        120,
+        120
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 10250,
+      "transparentPercent": 71.18,
+      "visibleBBox": [
+        4,
+        14,
+        116,
+        114
+      ]
+    },
+    {
+      "file": "shared/label-signal.png",
+      "size": [
+        680,
+        96
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 54816,
+      "transparentPercent": 83.97,
+      "visibleBBox": [
+        60,
+        27,
+        619,
+        71
+      ]
+    },
+    {
+      "file": "shared/monitor-orbits.png",
+      "size": [
+        480,
+        420
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 187425,
+      "transparentPercent": 92.97,
+      "visibleBBox": [
+        66,
+        28,
+        398,
+        373
+      ]
+    },
+    {
+      "file": "03-approach/background.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "03-approach/radar.png",
+      "size": [
+        1347,
+        1167
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 901789,
+      "transparentPercent": 57.37,
+      "visibleBBox": [
+        0,
+        0,
+        1315,
+        1151
+      ]
+    },
+    {
+      "file": "03-approach/ship.png",
+      "size": [
+        1448,
+        1086
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 766290,
+      "transparentPercent": 48.73,
+      "visibleBBox": [
+        0,
+        15,
+        1448,
+        1086
+      ]
+    },
+    {
+      "file": "03-approach/thruster.png",
+      "size": [
+        2137,
+        736
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1178710,
+      "transparentPercent": 74.94,
+      "visibleBBox": [
+        36,
+        55,
+        2094,
+        692
+      ]
+    },
+    {
+      "file": "shared/icon-pause.png",
+      "size": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 7900,
+      "transparentPercent": 38.1,
+      "visibleBBox": [
+        8,
+        8,
+        136,
+        136
+      ]
+    },
+    {
+      "file": "shared/icon-backpack.png",
+      "size": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 7900,
+      "transparentPercent": 38.1,
+      "visibleBBox": [
+        8,
+        8,
+        136,
+        136
+      ]
+    },
+    {
+      "file": "shared/signal-rings.png",
+      "size": [
+        640,
+        640
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        196
+      ],
+      "transparentPixels": 397734,
+      "transparentPercent": 97.1,
+      "visibleBBox": [
+        26,
+        26,
+        614,
+        614
+      ]
+    },
+    {
+      "file": "shared/signal-core.png",
+      "size": [
+        280,
+        280
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 18972,
+      "transparentPercent": 24.2,
+      "visibleBBox": [
+        2,
+        2,
+        278,
+        278
+      ]
+    },
+    {
+      "file": "shared/signal-pointer.png",
+      "size": [
+        680,
+        264
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 177607,
+      "transparentPercent": 98.93,
+      "visibleBBox": [
+        11,
+        13,
+        668,
+        245
+      ]
+    },
+    {
+      "file": "shared/label-touch-signal.png",
+      "size": [
+        512,
+        84
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 37178,
+      "transparentPercent": 86.44,
+      "visibleBBox": [
+        50,
+        26,
+        464,
+        62
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/torso.png",
+      "size": [
+        706,
+        784
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 151540,
+      "transparentPercent": 27.38,
+      "visibleBBox": [
+        0,
+        0,
+        706,
+        784
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/rear-support.png",
+      "size": [
+        528,
+        511
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 90200,
+      "transparentPercent": 33.43,
+      "visibleBBox": [
+        0,
+        0,
+        528,
+        511
+      ]
+    },
+    {
+      "file": "04-dispatch/pik-head.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 528316,
+      "transparentPercent": 33.6,
+      "visibleBBox": [
+        0,
+        15,
+        1222,
+        1254
+      ]
+    },
+    {
+      "file": "04-dispatch/pik-antenna.png",
+      "size": [
+        1104,
+        1425
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1226495,
+      "transparentPercent": 77.96,
+      "visibleBBox": [
+        65,
+        37,
+        1068,
+        1391
+      ]
+    },
+    {
+      "file": "shared/eye-awake.png",
+      "size": [
+        200,
+        200
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 11240,
+      "transparentPercent": 28.1,
+      "visibleBBox": [
+        4,
+        4,
+        196,
+        196
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-near-shoulder.png",
+      "size": [
+        666,
+        770
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 268590,
+      "transparentPercent": 52.38,
+      "visibleBBox": [
+        8,
+        7,
+        658,
+        762
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-near-forearm.png",
+      "size": [
+        833,
+        854
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 481974,
+      "transparentPercent": 67.75,
+      "visibleBBox": [
+        8,
+        8,
+        825,
+        846
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-near-hand.png",
+      "size": [
+        702,
+        445
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 184952,
+      "transparentPercent": 59.21,
+      "visibleBBox": [
+        8,
+        8,
+        694,
+        437
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-far-shoulder.png",
+      "size": [
+        666,
+        715
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 249026,
+      "transparentPercent": 52.3,
+      "visibleBBox": [
+        8,
+        8,
+        658,
+        707
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-far-forearm.png",
+      "size": [
+        1037,
+        818
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 592583,
+      "transparentPercent": 69.86,
+      "visibleBBox": [
+        8,
+        8,
+        1029,
+        810
+      ]
+    },
+    {
+      "file": "04-dispatch/rig/pik-arm-far-hand.png",
+      "size": [
+        555,
+        435
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ],
+      "transparentPixels": 152926,
+      "transparentPercent": 63.34,
+      "visibleBBox": [
+        8,
+        8,
+        547,
+        427
+      ]
+    },
+    {
+      "file": "04-dispatch/background.png",
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "file": "04-dispatch/charge-dock.png",
+      "size": [
+        1314,
+        1197
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 665892,
+      "transparentPercent": 42.34,
+      "visibleBBox": [
+        43,
+        0,
+        1250,
+        1197
+      ]
+    },
+    {
+      "file": "shared/dock-charged.png",
+      "size": [
+        400,
+        200
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 38336,
+      "transparentPercent": 47.92,
+      "visibleBBox": [
+        15,
+        28,
+        385,
+        172
+      ]
+    },
+    {
+      "file": "shared/digit-1.png",
+      "size": [
+        64,
+        76
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 4289,
+      "transparentPercent": 88.18,
+      "visibleBBox": [
+        19,
+        16,
+        40,
+        62
+      ]
+    },
+    {
+      "file": "shared/digit-2.png",
+      "size": [
+        64,
+        76
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 3967,
+      "transparentPercent": 81.56,
+      "visibleBBox": [
+        16,
+        16,
+        47,
+        62
+      ]
+    },
+    {
+      "file": "shared/digit-3.png",
+      "size": [
+        64,
+        76
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 4014,
+      "transparentPercent": 82.52,
+      "visibleBBox": [
+        16,
+        16,
+        47,
+        63
+      ]
+    },
+    {
+      "file": "shared/floor-glow.png",
+      "size": [
+        480,
+        220
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        122
+      ],
+      "transparentPixels": 27476,
+      "transparentPercent": 26.02,
+      "visibleBBox": [
+        4,
+        5,
+        476,
+        215
+      ]
+    },
+    {
+      "file": "04-dispatch/energy-capsule.png",
+      "size": [
+        1498,
+        1050
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 1085867,
+      "transparentPercent": 69.04,
+      "visibleBBox": [
+        176,
+        272,
+        1331,
+        769
+      ]
+    },
+    {
+      "file": "shared/monitor-status.png",
+      "size": [
+        512,
+        400
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        204
+      ],
+      "transparentPixels": 194430,
+      "transparentPercent": 94.94,
+      "visibleBBox": [
+        16,
+        31,
+        458,
+        329
+      ]
+    },
+    {
+      "file": "shared/button-primary-hover.png",
+      "size": [
+        1000,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 20044,
+      "transparentPercent": 8.95,
+      "visibleBBox": [
+        5,
+        9,
+        995,
+        219
+      ]
+    },
+    {
+      "file": "shared/button-primary-pressed.png",
+      "size": [
+        1000,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 25108,
+      "transparentPercent": 11.21,
+      "visibleBBox": [
+        7,
+        11,
+        993,
+        217
+      ]
+    },
+    {
+      "file": "shared/button-primary-disabled.png",
+      "size": [
+        1000,
+        224
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 25108,
+      "transparentPercent": 11.21,
+      "visibleBBox": [
+        7,
+        11,
+        993,
+        217
+      ]
+    },
+    {
+      "file": "shared/button-secondary-hover.png",
+      "size": [
+        700,
+        160
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 37644,
+      "transparentPercent": 33.61,
+      "visibleBBox": [
+        22,
+        22,
+        678,
+        138
+      ]
+    },
+    {
+      "file": "shared/button-secondary-pressed.png",
+      "size": [
+        700,
+        160
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 37644,
+      "transparentPercent": 33.61,
+      "visibleBBox": [
+        22,
+        22,
+        678,
+        138
+      ]
+    },
+    {
+      "file": "shared/icon-muted.png",
+      "size": [
+        144,
+        144
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "transparentPixels": 7900,
+      "transparentPercent": 38.1,
+      "visibleBBox": [
+        8,
+        8,
+        136,
+        136
+      ]
+    },
+    {
+      "file": "shared/eye-dim.png",
+      "size": [
+        200,
+        200
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        197
+      ],
+      "transparentPixels": 20440,
+      "transparentPercent": 51.1,
+      "visibleBBox": [
+        21,
+        21,
+        179,
+        179
+      ]
+    }
+  ]
+}

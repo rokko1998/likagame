@@ -1,0 +1,38 @@
+{
+  "pass": true,
+  "errors": [],
+  "checks": [
+    {
+      "scene": 1,
+      "loaded": true,
+      "originalComparison": true
+    },
+    {
+      "scene": 2,
+      "loaded": true,
+      "originalComparison": true
+    },
+    {
+      "scene": 3,
+      "loaded": true,
+      "originalComparison": true
+    },
+    {
+      "scene": 4,
+      "loaded": true,
+      "originalComparison": true
+    },
+    {
+      "puppetBendAndHead": true
+    },
+    {
+      "chargedState": true
+    },
+    {
+      "layerIsolationAndBackdrop": true
+    },
+    {
+      "animation": true
+    }
+  ]
+}

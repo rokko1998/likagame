@@ -1,0 +1,65 @@
+{
+  "ship.png": {
+    "mode": "RGBA",
+    "size": [
+      1448,
+      1086
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 766290,
+    "partialPixels": 805590,
+    "visibleBounds": [
+      33,
+      23,
+      1444,
+      1026
+    ],
+    "verifiedOn": [
+      "#101b32",
+      "#f5f1e8"
+    ]
+  },
+  "radar.png": {
+    "mode": "RGBA",
+    "size": [
+      1347,
+      1167
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 901789,
+    "partialPixels": 669157,
+    "visibleBounds": [
+      192,
+      8,
+      1269,
+      1140
+    ],
+    "verifiedOn": [
+      "#101b32",
+      "#f5f1e8"
+    ]
+  },
+  "thruster.png": {
+    "mode": "RGBA",
+    "size": [
+      2137,
+      736
+    ],
+    "alphaMin": 0,
+    "alphaMax": 255,
+    "transparentPixels": 1178710,
+    "partialPixels": 333030,
+    "visibleBounds": [
+      217,
+      110,
+      2054,
+      610
+    ],
+    "verifiedOn": [
+      "#101b32",
+      "#f5f1e8"
+    ]
+  }
+}

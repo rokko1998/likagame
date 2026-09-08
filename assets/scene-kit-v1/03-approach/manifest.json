@@ -1,0 +1,246 @@
+{
+  "id": "03-approach",
+  "title": "Подлёт к сигналу",
+  "reference": "../../../шаблоны сцен/Codex Image Sep 7, 2026, 07_50_27 PM.png",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "status": "ready",
+  "layers": [
+    {
+      "id": "background",
+      "file": "background.png",
+      "label": "Цельный фон: станция и окружение",
+      "kind": "background",
+      "x": 0,
+      "y": 0,
+      "width": 1672,
+      "height": 941,
+      "z": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "notes": "Статичная станция, облака, небо, луна и острова в одном фоне. Без корабля, радара, пламени, сигнала и UI."
+    },
+    {
+      "id": "radar",
+      "file": "radar.png",
+      "label": "Радар",
+      "kind": "sprite",
+      "x": 1176,
+      "y": 106,
+      "width": 190,
+      "height": 164.61,
+      "z": 10,
+      "pivot": [
+        0.416,
+        0.963
+      ],
+      "motion": "sway",
+      "notes": "Основание в [1255.04,264.52]. Допустимо качание в плоскости ±3°. Для 3D-разворота нужны дополнительные ракурсы."
+    },
+    {
+      "id": "ship",
+      "file": "ship.png",
+      "label": "Корпус корабля",
+      "kind": "sprite",
+      "x": 106,
+      "y": 459,
+      "width": 430,
+      "height": 322.5,
+      "z": 30,
+      "pivot": [
+        0.55,
+        0.55
+      ],
+      "motion": "float",
+      "rig": "ship-rig",
+      "notes": "Два сопла входят в корпус, пламя отдельно. Двигать корабль и оба пламени одним rig. Исходный alpha PNG сохранён без изменений."
+    },
+    {
+      "id": "thruster-upper",
+      "file": "thruster.png",
+      "label": "Пламя верхнего двигателя",
+      "kind": "sprite",
+      "x": -65.74,
+      "y": 593.0,
+      "width": 230,
+      "height": 79.21,
+      "z": 31,
+      "pivot": [
+        0.931,
+        0.2323
+      ],
+      "motion": "thruster",
+      "rig": "ship-rig",
+      "notes": "Экземпляр одного мастер-ассета. Источник пламени у [148.39,611.40]. Масштабировать вдоль оси от сопла, не по центру."
+    },
+    {
+      "id": "thruster-lower",
+      "file": "thruster.png",
+      "label": "Пламя нижнего двигателя",
+      "kind": "sprite",
+      "x": -5.66,
+      "y": 632.08,
+      "width": 290,
+      "height": 99.88,
+      "z": 31,
+      "pivot": [
+        0.931,
+        0.2323
+      ],
+      "motion": "thruster",
+      "rig": "ship-rig",
+      "notes": "Второй экземпляр thruster.png. Источник у [264.33,655.28]. Общая трансформация с ship; индивидуальный пульс длины ±8%."
+    },
+    {
+      "id": "ui-icon-pause",
+      "file": "../shared/icon-pause.png",
+      "label": "icon-pause",
+      "kind": "ui",
+      "x": 19,
+      "y": 18,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-backpack",
+      "file": "../shared/icon-backpack.png",
+      "label": "icon-backpack",
+      "kind": "ui",
+      "x": 1579,
+      "y": 18,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-signal-rings",
+      "file": "../shared/signal-rings.png",
+      "label": "signal-rings",
+      "kind": "ui",
+      "x": 1030,
+      "y": 288,
+      "width": 320,
+      "height": 320,
+      "z": 80,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "signal",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-signal-core",
+      "file": "../shared/signal-core.png",
+      "label": "signal-core",
+      "kind": "ui",
+      "x": 1120,
+      "y": 378,
+      "width": 140,
+      "height": 140,
+      "z": 81,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-signal-pointer",
+      "file": "../shared/signal-pointer.png",
+      "label": "signal-pointer",
+      "kind": "ui",
+      "x": 1184,
+      "y": 442,
+      "width": 340,
+      "height": 132,
+      "z": 82,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-touch-signal",
+      "file": "../shared/label-touch-signal.png",
+      "label": "label-touch-signal",
+      "kind": "ui",
+      "x": 1288,
+      "y": 521,
+      "width": 256,
+      "height": 42,
+      "z": 83,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    }
+  ],
+  "rigs": {
+    "ship-rig": {
+      "parent": null,
+      "members": [
+        "ship",
+        "thruster-upper",
+        "thruster-lower"
+      ],
+      "pivot": [
+        342.5,
+        636.38
+      ],
+      "coordinateSpace": "canvas",
+      "translationAmplitude": [
+        4,
+        5
+      ],
+      "rotationDegrees": 1
+    }
+  },
+  "uiAnchors": {
+    "signalCenter": [
+      1190,
+      448
+    ],
+    "pauseCenter": [
+      55,
+      55
+    ],
+    "backpackCenter": [
+      1615,
+      55
+    ],
+    "signalLabelAnchor": [
+      1295,
+      541
+    ]
+  },
+  "limitations": [
+    "Скрытые части объектов восстановлены генератором, поэтому набор не является побитовым вырезанием исходного превью.",
+    "Пламя восстановлено из RGB-генерации локальной цветовой маской; нейтрально-белое ядро реконструировано внутри видимого огня.",
+    "Сигнал, UI и пульсирующие огни станции подключаются общими слоями набора."
+  ],
+  "renderNotes": "x/y/width/height describe the full PNG rectangle in 1672×941 scene coordinates. pivot is normalized to the PNG. rotation is clockwise degrees. All renderable images are PNG. UI files are separately reusable."
+}

@@ -1,0 +1,12 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Маяк-7 · Ассеты первых четырёх сцен</title>
+<link rel="stylesheet" href="viewer.css">
+<body><header><div class="brand"><span>✦</span><div><b>Маяк-7</b><small>Мастерская сцен · PNG / alpha</small></div></div><nav id="scenes"></nav><a href="../README.md">Документация ↗</a></header>
+<main><section class="workspace"><div class="toolbar"><div><h1 id="title"></h1><p id="subtitle"></p></div><div class="actions"><button id="original">Сравнить с превью</button><button id="download">Сохранить сборку PNG ↓</button></div></div>
+<div class="stage-wrap"><canvas id="stage" width="1672" height="941"></canvas><div id="loading">Загрузка PNG…</div></div>
+<div class="controls"><label><input id="animate" type="checkbox"> Движение</label><label><input id="joints" type="checkbox"> Точки крепления</label><label><input id="only" type="checkbox"> Только выбранный слой</label><label class="backdrop">Подложка <select id="backdrop"><option value="scene">Сцена</option><option value="dark">Тёмная</option><option value="light">Светлая</option><option value="checker">Шахматка проверки alpha</option></select></label></div>
+<div id="pose" hidden><strong>Риг Пика</strong><label>Сгиб рук <input id="bend" type="range" min="-1" max="1" step=".01" value="0"></label><label>Наклон головы <input id="head" type="range" min="-12" max="15" step="1" value="0"></label><label><input id="charged" type="checkbox"> Ячейки заряжены</label><button id="reset-pose">Исходная поза</button></div>
+<div class="caption"><span id="status"></span><span>1672 × 941 · один фон + независимые слои</span></div>
+<section class="assets-section"><div class="section-line"><h2>PNG текущей сцены</h2><span id="asset-count"></span></div><div id="assets"></div></section></section>
+<aside><div class="section-line"><h2>Слои</h2><button id="show-all">Показать все</button></div><p class="muted">Сверху — ближе к зрителю. Нажмите название, чтобы рассмотреть PNG.</p><div id="layers"></div><div class="inspector"><div id="asset-preview"></div><h3 id="selected-title">Выберите слой</h3><p id="selected-notes" class="muted">Выключайте слои и проверяйте их на разных подложках.</p><a id="selected-link" hidden download>Открыть PNG ↗</a></div></aside></main>
+<script src="scene-data.js"></script><script src="viewer.js"></script></body></html>

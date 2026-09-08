@@ -1,0 +1,27 @@
+{
+  "method": "outer-connected neutral backdrop + seeded holes + edge color extension",
+  "floor": 210,
+  "chroma": 32,
+  "feather": 0.5,
+  "seeds": [],
+  "protectedRects": [],
+  "minComponentArea": 64,
+  "removedDustPixels": 6,
+  "removedPercent": 69.42,
+  "visibleBBox": [
+    176,
+    272,
+    1331,
+    769
+  ],
+  "source": "assets/scene-kit-v1/04-dispatch/_source/energy-capsule.png",
+  "output": "assets/scene-kit-v1/04-dispatch/energy-capsule.png",
+  "size": [
+    1498,
+    1050
+  ],
+  "alphaRange": [
+    0,
+    255
+  ]
+}

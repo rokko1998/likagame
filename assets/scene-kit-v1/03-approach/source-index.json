@@ -1,0 +1,37 @@
+{
+  "background": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-62b5911c-0669-4152-b4b4-b87245b25c26.png",
+    "retry": null
+  },
+  "station": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-4e89346a-e219-4df2-affb-2dcc6f7548ef.png",
+    "retry": null
+  },
+  "ship": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-d7b3956a-b9d5-4a14-88c9-c1fbc577224a.png",
+    "retry": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-55ec6066-808e-4d79-956a-a7e85de0081a.png",
+    "successfulAlphaEdit": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-9ef4a8d5-22e0-4406-9ea1-1e5de9a84748.png",
+    "acceptedFile": "ship.png"
+  },
+  "radar": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-aaead67b-bb6e-4985-ba46-67291fc4d096.png",
+    "retry": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-ee7f22be-2397-420f-93d7-89e30ab8c4d6.png",
+    "successfulAlphaEdit": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-78fd6fda-4ea0-4ea5-b03e-de52be4713e1.png",
+    "acceptedFile": "radar.png"
+  },
+  "clouds": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-e7c88584-1d9c-4f19-860c-e95c2b3eef7b.png",
+    "retry": null
+  },
+  "thruster": {
+    "initial": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-041265ef-41dc-4ef7-a570-08c98d1c46b1.png",
+    "retry": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-7b568153-2d72-4504-87db-e614ba5991b6.png",
+    "acceptedFile": "thruster.png",
+    "localProcessing": "finalize_assets.py"
+  },
+  "final-background": {
+    "initial": null,
+    "retry": "/Users/sheva/.codex/generated_images/01a07db3-10d4-72f0-a907-2ad8f3fb5fb8/exec-37d65d9f-cb30-4f3d-bd35-71fbf4d44e58.png",
+    "acceptedFile": "background.png"
+  }
+}

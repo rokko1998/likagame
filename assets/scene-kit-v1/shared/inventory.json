@@ -1,0 +1,629 @@
+{
+  "mode": "native SVG → PNG with Chrome; editable sources included",
+  "assets": [
+    {
+      "id": "button-primary-normal",
+      "file": "button-primary-normal.png",
+      "width": 1000,
+      "height": 224,
+      "logicalSize": [
+        500,
+        112
+      ],
+      "kind": "ui",
+      "source": "source/button-primary-normal.svg"
+    },
+    {
+      "id": "button-primary-hover",
+      "file": "button-primary-hover.png",
+      "width": 1000,
+      "height": 224,
+      "logicalSize": [
+        500,
+        112
+      ],
+      "kind": "ui",
+      "source": "source/button-primary-hover.svg"
+    },
+    {
+      "id": "button-primary-pressed",
+      "file": "button-primary-pressed.png",
+      "width": 1000,
+      "height": 224,
+      "logicalSize": [
+        500,
+        112
+      ],
+      "kind": "ui",
+      "source": "source/button-primary-pressed.svg"
+    },
+    {
+      "id": "button-primary-disabled",
+      "file": "button-primary-disabled.png",
+      "width": 1000,
+      "height": 224,
+      "logicalSize": [
+        500,
+        112
+      ],
+      "kind": "ui",
+      "source": "source/button-primary-disabled.svg"
+    },
+    {
+      "id": "button-secondary-normal",
+      "file": "button-secondary-normal.png",
+      "width": 700,
+      "height": 160,
+      "logicalSize": [
+        350,
+        80
+      ],
+      "kind": "ui",
+      "source": "source/button-secondary-normal.svg"
+    },
+    {
+      "id": "button-secondary-hover",
+      "file": "button-secondary-hover.png",
+      "width": 700,
+      "height": 160,
+      "logicalSize": [
+        350,
+        80
+      ],
+      "kind": "ui",
+      "source": "source/button-secondary-hover.svg"
+    },
+    {
+      "id": "button-secondary-pressed",
+      "file": "button-secondary-pressed.png",
+      "width": 700,
+      "height": 160,
+      "logicalSize": [
+        350,
+        80
+      ],
+      "kind": "ui",
+      "source": "source/button-secondary-pressed.svg"
+    },
+    {
+      "id": "icon-pause",
+      "file": "icon-pause.png",
+      "width": 144,
+      "height": 144,
+      "logicalSize": [
+        72,
+        72
+      ],
+      "kind": "ui",
+      "source": "source/icon-pause.svg"
+    },
+    {
+      "id": "icon-sound",
+      "file": "icon-sound.png",
+      "width": 144,
+      "height": 144,
+      "logicalSize": [
+        72,
+        72
+      ],
+      "kind": "ui",
+      "source": "source/icon-sound.svg"
+    },
+    {
+      "id": "icon-muted",
+      "file": "icon-muted.png",
+      "width": 144,
+      "height": 144,
+      "logicalSize": [
+        72,
+        72
+      ],
+      "kind": "ui",
+      "source": "source/icon-muted.svg"
+    },
+    {
+      "id": "icon-backpack",
+      "file": "icon-backpack.png",
+      "width": 144,
+      "height": 144,
+      "logicalSize": [
+        72,
+        72
+      ],
+      "kind": "ui",
+      "source": "source/icon-backpack.svg"
+    },
+    {
+      "id": "icon-star",
+      "file": "icon-star.png",
+      "width": 112,
+      "height": 112,
+      "logicalSize": [
+        56,
+        56
+      ],
+      "kind": "ui",
+      "source": "source/icon-star.svg"
+    },
+    {
+      "id": "icon-play",
+      "file": "icon-play.png",
+      "width": 72,
+      "height": 72,
+      "logicalSize": [
+        36,
+        36
+      ],
+      "kind": "ui",
+      "source": "source/icon-play.svg"
+    },
+    {
+      "id": "icon-radio",
+      "file": "icon-radio.png",
+      "width": 120,
+      "height": 120,
+      "logicalSize": [
+        60,
+        60
+      ],
+      "kind": "ui",
+      "source": "source/icon-radio.svg"
+    },
+    {
+      "id": "icon-lock",
+      "file": "icon-lock.png",
+      "width": 72,
+      "height": 84,
+      "logicalSize": [
+        36,
+        42
+      ],
+      "kind": "ui",
+      "source": "source/icon-lock.svg"
+    },
+    {
+      "id": "map-marker",
+      "file": "map-marker.png",
+      "width": 160,
+      "height": 200,
+      "logicalSize": [
+        80,
+        100
+      ],
+      "kind": "ui",
+      "source": "source/map-marker.svg"
+    },
+    {
+      "id": "map-card-active",
+      "file": "map-card-active.png",
+      "width": 560,
+      "height": 184,
+      "logicalSize": [
+        280,
+        92
+      ],
+      "kind": "ui",
+      "source": "source/map-card-active.svg"
+    },
+    {
+      "id": "map-card-locked",
+      "file": "map-card-locked.png",
+      "width": 560,
+      "height": 184,
+      "logicalSize": [
+        280,
+        92
+      ],
+      "kind": "ui",
+      "source": "source/map-card-locked.svg"
+    },
+    {
+      "id": "logo",
+      "file": "logo.png",
+      "width": 1240,
+      "height": 516,
+      "logicalSize": [
+        620,
+        258
+      ],
+      "kind": "ui",
+      "source": "source/logo.svg"
+    },
+    {
+      "id": "label-start",
+      "file": "label-start.png",
+      "width": 680,
+      "height": 96,
+      "logicalSize": [
+        340,
+        48
+      ],
+      "kind": "ui",
+      "source": "source/label-start.svg"
+    },
+    {
+      "id": "label-continue",
+      "file": "label-continue.png",
+      "width": 430,
+      "height": 92,
+      "logicalSize": [
+        215,
+        46
+      ],
+      "kind": "ui",
+      "source": "source/label-continue.svg"
+    },
+    {
+      "id": "label-restart",
+      "file": "label-restart.png",
+      "width": 380,
+      "height": 80,
+      "logicalSize": [
+        190,
+        40
+      ],
+      "kind": "ui",
+      "source": "source/label-restart.svg"
+    },
+    {
+      "id": "label-signal",
+      "file": "label-signal.png",
+      "width": 680,
+      "height": 96,
+      "logicalSize": [
+        340,
+        48
+      ],
+      "kind": "ui",
+      "source": "source/label-signal.svg"
+    },
+    {
+      "id": "label-touch-signal",
+      "file": "label-touch-signal.png",
+      "width": 512,
+      "height": 84,
+      "logicalSize": [
+        256,
+        42
+      ],
+      "kind": "ui",
+      "source": "source/label-touch-signal.svg"
+    },
+    {
+      "id": "label-tagline",
+      "file": "label-tagline.png",
+      "width": 1080,
+      "height": 48,
+      "logicalSize": [
+        540,
+        24
+      ],
+      "kind": "ui",
+      "source": "source/label-tagline.svg"
+    },
+    {
+      "id": "label-map",
+      "file": "label-map.png",
+      "width": 700,
+      "height": 60,
+      "logicalSize": [
+        350,
+        30
+      ],
+      "kind": "ui",
+      "source": "source/label-map.svg"
+    },
+    {
+      "id": "label-dispatch",
+      "file": "label-dispatch.png",
+      "width": 488,
+      "height": 64,
+      "logicalSize": [
+        244,
+        32
+      ],
+      "kind": "ui",
+      "source": "source/label-dispatch.svg"
+    },
+    {
+      "id": "label-technical",
+      "file": "label-technical.png",
+      "width": 528,
+      "height": 64,
+      "logicalSize": [
+        264,
+        32
+      ],
+      "kind": "ui",
+      "source": "source/label-technical.svg"
+    },
+    {
+      "id": "label-beacon",
+      "file": "label-beacon.png",
+      "width": 488,
+      "height": 64,
+      "logicalSize": [
+        244,
+        32
+      ],
+      "kind": "ui",
+      "source": "source/label-beacon.svg"
+    },
+    {
+      "id": "label-dispatch-sub",
+      "file": "label-dispatch-sub.png",
+      "width": 488,
+      "height": 56,
+      "logicalSize": [
+        244,
+        28
+      ],
+      "kind": "ui",
+      "source": "source/label-dispatch-sub.svg"
+    },
+    {
+      "id": "label-technical-sub",
+      "file": "label-technical-sub.png",
+      "width": 488,
+      "height": 56,
+      "logicalSize": [
+        244,
+        28
+      ],
+      "kind": "ui",
+      "source": "source/label-technical-sub.svg"
+    },
+    {
+      "id": "label-beacon-sub",
+      "file": "label-beacon-sub.png",
+      "width": 488,
+      "height": 56,
+      "logicalSize": [
+        244,
+        28
+      ],
+      "kind": "ui",
+      "source": "source/label-beacon-sub.svg"
+    },
+    {
+      "id": "decor-discovery",
+      "file": "decor-discovery.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-discovery.svg"
+    },
+    {
+      "id": "decor-math",
+      "file": "decor-math.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-math.svg"
+    },
+    {
+      "id": "decor-stories",
+      "file": "decor-stories.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-stories.svg"
+    },
+    {
+      "id": "decor-knowledge",
+      "file": "decor-knowledge.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-knowledge.svg"
+    },
+    {
+      "id": "decor-more",
+      "file": "decor-more.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-more.svg"
+    },
+    {
+      "id": "decor-together",
+      "file": "decor-together.png",
+      "width": 420,
+      "height": 320,
+      "logicalSize": [
+        210,
+        160
+      ],
+      "kind": "ui",
+      "source": "source/decor-together.svg"
+    },
+    {
+      "id": "digit-1",
+      "file": "digit-1.png",
+      "width": 64,
+      "height": 76,
+      "logicalSize": [
+        32,
+        38
+      ],
+      "kind": "ui",
+      "source": "source/digit-1.svg"
+    },
+    {
+      "id": "digit-2",
+      "file": "digit-2.png",
+      "width": 64,
+      "height": 76,
+      "logicalSize": [
+        32,
+        38
+      ],
+      "kind": "ui",
+      "source": "source/digit-2.svg"
+    },
+    {
+      "id": "digit-3",
+      "file": "digit-3.png",
+      "width": 64,
+      "height": 76,
+      "logicalSize": [
+        32,
+        38
+      ],
+      "kind": "ui",
+      "source": "source/digit-3.svg"
+    },
+    {
+      "id": "signal-core",
+      "file": "signal-core.png",
+      "width": 280,
+      "height": 280,
+      "logicalSize": [
+        140,
+        140
+      ],
+      "kind": "ui",
+      "source": "source/signal-core.svg"
+    },
+    {
+      "id": "signal-rings",
+      "file": "signal-rings.png",
+      "width": 640,
+      "height": 640,
+      "logicalSize": [
+        320,
+        320
+      ],
+      "kind": "ui",
+      "source": "source/signal-rings.svg"
+    },
+    {
+      "id": "signal-pointer",
+      "file": "signal-pointer.png",
+      "width": 680,
+      "height": 264,
+      "logicalSize": [
+        340,
+        132
+      ],
+      "kind": "ui",
+      "source": "source/signal-pointer.svg"
+    },
+    {
+      "id": "route-left",
+      "file": "route-left.png",
+      "width": 332,
+      "height": 168,
+      "logicalSize": [
+        166,
+        84
+      ],
+      "kind": "ui",
+      "source": "source/route-left.svg"
+    },
+    {
+      "id": "route-right",
+      "file": "route-right.png",
+      "width": 240,
+      "height": 116,
+      "logicalSize": [
+        120,
+        58
+      ],
+      "kind": "ui",
+      "source": "source/route-right.svg"
+    },
+    {
+      "id": "eye-awake",
+      "file": "eye-awake.png",
+      "width": 200,
+      "height": 200,
+      "logicalSize": [
+        100,
+        100
+      ],
+      "kind": "ui",
+      "source": "source/eye-awake.svg"
+    },
+    {
+      "id": "eye-dim",
+      "file": "eye-dim.png",
+      "width": 200,
+      "height": 200,
+      "logicalSize": [
+        100,
+        100
+      ],
+      "kind": "ui",
+      "source": "source/eye-dim.svg"
+    },
+    {
+      "id": "floor-glow",
+      "file": "floor-glow.png",
+      "width": 480,
+      "height": 220,
+      "logicalSize": [
+        240,
+        110
+      ],
+      "kind": "ui",
+      "source": "source/floor-glow.svg"
+    },
+    {
+      "id": "dock-charged",
+      "file": "dock-charged.png",
+      "width": 400,
+      "height": 200,
+      "logicalSize": [
+        200,
+        100
+      ],
+      "kind": "ui",
+      "source": "source/dock-charged.svg"
+    },
+    {
+      "id": "monitor-status",
+      "file": "monitor-status.png",
+      "width": 512,
+      "height": 400,
+      "logicalSize": [
+        256,
+        200
+      ],
+      "kind": "ui",
+      "source": "source/monitor-status.svg"
+    },
+    {
+      "id": "monitor-orbits",
+      "file": "monitor-orbits.png",
+      "width": 480,
+      "height": 420,
+      "logicalSize": [
+        240,
+        210
+      ],
+      "kind": "ui",
+      "source": "source/monitor-orbits.svg"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "background-station": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-fca42c63-8d26-49df-97f9-ff50ca2a92b6.png",
+    "builtIn": true
+  },
+  "room-dispatch": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-a2338e70-6062-4faa-876c-8fcaee32add7.png",
+    "builtIn": true
+  },
+  "room-technical": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-3a001ff4-dc18-4557-9b52-da4810428baf.png",
+    "builtIn": true
+  },
+  "room-beacon": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-2a0c9ec4-bbf7-45e4-8b00-a5ae0834daa9.png",
+    "builtIn": true
+  },
+  "foreground-left": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-a169e2b2-ad5d-4a20-bdc5-2ea35d098c8e.png",
+    "builtIn": true
+  },
+  "foreground-right": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-7390a537-c0a1-4abc-8be1-80a72b34618b.png",
+    "builtIn": true
+  },
+  "station-flag": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-9d988e38-5684-4988-ac3f-0018ae643ef4.png",
+    "builtIn": true
+  },
+  "background-consolidated": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-6763343b-6333-4875-a3b5-ec43d604906f.png",
+    "builtIn": true
+  },
+  "room-dispatch-alpha": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-7cfb4772-172f-4b5c-87dd-57937478811f.png",
+    "builtIn": true,
+    "status": "selected"
+  },
+  "room-technical-alpha": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-8a25d16c-2a70-48f9-994a-7cccd636cf1f.png",
+    "builtIn": true,
+    "status": "rejected-rgb-baked-checkerboard"
+  },
+  "room-technical-alpha2": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-dca24c57-8a43-419d-9d20-b4522d9f1757.png",
+    "builtIn": true,
+    "status": "rejected-rgb-baked-checkerboard"
+  },
+  "room-technical-alpha3": {
+    "path": "/Users/sheva/.codex/generated_images/01a07db2-bead-7c92-bff4-3b51014e7bc7/exec-4e05f19c-276b-40e2-aeb6-824a8382be82.png",
+    "builtIn": true,
+    "status": "selected"
+  },
+  "finalFiles": {
+    "background.png": "background-consolidated",
+    "room-dispatch.png": "room-dispatch-alpha",
+    "room-technical.png": "room-technical-alpha3",
+    "room-beacon.png": "room-beacon",
+    "station-flag.png": "station-flag"
+  }
+}

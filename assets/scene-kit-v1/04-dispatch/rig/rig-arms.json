@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "coordinateSystem": "source pixels; +x right, +y down",
+  "sourceCanvas": [
+    1536,
+    1024
+  ],
+  "parts": [
+    {
+      "id": "pik-arm-near-shoulder",
+      "file": "pik-arm-near-shoulder.png",
+      "parent": "pik-body",
+      "pivotSource": [
+        1235,
+        290
+      ],
+      "pivotLocal": [
+        409,
+        290
+      ],
+      "sourceCrop": [
+        826,
+        0,
+        666,
+        770
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-near.png",
+      "rotationLimits": [
+        -30,
+        30
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 0,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    },
+    {
+      "id": "pik-arm-near-forearm",
+      "file": "pik-arm-near-forearm.png",
+      "parent": "pik-arm-near-shoulder",
+      "pivotSource": [
+        1030,
+        450
+      ],
+      "pivotLocal": [
+        533,
+        296
+      ],
+      "sourceCrop": [
+        497,
+        154,
+        833,
+        854
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-near.png",
+      "rotationLimits": [
+        -20,
+        20
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 1,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    },
+    {
+      "id": "pik-arm-near-hand",
+      "file": "pik-arm-near-hand.png",
+      "parent": "pik-arm-near-forearm",
+      "pivotSource": [
+        600,
+        720
+      ],
+      "pivotLocal": [
+        551,
+        151
+      ],
+      "sourceCrop": [
+        49,
+        569,
+        702,
+        445
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-near.png",
+      "rotationLimits": [
+        -20,
+        20
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 2,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    },
+    {
+      "id": "pik-arm-far-shoulder",
+      "file": "pik-arm-far-shoulder.png",
+      "parent": "pik-body",
+      "pivotSource": [
+        1190,
+        270
+      ],
+      "pivotLocal": [
+        324,
+        257
+      ],
+      "sourceCrop": [
+        866,
+        13,
+        666,
+        715
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-far.png",
+      "rotationLimits": [
+        -30,
+        30
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 0,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    },
+    {
+      "id": "pik-arm-far-forearm",
+      "file": "pik-arm-far-forearm.png",
+      "parent": "pik-arm-far-shoulder",
+      "pivotSource": [
+        1048,
+        420
+      ],
+      "pivotLocal": [
+        699,
+        230
+      ],
+      "sourceCrop": [
+        349,
+        190,
+        1037,
+        818
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-far.png",
+      "rotationLimits": [
+        -20,
+        20
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 1,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    },
+    {
+      "id": "pik-arm-far-hand",
+      "file": "pik-arm-far-hand.png",
+      "parent": "pik-arm-far-forearm",
+      "pivotSource": [
+        470,
+        780
+      ],
+      "pivotLocal": [
+        411,
+        215
+      ],
+      "sourceCrop": [
+        59,
+        565,
+        555,
+        435
+      ],
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "source": "../pik-arm-far.png",
+      "rotationLimits": [
+        -20,
+        20
+      ],
+      "rotationUnit": "degreesClockwise",
+      "z": 2,
+      "overlapPixels": 112,
+      "initialRotation": 0
+    }
+  ],
+  "arms": [
+    {
+      "id": "pik-arm-near",
+      "source": "../pik-arm-near.png",
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "parts": [
+        "pik-arm-near-shoulder",
+        "pik-arm-near-forearm",
+        "pik-arm-near-hand"
+      ],
+      "rootPivotSource": [
+        1235,
+        290
+      ],
+      "neutralAssembly": "Place each crop at sourceCrop.xy; source-over in ascending z.",
+      "poseComposition": "parentMatrix @ rotateAround(pivotSource, angle); do not rotate each part independently in world space."
+    },
+    {
+      "id": "pik-arm-far",
+      "source": "../pik-arm-far.png",
+      "sourceCanvas": [
+        1536,
+        1024
+      ],
+      "parts": [
+        "pik-arm-far-shoulder",
+        "pik-arm-far-forearm",
+        "pik-arm-far-hand"
+      ],
+      "rootPivotSource": [
+        1190,
+        270
+      ],
+      "neutralAssembly": "Place each crop at sourceCrop.xy; source-over in ascending z.",
+      "poseComposition": "parentMatrix @ rotateAround(pivotSource, angle); do not rotate each part independently in world space."
+    }
+  ],
+  "alphaMethod": "Complementary source-over masks with 112 px smooth overlap. Original RGB remains unchanged; alpha split is reversible in the neutral pose.",
+  "limits": "Cutout 2D rig from the supplied pose; moderate motion within the listed limits. Hidden rear surfaces are not fabricated.",
+  "verification": "qa-report.json and qa-near-poses.png / qa-far-poses.png"
+}

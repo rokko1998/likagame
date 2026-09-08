@@ -1,0 +1,103 @@
+{
+  "method": "Pillow read-only inspection; no pixel modification",
+  "files": [
+    {
+      "file": "background.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB"
+    },
+    {
+      "file": "room-dispatch.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 561357,
+      "nearOpaquePixels": 983735,
+      "partialPixelsBelow250": 27772,
+      "opaqueSilhouetteBounds": [
+        76,
+        33,
+        1425,
+        961
+      ],
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "room-technical.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 531411,
+      "nearOpaquePixels": 1013873,
+      "partialPixelsBelow250": 27580,
+      "opaqueSilhouetteBounds": [
+        116,
+        8,
+        1415,
+        951
+      ],
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "room-beacon.png",
+      "width": 1492,
+      "height": 1054,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 615197,
+      "nearOpaquePixels": 929257,
+      "partialPixelsBelow250": 28114,
+      "opaqueSilhouetteBounds": [
+        143,
+        17,
+        1348,
+        1036
+      ],
+      "corners": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "file": "station-flag.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaMin": 0,
+      "alphaMax": 254,
+      "transparentPixels": 922448,
+      "nearOpaquePixels": 596779,
+      "partialPixelsBelow250": 53637,
+      "opaqueSilhouetteBounds": [
+        199,
+        15,
+        826,
+        1510
+      ],
+      "corners": [
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

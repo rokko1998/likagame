@@ -1,0 +1,354 @@
+{
+  "id": "04-dispatch",
+  "title": "Диспетчерская — пробуждение Пика",
+  "reference": "../../../шаблоны сцен/Codex Image Sep 7, 2026, 07_50_38 PM.png",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "layers": [
+    {
+      "id": "background",
+      "file": "background.png",
+      "label": "Цельный фон диспетчерской",
+      "kind": "background",
+      "x": 0,
+      "y": 0,
+      "width": 1672,
+      "height": 941,
+      "z": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none"
+    },
+    {
+      "id": "dock-1",
+      "file": "charge-dock.png",
+      "label": "Зарядная ячейка 1",
+      "kind": "sprite",
+      "x": 539.2795600366636,
+      "y": 458.1740674955595,
+      "width": 221.60953253895508,
+      "height": 164.7735346358792,
+      "z": 30,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "dock-light-1",
+      "file": "../shared/dock-charged.png",
+      "label": "Ячейка 1: заряд",
+      "kind": "sprite",
+      "x": 568,
+      "y": 524,
+      "width": 164,
+      "height": 75,
+      "z": 32,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "state": "charged"
+    },
+    {
+      "id": "dock-number-1",
+      "file": "../shared/digit-1.png",
+      "label": "Номер ячейки 1",
+      "kind": "sprite",
+      "x": 627,
+      "y": 573,
+      "width": 24,
+      "height": 30,
+      "z": 33,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none"
+    },
+    {
+      "id": "dock-2",
+      "file": "charge-dock.png",
+      "label": "Зарядная ячейка 2",
+      "kind": "sprite",
+      "x": 761.2795600366636,
+      "y": 458.1740674955595,
+      "width": 221.60953253895508,
+      "height": 164.7735346358792,
+      "z": 30,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "dock-light-2",
+      "file": "../shared/dock-charged.png",
+      "label": "Ячейка 2: заряд",
+      "kind": "sprite",
+      "x": 790,
+      "y": 524,
+      "width": 164,
+      "height": 75,
+      "z": 32,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "state": "charged"
+    },
+    {
+      "id": "dock-number-2",
+      "file": "../shared/digit-2.png",
+      "label": "Номер ячейки 2",
+      "kind": "sprite",
+      "x": 849,
+      "y": 573,
+      "width": 24,
+      "height": 30,
+      "z": 33,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none"
+    },
+    {
+      "id": "dock-3",
+      "file": "charge-dock.png",
+      "label": "Зарядная ячейка 3",
+      "kind": "sprite",
+      "x": 964.2795600366636,
+      "y": 458.1740674955595,
+      "width": 221.60953253895508,
+      "height": 164.7735346358792,
+      "z": 30,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "dock-light-3",
+      "file": "../shared/dock-charged.png",
+      "label": "Ячейка 3: заряд",
+      "kind": "sprite",
+      "x": 993,
+      "y": 524,
+      "width": 164,
+      "height": 75,
+      "z": 32,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker",
+      "state": "charged"
+    },
+    {
+      "id": "dock-number-3",
+      "file": "../shared/digit-3.png",
+      "label": "Номер ячейки 3",
+      "kind": "sprite",
+      "x": 1052,
+      "y": 573,
+      "width": 24,
+      "height": 30,
+      "z": 33,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none"
+    },
+    {
+      "id": "capsule-reflection-1",
+      "file": "../shared/floor-glow.png",
+      "label": "Капсула 1: свет на полу",
+      "kind": "sprite",
+      "x": 538,
+      "y": 791,
+      "width": 190,
+      "height": 87,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker"
+    },
+    {
+      "id": "capsule-1",
+      "file": "energy-capsule.png",
+      "label": "Энергокапсула 1",
+      "kind": "sprite",
+      "x": 531.7202432667245,
+      "y": 719.8722109533469,
+      "width": 204.33188531711556,
+      "height": 157.60649087221094,
+      "z": 70,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "capsule-reflection-2",
+      "file": "../shared/floor-glow.png",
+      "label": "Капсула 2: свет на полу",
+      "kind": "sprite",
+      "x": 765,
+      "y": 791,
+      "width": 190,
+      "height": 87,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker"
+    },
+    {
+      "id": "capsule-2",
+      "file": "energy-capsule.png",
+      "label": "Энергокапсула 2",
+      "kind": "sprite",
+      "x": 758.7202432667245,
+      "y": 719.8722109533469,
+      "width": 204.33188531711556,
+      "height": 157.60649087221094,
+      "z": 70,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "capsule-reflection-3",
+      "file": "../shared/floor-glow.png",
+      "label": "Капсула 3: свет на полу",
+      "kind": "sprite",
+      "x": 990,
+      "y": 791,
+      "width": 190,
+      "height": 87,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "flicker"
+    },
+    {
+      "id": "capsule-3",
+      "file": "energy-capsule.png",
+      "label": "Энергокапсула 3",
+      "kind": "sprite",
+      "x": 983.7202432667245,
+      "y": 719.8722109533469,
+      "width": 204.33188531711556,
+      "height": 157.60649087221094,
+      "z": 70,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "interactive": true
+    },
+    {
+      "id": "ui-icon-pause",
+      "file": "../shared/icon-pause.png",
+      "label": "icon-pause",
+      "kind": "ui",
+      "x": 19,
+      "y": 18,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-backpack",
+      "file": "../shared/icon-backpack.png",
+      "label": "icon-backpack",
+      "kind": "ui",
+      "x": 1579,
+      "y": 18,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-monitor-orbits",
+      "file": "../shared/monitor-orbits.png",
+      "label": "monitor-orbits",
+      "kind": "ui",
+      "x": 102,
+      "y": 133,
+      "width": 217,
+      "height": 184,
+      "z": 15,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": 4
+    },
+    {
+      "id": "ui-monitor-status",
+      "file": "../shared/monitor-status.png",
+      "label": "monitor-status",
+      "kind": "ui",
+      "x": 347,
+      "y": 159,
+      "width": 211,
+      "height": 170,
+      "z": 15,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": 4
+    }
+  ],
+  "puppets": [
+    {
+      "file": "pik-rig.json"
+    }
+  ],
+  "notes": "Доки и капсулы используют один мастер PNG каждый. Номера, свечение и персонаж отдельны. Три части каждой руки подключаются из rig/rig-arms.json.",
+  "status": "ready",
+  "renderNotes": "x/y/width/height describe the full PNG rectangle in 1672×941 scene coordinates. pivot is normalized to the PNG. rotation is clockwise degrees. All renderable images are PNG. UI files are separately reusable."
+}

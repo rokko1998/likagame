@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320"><defs>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0b6"/><stop offset=".4" stop-color="#ffd57b"/><stop offset="1" stop-color="#e9ad50"/></linearGradient>
+ <linearGradient id="ice" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset=".55" stop-color="#effaff"/><stop offset="1" stop-color="#91b7de"/></linearGradient>
+ <linearGradient id="blue" x2="0" y2="1"><stop stop-color="#283e5ddd"/><stop offset="1" stop-color="#14233be6"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#fffbd5"/><stop offset=".12" stop-color="#ffd16b" stop-opacity=".85"/><stop offset=".4" stop-color="#ff9b43" stop-opacity=".35"/><stop offset="1" stop-color="#ff761f" stop-opacity="0"/></radialGradient>
+ <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="5"/></filter>
+ </defs><g fill="none" stroke="#ffae68" stroke-width="1"><circle cx="160" cy="160" r="42" opacity="0.66" stroke-dasharray="1 0"/><circle cx="160" cy="160" r="65" opacity="0.53" stroke-dasharray="6 3"/><circle cx="160" cy="160" r="94" opacity="0.4" stroke-dasharray="1 0"/><circle cx="160" cy="160" r="125" opacity="0.27" stroke-dasharray="6 3"/><path d="M160 13V307M13 160H307" opacity=".32"/><path d="M58 58L78 78M242 242L262 262M58 262L78 242M242 78L262 58" opacity=".6"/></g></svg>

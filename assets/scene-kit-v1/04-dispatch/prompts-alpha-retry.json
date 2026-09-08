@@ -1,0 +1,40 @@
+{
+  "tool": "built-in image_gen",
+  "jobs": [
+    {
+      "id": "charge-dock",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-de0ccc37-1466-4f49-9bc0-ad5b41806ebc.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "energy-capsule",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-6750ecb2-fb40-494a-ab1c-e327b1ae0f47.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "pik-body",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-c17a0707-7000-4c59-9fef-aa4ab72527dd.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "pik-head",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-37c1eaa2-39bb-424b-ac46-b840db2b7c74.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "pik-arm-near",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-8b92bd55-9cf0-4254-94cb-b8ab38a64aa0.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "pik-arm-far",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-73491fae-039c-4f38-9a20-ff6670a03cca.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    },
+    {
+      "id": "pik-antenna",
+      "reference": "/Users/sheva/.codex/generated_images/01a07dae-d93a-7df2-a828-2128f081c9d4/exec-6fd43367-c38d-4182-b63b-92532f5e67de.png",
+      "prompt": "Remove the background from this image. Preserve the single mechanical object exactly. Deliver the isolated object as a PNG with a transparent background. Remove the entire light checked backdrop; keep all object edges, holes, fine details and interior colors intact. No other changes."
+    }
+  ]
+}

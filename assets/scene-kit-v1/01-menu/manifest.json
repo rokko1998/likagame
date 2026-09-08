@@ -1,0 +1,395 @@
+{
+  "id": "01-menu",
+  "title": "Главное меню",
+  "reference": "../../../шаблоны сцен/Codex Image Sep 7, 2026, 07_49_00 PM.png",
+  "canvas": {
+    "width": 1672,
+    "height": 941
+  },
+  "layers": [
+    {
+      "id": "background",
+      "file": "background.png",
+      "label": "Единый фон: станция, небо, скалы и ящики",
+      "kind": "background",
+      "x": 0,
+      "y": 0,
+      "width": 1672,
+      "height": 941,
+      "z": 0,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "notes": "Вся статичная сцена в одном PNG. Убраны персонажи, ткань двух флагов, тарелка и UI; скрытые поверхности восстановлены."
+    },
+    {
+      "id": "dish",
+      "file": "dish.png",
+      "label": "Поворотная антенна",
+      "kind": "sprite",
+      "x": 1155,
+      "y": 50,
+      "width": 200,
+      "height": 200,
+      "z": 10,
+      "pivot": [
+        0.387,
+        0.969
+      ],
+      "motion": "sway",
+      "notes": "Тарелка с опорой; мягкий наклон ±1°. Для полного вращения вокруг вертикали нужны дополнительные ракурсы."
+    },
+    {
+      "id": "banner-right",
+      "file": "banner-right.png",
+      "label": "Полотнище на станции",
+      "kind": "sprite",
+      "x": 1308,
+      "y": 340,
+      "width": 153,
+      "height": 305,
+      "z": 11,
+      "pivot": [
+        0.48,
+        0.025
+      ],
+      "motion": "sway",
+      "notes": "Крепление по верхней кромке. Допустима небольшая деформация ткани; надпись остаётся частью ткани."
+    },
+    {
+      "id": "flag-left",
+      "file": "flag-left.png",
+      "label": "Левый флаг — ткань",
+      "kind": "sprite",
+      "x": 15,
+      "y": 424,
+      "width": 242,
+      "height": 265,
+      "z": 20,
+      "pivot": [
+        0.193,
+        0.036
+      ],
+      "motion": "sway",
+      "rotation": 5,
+      "notes": "Древко в фоне. Базовый поворот 5° совмещает левую кромку с наклонным древком; анимация ±1°."
+    },
+    {
+      "id": "child-body",
+      "file": "child-body.png",
+      "label": "Ребёнок — корпус, рюкзак и ноги",
+      "kind": "sprite",
+      "x": 175,
+      "y": 620,
+      "width": 225,
+      "height": 181,
+      "z": 30,
+      "pivot": [
+        0.52,
+        0.84
+      ],
+      "motion": "none",
+      "notes": "Сидящая поза; руки и ноги объединены с корпусом. Для шага/жеста нужен отдельный риг."
+    },
+    {
+      "id": "child-head",
+      "file": "child-head.png",
+      "label": "Ребёнок — голова",
+      "kind": "sprite",
+      "x": 226,
+      "y": 534,
+      "width": 146,
+      "height": 130,
+      "z": 31,
+      "pivot": [
+        0.51,
+        0.88
+      ],
+      "motion": "sway",
+      "notes": "Голова отдельно, крепится к воротнику. Небольшой поворот ±1.5°; нижняя шея перекрывает воротник."
+    },
+    {
+      "id": "cat-tail",
+      "file": "cat-tail.png",
+      "label": "Кот — подвижный хвост",
+      "kind": "sprite",
+      "x": 402,
+      "y": 751,
+      "width": 79,
+      "height": 52,
+      "z": 39,
+      "pivot": [
+        0.2,
+        0.44
+      ],
+      "motion": "sway",
+      "notes": "Хвост восстановлен по стилю кота, в исходнике почти скрыт. Корень перекрывается корпусом; амплитуда до ±5°."
+    },
+    {
+      "id": "cat-body",
+      "file": "cat-body.png",
+      "label": "Кот — сидящий корпус и голова",
+      "kind": "sprite",
+      "x": 329,
+      "y": 647,
+      "width": 141,
+      "height": 158,
+      "z": 40,
+      "pivot": [
+        0.5,
+        0.9
+      ],
+      "motion": "none",
+      "notes": "Хвост отдельный. Уши и голова входят в корпус, для отдельных движений потребуется дополнительная нарезка."
+    },
+    {
+      "id": "ui-decor-discovery",
+      "file": "../shared/decor-discovery.png",
+      "label": "decor-discovery",
+      "kind": "ui",
+      "x": 48,
+      "y": 111,
+      "width": 200,
+      "height": 147,
+      "z": 90,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -6
+    },
+    {
+      "id": "ui-decor-math",
+      "file": "../shared/decor-math.png",
+      "label": "decor-math",
+      "kind": "ui",
+      "x": 1486,
+      "y": 530,
+      "width": 178,
+      "height": 143,
+      "z": 90,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -8
+    },
+    {
+      "id": "ui-decor-stories",
+      "file": "../shared/decor-stories.png",
+      "label": "decor-stories",
+      "kind": "ui",
+      "x": 1511,
+      "y": 769,
+      "width": 147,
+      "height": 117,
+      "z": 90,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true,
+      "rotation": -5
+    },
+    {
+      "id": "ui-logo",
+      "file": "../shared/logo.png",
+      "label": "logo",
+      "kind": "ui",
+      "x": 526,
+      "y": 217,
+      "width": 620,
+      "height": 258,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-tagline",
+      "file": "../shared/label-tagline.png",
+      "label": "label-tagline",
+      "kind": "ui",
+      "x": 567,
+      "y": 452,
+      "width": 540,
+      "height": 24,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-button-primary-normal",
+      "file": "../shared/button-primary-normal.png",
+      "label": "button-primary-normal",
+      "kind": "ui",
+      "x": 586,
+      "y": 513,
+      "width": 500,
+      "height": 112,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-star",
+      "file": "../shared/icon-star.png",
+      "label": "icon-star",
+      "kind": "ui",
+      "x": 630,
+      "y": 541,
+      "width": 56,
+      "height": 56,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-start",
+      "file": "../shared/label-start.png",
+      "label": "label-start",
+      "kind": "ui",
+      "x": 695,
+      "y": 543,
+      "width": 340,
+      "height": 48,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-button-secondary-normal",
+      "file": "../shared/button-secondary-normal.png",
+      "label": "button-secondary-normal",
+      "kind": "ui",
+      "x": 661,
+      "y": 628,
+      "width": 350,
+      "height": 80,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-play",
+      "file": "../shared/icon-play.png",
+      "label": "icon-play",
+      "kind": "ui",
+      "x": 729,
+      "y": 650,
+      "width": 36,
+      "height": 36,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-continue",
+      "file": "../shared/label-continue.png",
+      "label": "label-continue",
+      "kind": "ui",
+      "x": 778,
+      "y": 646,
+      "width": 215,
+      "height": 46,
+      "z": 101,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-label-restart",
+      "file": "../shared/label-restart.png",
+      "label": "label-restart",
+      "kind": "ui",
+      "x": 741,
+      "y": 718,
+      "width": 190,
+      "height": 40,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    },
+    {
+      "id": "ui-icon-sound",
+      "file": "../shared/icon-sound.png",
+      "label": "icon-sound",
+      "kind": "ui",
+      "x": 1579,
+      "y": 19,
+      "width": 72,
+      "height": 72,
+      "z": 100,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "motion": "none",
+      "uiGenerated": true
+    }
+  ],
+  "rigs": [
+    {
+      "id": "child",
+      "parts": [
+        "child-body",
+        "child-head"
+      ],
+      "joint": "neck",
+      "notes": "Голова и корпус в фиксированной сидящей позе; диапазон idle-покачивания ограничен."
+    },
+    {
+      "id": "cat",
+      "parts": [
+        "cat-body",
+        "cat-tail"
+      ],
+      "joint": "tail-base",
+      "notes": "Основание хвоста под правой частью корпуса."
+    }
+  ],
+  "ui": "Логотип, кнопки, звук и декоративные надписи добавляются отдельным интерфейсом.",
+  "renderNotes": "x/y/width/height describe the full PNG rectangle in 1672×941 scene coordinates. pivot is normalized to the PNG. rotation is clockwise degrees. All renderable images are PNG. UI files are separately reusable.",
+  "status": "ready"
+}
